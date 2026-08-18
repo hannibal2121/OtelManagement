@@ -1524,16 +1524,28 @@
             const room = rooms.find(r => r.id === roomId);
             if (!room) return;
 
+            // FİİLİ AKTİF KONAKLAYAN VAR MI KONTROL ET
+            const activeRez = reservations.find(r => r.roomId === room.id && r.status === 'Dolu');
+            const isOccupied = (room.status === 'Dolu') || !!activeRez;
+
             document.getElementById('detailRoomTitle').innerText = `Oda ${room.id} (${room.type})`;
             
             const badge = document.getElementById('detailRoomStatusBadge');
-            badge.innerText = room.status;
-            badge.className = room.status === 'Dolu' ? 'px-2.5 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-400 border border-rose-500/40' : (room.status === 'Rezerve' ? 'px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40' : 'px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40');
-            
+            if (isOccupied) {
+                badge.innerText = 'Dolu';
+                badge.className = 'px-2.5 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-400 border border-rose-500/40';
+            } else if (room.status === 'Rezerve') {
+                badge.innerText = 'Rezerve';
+                badge.className = 'px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40';
+            } else {
+                badge.innerText = 'Boş';
+                badge.className = 'px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+            }
+
             document.getElementById('detailRoomPriceText').innerText = `Kişi Başı Gecelik: ₺${room.price.toLocaleString('tr-TR')}`;
 
             const minibarSection = document.getElementById('minibarSection');
-            if (room.status === 'Dolu') {
+            if (isOccupied) {
                 minibarSection.classList.remove('hidden');
                 renderMinibarItems(room);
             } else {
@@ -1541,8 +1553,8 @@
             }
 
             const actionContainer = document.getElementById('detailRoomActions');
-            if (room.status === 'Dolu') {
-                const guest = room.guest || {};
+            if (isOccupied) {
+                const guest = room.guest || activeRez || {};
                 
                 // Konaklama uzama / gün aşımı dinamik hesabı
                 const effectiveNights = getEffectiveStayNights(guest.checkIn, guest.checkOut);
@@ -2189,3 +2201,4 @@
     </script>
 </body>
 </html>
+```
