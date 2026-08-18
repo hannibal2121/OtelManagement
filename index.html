@@ -472,7 +472,7 @@
         </div>
     </div>
 
-    <!-- MODAL: ODA YÖNETİMİ & KİŞİ BAŞI FİYAT AYARLARI -->
+    <!-- MODAL: ODA YÖNETİMİ -->
     <div id="roomSettingsModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
         <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center shrink-0">
@@ -536,7 +536,6 @@
             </div>
             <form id="bookingForm" onsubmit="handleSaveBooking(event)" class="p-4 sm:p-6 space-y-4 overflow-y-auto">
                 
-                <!-- Oda Seçimi & Kişi Sayısı -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-medium text-slate-400 mb-1">Oda Seçiniz *</label>
@@ -565,7 +564,6 @@
                     </div>
                 </div>
 
-                <!-- Konaklama Tarihleri -->
                 <div class="border-t border-slate-800 pt-3">
                     <p class="text-xs font-bold text-amber-500 mb-2">KONAKLAMA TARİHLERİ</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -586,7 +584,6 @@
                     </div>
                 </div>
 
-                <!-- Misafir Bilgileri & Canlı Arama -->
                 <div class="border-t border-slate-800 pt-3 space-y-3">
                     <div class="flex justify-between items-center">
                         <span class="text-xs font-bold text-amber-500">MİSAFİR BİLGİLERİ</span>
@@ -620,7 +617,6 @@
                         </div>
                     </div>
 
-                    <!-- Ek Yetişkinler (Opsiyonel) -->
                     <div id="additionalGuestsContainer" class="space-y-2"></div>
                 </div>
 
@@ -629,7 +625,6 @@
                     <textarea id="modalNotes" rows="2" placeholder="Özel notlar..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200"></textarea>
                 </div>
 
-                <!-- Tutar, Ön Ödeme & Kalan Bakiye -->
                 <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-3">
                     <div class="flex justify-between items-center text-xs">
                         <span class="text-slate-400">Hesaplama Detayı:</span>
@@ -660,7 +655,7 @@
         </div>
     </div>
 
-    <!-- MODAL: ODA DETAYI, MİNİBAR, 30 GÜNLÜK TAKVİM & ÇIKIŞ TAHSİLATI -->
+    <!-- MODAL: ODA DETAYI, MİNİBAR & TAKVİM -->
     <div id="roomDetailModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
         <div class="bg-slate-900 border border-slate-800 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
             <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center shrink-0">
@@ -673,7 +668,6 @@
             
             <div class="p-5 space-y-6 overflow-y-auto flex-1 text-xs">
                 
-                <!-- ODA DURUM KARTI & HIZLI EYLEMLER -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-950 p-4 rounded-2xl border border-slate-800">
                     <div>
                         <span id="detailRoomStatusBadge" class="px-2.5 py-1 rounded-full text-xs font-bold border">Durum</span>
@@ -682,7 +676,6 @@
                     <div id="detailRoomActions" class="flex flex-wrap gap-2"></div>
                 </div>
 
-                <!-- MİNİBAR VE EKSTRA HARCAMA MODÜLÜ -->
                 <div id="minibarSection" class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3 hidden">
                     <div class="flex justify-between items-center border-b border-slate-800 pb-2">
                         <h4 class="font-bold text-slate-200 text-sm flex items-center space-x-1.5">
@@ -703,7 +696,6 @@
                     <div id="minibarItemsList" class="space-y-1.5 pt-1"></div>
                 </div>
 
-                <!-- 30 GÜNLÜK GÖRSEL DOLULUK HARİTASI -->
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <h4 class="font-bold text-slate-200 text-sm flex items-center space-x-1.5">
@@ -718,7 +710,6 @@
                     <div id="roomCalendarGrid" class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-10 gap-2"></div>
                 </div>
 
-                <!-- BU ODANIN TÜM REZERVASYONLARI LİSTESİ -->
                 <div class="space-y-3">
                     <h4 class="font-bold text-slate-200 text-sm flex items-center space-x-1.5">
                         <i class="fa-solid fa-list-check text-sky-400"></i>
@@ -746,7 +737,7 @@
         </div>
     </div>
 
-    <!-- MODAL: VERİTABANI, TAM YEDEKLEME & KLASÖR SEÇİMİ -->
+    <!-- MODAL: VERİTABANI & YEDEK -->
     <div id="dbModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
         <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden">
             <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center">
@@ -755,7 +746,6 @@
             </div>
             <div class="p-5 space-y-4 text-xs">
                 
-                <!-- Yedek Klasörü Seçme Alanı -->
                 <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-2">
                     <div class="flex items-center justify-between">
                         <div>
@@ -774,7 +764,6 @@
                     </div>
                 </div>
 
-                <!-- Otomatik Tam Yedek Al Butonu -->
                 <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5 flex items-center justify-between">
                     <div>
                         <h4 class="font-bold text-emerald-400 flex items-center space-x-1.5">
@@ -788,7 +777,6 @@
                     </button>
                 </div>
 
-                <!-- Geri Yükle -->
                 <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5 flex items-center justify-between">
                     <div>
                         <h4 class="font-bold text-sky-400 flex items-center space-x-1.5">
@@ -803,7 +791,6 @@
                     </label>
                 </div>
 
-                <!-- Onar / Sıfırla -->
                 <div class="grid grid-cols-2 gap-2 pt-2">
                     <button onclick="repairDatabase()" class="bg-slate-950 hover:bg-slate-800 text-amber-400 border border-slate-800 p-2.5 rounded-xl font-bold text-center">
                         <i class="fa-solid fa-wrench me-1"></i>Veritabanını Onar
@@ -816,7 +803,7 @@
         </div>
     </div>
 
-    <!-- MODAL: GÜVENLİ ÖZEL ONAY PENCERESİ (CONFIRMATION MODAL) -->
+    <!-- MODAL: GÜVENLİ ONAY PENCERESİ -->
     <div id="confirmModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
         <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-2xl shadow-2xl p-5 space-y-4">
             <div class="flex items-center space-x-3 text-amber-500">
@@ -853,7 +840,6 @@
             { id: 117, type: "Aile Süiti", price: 1300, status: "Boş", guest: null, minibar: [] }
         ];
 
-        // TARİH FORMATLAMA YARDIMCISI (ISO -> GG/AA/YYYY)
         function formatDateTR(dateStr) {
             if (!dateStr) return '-';
             const parts = dateStr.split('-');
@@ -863,7 +849,6 @@
             return dateStr;
         }
 
-        // GEÇEN/UZAYAN GECE SAYISI HESABI
         function getEffectiveStayNights(checkInStr, checkOutStr) {
             if (!checkInStr) return 1;
             const inD = new Date(checkInStr);
@@ -1475,7 +1460,11 @@
                 }
 
                 const todayStr = new Date().toISOString().split('T')[0];
-                const calculatedStatus = (checkIn <= todayStr) ? 'Dolu' : 'Rezerve';
+                const room = rooms.find(r => r.id === roomId);
+                
+                // Eğer odada zaten aktif konaklayan konuk varsa (Dolu ise), o odayı 'Dolu' olarak koru!
+                const isCurrentlyOccupied = room && room.status === 'Dolu' && room.guest;
+                const calculatedStatus = isCurrentlyOccupied ? 'Dolu' : ((checkIn <= todayStr) ? 'Dolu' : 'Rezerve');
 
                 const guestList = [{ tc: primaryTc, name: primaryName, phone: primaryPhone, email: primaryEmail }];
 
@@ -1499,8 +1488,8 @@
                     }
                 });
 
-                const room = rooms.find(r => r.id === roomId);
-                if (room) {
+                // Odadaki aktif kalan konuk verisi bozulmasın
+                if (room && !isCurrentlyOccupied) {
                     room.status = calculatedStatus;
                     room.guest = {
                         primaryName, primaryTc, phone: primaryPhone, adultCount, childCount,
@@ -1522,7 +1511,7 @@
                 if (saveDb()) {
                     closeModal('bookingModal');
                     document.getElementById('bookingForm').reset();
-                    showToast(`Oda ${roomId} için ${calculatedStatus === 'Dolu' ? 'Giriş' : 'Rezervasyon'} Kaydedildi! (₺${finalTotalPrice})`);
+                    showToast(`Oda ${roomId} için ${calculatedStatus === 'Dolu' ? 'Konaklama / Giriş' : 'İleri Tarihli Rezervasyon'} Kaydedildi! (₺${finalTotalPrice})`);
                 }
             } catch (err) {
                 console.error("Rezervasyon Kayıt Hatası:", err);
@@ -1724,7 +1713,6 @@
             });
         }
 
-        // ÇIKIŞ İŞLEMİ VE GÜN AŞIMI TAHSİLAT HESABI
         function handleCheckoutWithPayment(roomId, totalAmountToCollect, updatedRoomPrice, remainingRoomBalance) {
             const room = rooms.find(r => r.id === roomId);
             if (!room) return;
@@ -1791,7 +1779,6 @@
             populateModalRoomSelect();
         }
 
-        // DASHBOARD ODA GRID ÇİZİMİ (1. İSTEK: REZERVE ODALARDA İSİM GİZLEME)
         function renderRoomsGrid() {
             const grid = document.getElementById('roomsGrid');
             grid.innerHTML = '';
@@ -1812,7 +1799,6 @@
                 } else if (r.status === 'Rezerve') {
                     cardStyle = 'bg-amber-950/30 border-2 border-amber-500/80 hover:border-amber-400 shadow-lg shadow-amber-950/40';
                     badgeStyle = 'bg-amber-500 text-slate-950 font-black';
-                    // 1. İSTEK GEREĞİ REZERVE ODALARDA İSİM GÖSTERİLMEZ, SADECE REZERVE YAZAR
                     guestDisplayHtml = '<i class="fa-solid fa-clock me-1 text-amber-400"></i> Gelecek Rezervasyon';
                 } else {
                     cardStyle = 'bg-emerald-950/20 border-2 border-emerald-500/70 hover:border-emerald-400 shadow-lg shadow-emerald-950/40';
@@ -1897,7 +1883,6 @@
                 tbody.appendChild(tr);
             });
 
-            // TOPLAM CİRO = ODA GELİRİ + MİNİBAR GELİRİ
             const totalRev = roomRev + minibarRev;
 
             document.getElementById('reportRowCountText').innerText = `${filtered.length} Kayıt Bulundu`;
@@ -1905,10 +1890,10 @@
             document.getElementById('reportRoomRevenue').innerText = `₺${roomRev.toLocaleString('tr-TR')}`;
             document.getElementById('reportMinibarRevenue').innerText = `₺${minibarRev.toLocaleString('tr-TR')}`;
 
-            // GERÇEK SON 6 AY CİRO GRAFİĞİ HESABI
+            // GERÇEK SON 6 AY CİRO GRAFİĞİ
             const chartContainer = document.getElementById('monthlyChartBars');
             chartContainer.innerHTML = '';
-            const monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+            const monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eyl", "Ekim", "Kasım", "Aralık"];
             const now = new Date();
             const monthlyData = [];
 
