@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grand Stay - Otel Yönetim & Gelişmiş Yedekleme Sistemi</title>
+    <title>Grand Stay - Otel Yönetim Sistemi</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome İkonları -->
@@ -55,7 +55,7 @@
                 <p class="text-xs text-amber-500 font-medium">Otel Yönetim Sistemine Giriş Yapın</p>
             </div>
 
-            <form id="loginForm" class="space-y-4 text-xs">
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 text-xs">
                 <div>
                     <label class="block text-slate-400 font-medium mb-1">Kullanıcı Adı</label>
                     <div class="relative">
@@ -918,11 +918,60 @@
         window.onload = function() {
             startClock();
             initDatePickers();
+            syncRoomStatuses();
             document.getElementById('loginForm').addEventListener('submit', handleLogin);
             loadHotelSettingsUI();
             checkSessionLogin();
             renderAll();
         };
+
+        function syncRoomStatuses() {
+            const todayStr = new Date().toISOString().split('T')[0];
+
+            rooms.forEach(room => {
+                const activeStay = reservations.find(r => r.roomId === room.id && r.status === 'Dolu');
+                const todayReservation = reservations.find(r => r.roomId === room.id && r.status === 'Rezerve' && r.checkIn <= todayStr && r.checkOut > todayStr);
+
+                if (activeStay) {
+                    room.status = 'Dolu';
+                    room.guest = {
+                        primaryName: activeStay.primaryName,
+                        primaryTc: activeStay.tc,
+                        phone: activeStay.phone,
+                        adultCount: activeStay.adultCount || 1,
+                        childCount: activeStay.childCount || 0,
+                        checkIn: activeStay.checkIn,
+                        checkOut: activeStay.checkOut,
+                        totalPrice: activeStay.totalPrice,
+                        advancePayment: activeStay.advancePayment,
+                        remainingBalance: activeStay.remainingBalance
+                    };
+                } else if (todayReservation) {
+                    todayReservation.status = 'Dolu';
+                    room.status = 'Dolu';
+                    room.guest = {
+                        primaryName: todayReservation.primaryName,
+                        primaryTc: todayReservation.tc,
+                        phone: todayReservation.phone,
+                        adultCount: todayReservation.adultCount || 1,
+                        childCount: todayReservation.childCount || 0,
+                        checkIn: todayReservation.checkIn,
+                        checkOut: todayReservation.checkOut,
+                        totalPrice: todayReservation.totalPrice,
+                        advancePayment: todayReservation.advancePayment,
+                        remainingBalance: todayReservation.remainingBalance
+                    };
+                } else {
+                    const futureRez = reservations.find(r => r.roomId === room.id && r.status === 'Rezerve');
+                    if (futureRez) {
+                        room.status = 'Rezerve';
+                    } else if (room.status !== 'Dolu') {
+                        room.status = 'Boş';
+                        room.guest = null;
+                    }
+                }
+            });
+        }
 
         function showToast(msg, type = 'success') {
             const container = document.getElementById('toastContainer');
@@ -1008,6 +1057,7 @@
                 localStorage.setItem('gs_guests', JSON.stringify(guests));
                 localStorage.setItem('gs_reservations', JSON.stringify(reservations));
                 localStorage.setItem('gs_settings', JSON.stringify(settings));
+                syncRoomStatuses();
                 renderAll();
                 return true;
             } catch (err) {
@@ -1367,7 +1417,7 @@
 
         function findFirstAvailableDates(roomId) {
             const today = new Date();
-            const roomReservations = reservations.filter(r => r.roomId === roomId && r.status !== 'İptal');
+            const roomReservations = reservations.filter(r => r.roomId === roomId && r.status !== 'İptal' && r.status !== 'Tamamlandı');
             
             for (let i = 0; i < 90; i++) {
                 const checkInDate = new Date(today.getTime() + (i * 86400000));
@@ -1462,9 +1512,8 @@
                 const todayStr = new Date().toISOString().split('T')[0];
                 const room = rooms.find(r => r.id === roomId);
                 
-                // Eğer odada zaten aktif konaklayan konuk varsa (Dolu ise), o odayı 'Dolu' olarak koru!
                 const isCurrentlyOccupied = room && room.status === 'Dolu' && room.guest;
-                const calculatedStatus = isCurrentlyOccupied ? 'Dolu' : ((checkIn <= todayStr) ? 'Dolu' : 'Rezerve');
+                const calculatedStatus = isCurrentlyOccupied ? 'Rezerve' : ((checkIn <= todayStr) ? 'Dolu' : 'Rezerve');
 
                 const guestList = [{ tc: primaryTc, name: primaryName, phone: primaryPhone, email: primaryEmail }];
 
@@ -1488,7 +1537,6 @@
                     }
                 });
 
-                // Odadaki aktif kalan konuk verisi bozulmasın
                 if (room && !isCurrentlyOccupied) {
                     room.status = calculatedStatus;
                     room.guest = {
@@ -1524,7 +1572,6 @@
             const room = rooms.find(r => r.id === roomId);
             if (!room) return;
 
-            // FİİLİ AKTİF KONAKLAYAN VAR MI KONTROL ET
             const activeRez = reservations.find(r => r.roomId === room.id && r.status === 'Dolu');
             const isOccupied = (room.status === 'Dolu') || !!activeRez;
 
@@ -1556,7 +1603,6 @@
             if (isOccupied) {
                 const guest = room.guest || activeRez || {};
                 
-                // Konaklama uzama / gün aşımı dinamik hesabı
                 const effectiveNights = getEffectiveStayNights(guest.checkIn, guest.checkOut);
                 const dailyRoomRate = Math.round(((guest.adultCount || 1) + ((guest.childCount || 0) * 0.5)) * room.price);
                 const calculatedRoomCost = effectiveNights * dailyRoomRate;
@@ -1589,7 +1635,7 @@
             const calendarGrid = document.getElementById('roomCalendarGrid');
             calendarGrid.innerHTML = '';
             const today = new Date();
-            const roomReservations = reservations.filter(r => r.roomId === room.id && r.status !== 'İptal');
+            const roomReservations = reservations.filter(r => r.roomId === room.id && r.status !== 'İptal' && r.status !== 'Tamamlandı');
 
             for (let i = 0; i < 30; i++) {
                 const dayDate = new Date(today.getTime() + (i * 86400000));
@@ -1623,10 +1669,11 @@
 
             const rezTableBody = document.getElementById('detailRoomReservationTable');
             rezTableBody.innerHTML = '';
-            if (roomReservations.length === 0) {
+            const allRoomRezs = reservations.filter(r => r.roomId === room.id && r.status !== 'İptal');
+            if (allRoomRezs.length === 0) {
                 rezTableBody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Bu odaya ait kayıtlı rezervasyon bulunmuyor.</td></tr>`;
             } else {
-                roomReservations.slice().reverse().forEach(r => {
+                allRoomRezs.slice().reverse().forEach(r => {
                     const tr = document.createElement('tr');
                     tr.className = "hover:bg-slate-800/30 transition";
                     tr.innerHTML = `
@@ -1902,7 +1949,6 @@
             document.getElementById('reportRoomRevenue').innerText = `₺${roomRev.toLocaleString('tr-TR')}`;
             document.getElementById('reportMinibarRevenue').innerText = `₺${minibarRev.toLocaleString('tr-TR')}`;
 
-            // GERÇEK SON 6 AY CİRO GRAFİĞİ
             const chartContainer = document.getElementById('monthlyChartBars');
             chartContainer.innerHTML = '';
             const monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eyl", "Ekim", "Kasım", "Aralık"];
@@ -2201,4 +2247,3 @@
     </script>
 </body>
 </html>
-```
