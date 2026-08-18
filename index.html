@@ -863,6 +863,22 @@
             return dateStr;
         }
 
+        // GEÇEN/UZAYAN GECE SAYISI HESABI
+        function getEffectiveStayNights(checkInStr, checkOutStr) {
+            if (!checkInStr) return 1;
+            const inD = new Date(checkInStr);
+            const todayD = new Date();
+            todayD.setHours(0, 0, 0, 0);
+            inD.setHours(0, 0, 0, 0);
+
+            let outD = checkOutStr ? new Date(checkOutStr) : new Date(inD.getTime() + 86400000);
+            outD.setHours(0, 0, 0, 0);
+
+            const targetEndD = (todayD > outD) ? todayD : outD;
+            const diffTime = targetEndD - inD;
+            return Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+        }
+
         function safeLoadDb() {
             try {
                 let loadedRooms = JSON.parse(localStorage.getItem('gs_rooms')) || defaultRooms;
@@ -1538,12 +1554,19 @@
             const actionContainer = document.getElementById('detailRoomActions');
             if (room.status === 'Dolu') {
                 const guest = room.guest || {};
+                
+                // Konaklama uzama / gün aşımı dinamik hesabı
+                const effectiveNights = getEffectiveStayNights(guest.checkIn, guest.checkOut);
+                const dailyRoomRate = Math.round(((guest.adultCount || 1) + ((guest.childCount || 0) * 0.5)) * room.price);
+                const calculatedRoomCost = effectiveNights * dailyRoomRate;
+                const effectiveTotalPrice = Math.max(guest.totalPrice || 0, calculatedRoomCost);
+                const effectiveRemainingBalance = Math.max(0, effectiveTotalPrice - (guest.advancePayment || 0));
+
                 const minibarTotal = (room.minibar || []).reduce((acc, curr) => acc + curr.price, 0);
-                const remainingBal = guest.remainingBalance || 0;
-                const grandTotalToCollect = remainingBal + minibarTotal;
+                const grandTotalToCollect = effectiveRemainingBalance + minibarTotal;
 
                 actionContainer.innerHTML = `
-                    <button onclick="handleCheckoutWithPayment(${room.id}, ${grandTotalToCollect})" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black px-4 py-2 rounded-xl text-xs flex items-center space-x-1.5 shadow-lg shadow-emerald-500/20">
+                    <button onclick="handleCheckoutWithPayment(${room.id}, ${grandTotalToCollect}, ${effectiveTotalPrice}, ${effectiveRemainingBalance})" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black px-4 py-2 rounded-xl text-xs flex items-center space-x-1.5 shadow-lg shadow-emerald-500/20">
                         <i class="fa-solid fa-cash-register"></i>
                         <span>Çıkış Yap & Tahsilat (₺${grandTotalToCollect})</span>
                     </button>
@@ -1701,15 +1724,18 @@
             });
         }
 
-        function handleCheckoutWithPayment(roomId, totalAmountToCollect) {
+        // ÇIKIŞ İŞLEMİ VE GÜN AŞIMI TAHSİLAT HESABI
+        function handleCheckoutWithPayment(roomId, totalAmountToCollect, updatedRoomPrice, remainingRoomBalance) {
             const room = rooms.find(r => r.id === roomId);
             if (!room) return;
 
             const minibarTot = (room.minibar || []).reduce((a,c) => a + c.price, 0);
-            const remainingBal = room.guest ? room.guest.remainingBalance || 0 : 0;
+            const finalRoomPrice = updatedRoomPrice || (room.guest ? room.guest.totalPrice || 0 : 0);
+            const finalRemainingBal = (typeof remainingRoomBalance === 'number') ? remainingRoomBalance : (room.guest ? room.guest.remainingBalance || 0 : 0);
 
             const confirmMsg = `Oda ${roomId} Çıkış ve Tahsilat Onayı:\n\n` +
-                               `• Kalan Konaklama Borcu: ₺${remainingBal}\n` +
+                               `• Güncellenmiş Oda Tutarı: ₺${finalRoomPrice}\n` +
+                               `• Kalan Konaklama Borcu: ₺${finalRemainingBal}\n` +
                                `• Minibar / Ekstra Tutarı: ₺${minibarTot}\n` +
                                `-----------------------------------------\n` +
                                `TAHSİL EDİLECEK NET TUTAR: ₺${totalAmountToCollect}\n\n` +
@@ -1718,10 +1744,16 @@
             askConfirmation("Çıkış & Tahsilat Onayı", confirmMsg, () => {
                 const rez = reservations.find(r => r.roomId === roomId && r.status === 'Dolu');
                 if (rez) {
+                    rez.totalPrice = finalRoomPrice;
                     rez.remainingBalance = 0;
                     rez.minibarTotal = minibarTot;
-                    rez.collectedTotal = (rez.totalPrice || 0) + minibarTot;
+                    rez.collectedTotal = finalRoomPrice + minibarTot;
                     rez.status = 'Tamamlandı';
+                    
+                    const todayStr = new Date().toISOString().split('T')[0];
+                    if (todayStr > rez.checkOut) {
+                        rez.checkOut = todayStr;
+                    }
                 }
 
                 room.status = 'Boş';
@@ -1759,6 +1791,7 @@
             populateModalRoomSelect();
         }
 
+        // DASHBOARD ODA GRID ÇİZİMİ (1. İSTEK: REZERVE ODALARDA İSİM GİZLEME)
         function renderRoomsGrid() {
             const grid = document.getElementById('roomsGrid');
             grid.innerHTML = '';
@@ -1770,16 +1803,21 @@
             rooms.forEach(r => {
                 let cardStyle = '';
                 let badgeStyle = '';
+                let guestDisplayHtml = '';
 
                 if (r.status === 'Dolu') {
                     cardStyle = 'bg-rose-950/30 border-2 border-rose-500/80 hover:border-rose-400 shadow-lg shadow-rose-950/40';
                     badgeStyle = 'bg-rose-500 text-slate-950 font-black';
+                    guestDisplayHtml = '<i class="fa-solid fa-users me-1 text-amber-400"></i>' + (r.guest ? r.guest.primaryName || 'Misafir' : 'Konuk');
                 } else if (r.status === 'Rezerve') {
                     cardStyle = 'bg-amber-950/30 border-2 border-amber-500/80 hover:border-amber-400 shadow-lg shadow-amber-950/40';
                     badgeStyle = 'bg-amber-500 text-slate-950 font-black';
+                    // 1. İSTEK GEREĞİ REZERVE ODALARDA İSİM GÖSTERİLMEZ, SADECE REZERVE YAZAR
+                    guestDisplayHtml = '<i class="fa-solid fa-clock me-1 text-amber-400"></i> Gelecek Rezervasyon';
                 } else {
                     cardStyle = 'bg-emerald-950/20 border-2 border-emerald-500/70 hover:border-emerald-400 shadow-lg shadow-emerald-950/40';
                     badgeStyle = 'bg-emerald-500 text-slate-950 font-black';
+                    guestDisplayHtml = '<i class="fa-solid fa-bed me-1 text-emerald-400"></i> Müsait';
                 }
 
                 const card = document.createElement('div');
@@ -1798,7 +1836,7 @@
                         <p class="text-xs font-bold text-amber-400">₺${r.price.toLocaleString('tr-TR')} <span class="text-[10px] text-slate-500 font-normal">/kişi başı</span></p>
                     </div>
                     <div class="border-t border-slate-800/80 pt-2 text-[11px] text-slate-300 truncate font-medium">
-                        ${r.guest ? '<i class="fa-solid fa-users me-1 text-amber-400"></i>' + (r.guest.primaryName || 'Misafir') : '<i class="fa-solid fa-bed me-1 text-emerald-400"></i> Müsait'}
+                        ${guestDisplayHtml}
                     </div>
                 `;
                 grid.appendChild(card);
@@ -1820,7 +1858,6 @@
 
             let roomRev = 0;
             let minibarRev = 0;
-            let totalRev = 0;
 
             const tbody = document.getElementById('reportTableBody');
             tbody.innerHTML = '';
@@ -1860,8 +1897,8 @@
                 tbody.appendChild(tr);
             });
 
-            // Toplam ciro = Oda Geliri + Minibar Geliri
-            totalRev = roomRev + minibarRev;
+            // TOPLAM CİRO = ODA GELİRİ + MİNİBAR GELİRİ
+            const totalRev = roomRev + minibarRev;
 
             document.getElementById('reportRowCountText').innerText = `${filtered.length} Kayıt Bulundu`;
             document.getElementById('reportTotalRevenue').innerText = `₺${totalRev.toLocaleString('tr-TR')}`;
