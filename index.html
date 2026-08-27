@@ -894,25 +894,36 @@
             if (isDesktopApp && ipcRenderer) {
                 try {
                     const data = await ipcRenderer.invoke('db-load');
-                    rooms = (data && data.rooms && data.rooms.length > 0) ? data.rooms : defaultRooms;
+                    if (data && data.rooms && data.rooms.length > 0) {
+                        rooms = data.rooms;
+                    }
                     guests = data.guests || [];
                     reservations = data.reservations || [];
-                    settings = data.settings || settings;
+                    if (data.settings && data.settings.hotel_name) {
+                        settings = data.settings;
+                    }
                 } catch (e) {
-                    rooms = defaultRooms;
+                    console.error('SQLite yükleme hatası:', e);
                 }
             } else {
                 try {
                     const response = await fetch(`${getApiBaseUrl()}/api/load`);
                     const data = await response.json();
-                    rooms = (data && data.rooms && data.rooms.length > 0) ? data.rooms : defaultRooms;
+                    if (data && data.rooms && data.rooms.length > 0) {
+                        rooms = data.rooms;
+                    }
                     guests = data.guests || [];
                     reservations = data.reservations || [];
-                    settings = data.settings || settings;
+                    if (data.settings && data.settings.hotel_name) {
+                        settings = data.settings;
+                    }
                 } catch (e) {
                     console.error('API veri çekme hatası:', e);
-                    rooms = defaultRooms;
                 }
+            }
+            if (!rooms || rooms.length === 0) {
+                rooms = defaultRooms;
+                await saveDb();
             }
             syncRoomStatuses();
             renderAll();
@@ -1029,16 +1040,16 @@
                     try {
                         const res = await fetch(`${getApiBaseUrl()}/api/load`);
                         const data = await res.json();
-                        if (data && data.rooms) {
+                        if (data && data.rooms && data.rooms.length > 0) {
                             rooms = data.rooms;
                             guests = data.guests || [];
                             reservations = data.reservations || [];
-                            settings = data.settings || settings;
+                            if (data.settings) settings = data.settings;
                             syncRoomStatuses();
                             renderAll();
                         }
                     } catch(e) {}
-                }, 3000);
+                }, 2000);
             }
         };    
 
