@@ -1,0 +1,97 @@
+{
+  "name": "otel-rezervasyon-yonetimi",
+  "version": "5.6.0",
+  "description": "Otel Rezervasyon ve Yonetim Sistemi",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "serve": "npx serve -l 8080",
+    "tunnel": "npx localtunnel --port 8080",
+    "share": "concurrently \"npx serve -l 8080\" \"npx localtunnel --port 8080\"",
+    "dist": "electron-builder --win --publish never",
+    "dist:portable": "electron-builder --win portable --publish never",
+    "dist:mac": "electron-builder --mac --publish never",
+    "dist:linux": "electron-builder --linux --publish never",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "keywords": [
+    "hotel",
+    "management",
+    "reservation"
+  ],
+  "author": "Grand Stay",
+  "license": "MIT",
+  "dependencies": {
+    "electron-updater": "^6.3.9",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5",
+    "electron": "^44.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.grandstay.otelrezervasyon",
+    "productName": "Grand Stay Otel Yonetim",
+    "copyright": "Copyright (c) 2026 Grand Stay",
+    "asar": true,
+    "files": [
+      "index.html",
+      "main.js",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "publish": {
+      "provider": "generic",
+      "url": "https://mesoftbilisim.net/grandstay-updates/"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-Kurulum-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Grand Stay Otel Yonetim",
+      "deleteAppDataOnUninstall": false
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "build/icon.png",
+      "category": "public.app-category.business"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "build/icon.png",
+      "category": "Office"
+    }
+  },
+  "allowScripts": {
+    "electron@34.5.8": true,
+    "sqlite3@6.0.1": true
+  }
+}
