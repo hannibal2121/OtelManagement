@@ -1,0 +1,37 @@
+{
+  "name": "mesoft-otel",
+  "version": "6.0.0",
+  "description": "Mesoft Bilisim Otel Yonetim Sistemi",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64",
+    "dist:portable": "electron-builder --win --x64 -p never"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7",
+    "electron-updater": "^6.1.7"
+  },
+  "devDependencies": {
+    "electron": "^34.5.8",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.mesoft.otelyonetim",
+    "productName": "Mesoft Bilisim Otel",
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false
+    }
+  }
+}
