@@ -1,6 +1,6 @@
 {
   "name": "mesoft-otel",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Mesoft Bilisim Otel Yonetim Sistemi",
   "main": "main.js",
   "author": "Mesoft Bilişim",
@@ -32,16 +32,30 @@
     "npmRebuild": false,
     "productName": "Mesoft Bilisim Otel",
     "artifactName": "MesoftOtel-Setup-${version}.${ext}",
-    "directories": { "output": "release" },
+    "directories": {
+      "output": "release"
+    },
     "files": [
-      "main.js", "server.js", "db.js", "preload.js", "app.js",
-      "index.html", "assets/**/*", "build/icon.*", "package.json",
+      "main.js",
+      "server.js",
+      "db.js",
+      "preload.js",
+      "app.js",
+      "index.html",
+      "assets/**/*",
+      "build/icon.*",
+      "package.json",
       "node_modules/**/*"
     ],
-    "asarUnpack": ["node_modules/sqlite3/**"],
+    "asarUnpack": [
+      "node_modules/sqlite3/**"
+    ],
     "win": {
       "icon": "build/icon.ico",
-      "target": ["nsis", "portable"]
+      "target": [
+        "nsis",
+        "portable"
+      ]
     },
     "portable": {
       "artifactName": "MesoftOtel-Portable-${version}.${ext}"
@@ -50,11 +64,16 @@
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
-      "installerLanguages": ["tr_TR"],
+      "installerLanguages": [
+        "tr_TR"
+      ],
       "shortcutName": "Mesoft Otel"
     },
     "publish": [
-      { "provider": "generic", "url": "https://www.mesoftbilisim.net/guncelleme/otel/" }
+      {
+        "provider": "generic",
+        "url": "https://www.mesoftbilisim.net/guncelleme/otel/"
+      }
     ]
   }
 }

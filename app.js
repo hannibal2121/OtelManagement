@@ -513,7 +513,8 @@ function importJson(e) { const f = e.target.files[0]; if (!f) return; const rd =
 function resetDatabase() { confirmAsk('Fabrika Ayarları', 'Tüm odalar, misafirler, rezervasyonlar ve ödemeler silinecek. Kullanıcılar ve ayarlar kalır. Önce otomatik yedek alınır.', async () => { if (await act(() => api('/reset', 'POST'), 'Veritabanı sıfırlandı')) closeModal('dbModal'); }); }
 
 // ============ GÜNCELLEME (masaüstü) ============
-async function checkUpdates() { if (!isDesktop) return; const r = await window.mesoft.checkUpdates(); if (r && r.reason) $('updateStatusText').innerText = r.reason; else $('updateStatusText').innerText = 'Kontrol ediliyor…'; }
+async function checkUpdates() { if (!isDesktop) return; $('updateStatusText').innerText = 'Kontrol ediliyor…'; const r = await window.mesoft.checkUpdates(); if (r && r.reason) $('updateStatusText').innerText = r.reason; else if (r && r.error) $('updateStatusText').innerText = `Hata: ${r.error}`; }
+
 function setupDesktop() {
   if (!isDesktop) return;
   window.mesoft.info().then(info => {
