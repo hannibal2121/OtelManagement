@@ -1,8 +1,9 @@
-Git-2.55.0.4-64-bit.exe
 node_modules/
 release/
-YEDEK/
+assets/tailwind.css
+assets/fontawesome/
 *.zip
 .DS_Store
 .vs/
 .vscode/
+*.log

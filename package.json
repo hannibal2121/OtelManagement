@@ -1,37 +1,55 @@
 {
   "name": "mesoft-otel",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Mesoft Bilisim Otel Yonetim Sistemi",
   "main": "main.js",
+  "author": "Mesoft Bilişim",
+  "license": "UNLICENSED",
+  "private": true,
   "scripts": {
+    "postinstall": "npm run build:assets",
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/tailwind.css --minify",
+    "build:assets": "node scripts/prepare-assets.js && npm run build:css",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./assets/tailwind.css --watch",
     "start": "electron .",
-    "dist": "electron-builder --win --x64",
-    "dist:portable": "electron-builder --win --x64 -p never"
+    "server": "node server-standalone.js",
+    "check": "node --check main.js && node --check server.js && node --check db.js && node --check preload.js && node --check app.js",
+    "dist": "npm run build:assets && electron-builder --win --x64",
+    "dist:portable": "npm run build:assets && electron-builder --win --x64 -p never"
   },
   "dependencies": {
-    "sqlite3": "^5.1.7",
-    "electron-updater": "^6.1.7"
+    "electron-updater": "^6.3.9",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "electron": "^34.5.8",
-    "electron-builder": "^24.13.3"
+    "electron-builder": "^24.13.3",
+    "tailwindcss": "^3.4.14"
   },
   "build": {
     "appId": "com.mesoft.otelyonetim",
     "productName": "Mesoft Bilisim Otel",
-    "directories": {
-      "output": "release"
-    },
+    "artifactName": "MesoftOtel-Setup-${version}.${ext}",
+    "directories": { "output": "release" },
+    "files": [
+      "main.js", "server.js", "db.js", "preload.js", "app.js",
+      "index.html", "assets/**/*", "build/icon.*", "package.json"
+    ],
+    "asarUnpack": ["node_modules/sqlite3/**"],
     "win": {
-      "target": [
-        "nsis",
-        "portable"
-      ]
+      "icon": "build/icon.ico",
+      "target": ["nsis", "portable"]
     },
     "nsis": {
-      "oneClick": true,
+      "oneClick": false,
       "perMachine": false,
-      "allowToChangeInstallationDirectory": false
-    }
+      "allowToChangeInstallationDirectory": true,
+      "installerLanguages": ["tr_TR"],
+      "shortcutName": "Mesoft Otel"
+    },
+    "publish": [
+      { "provider": "generic", "url": "https://UPDATE-SUNUCUNUZ.example.com/mesoft-otel/" }
+    ]
   }
 }

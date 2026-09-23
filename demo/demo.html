@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mesoft Bilişim - Otel Yönetim Sistemi</title>
+<style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Inter,Segoe UI,Roboto,Helvetica Neue,Arial,system-ui,sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.collapse{visibility:collapse}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0}.inset-y-0{top:0;bottom:0}.bottom-3{bottom:.75rem}.left-0{left:0}.left-1{left:.25rem}.left-1\/2{left:50%}.right-0{right:0}.right-5{right:1.25rem}.top-0{top:0}.top-5{top:1.25rem}.top-full{top:100%}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-40{z-index:40}.z-\[100\]{z-index:100}.z-\[60\]{z-index:60}.col-span-2{grid-column:span 2/span 2}.col-span-full{grid-column:1/-1}.mx-auto{margin-left:auto;margin-right:auto}.my-2{margin-top:.5rem;margin-bottom:.5rem}.\!mb-0{margin-bottom:0!important}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.me-1{margin-inline-end:.25rem}.me-1\.5{margin-inline-end:.375rem}.me-2{margin-inline-end:.5rem}.ml-auto{margin-left:auto}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-2{height:.5rem}.h-44{height:11rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-full{height:100%}.h-screen{height:100vh}.max-h-40{max-height:10rem}.max-h-60{max-height:15rem}.max-h-\[90vh\]{max-height:90vh}.max-h-\[92vh\]{max-height:92vh}.max-h-\[95vh\]{max-height:95vh}.w-0{width:0}.w-10{width:2.5rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-2{width:.5rem}.w-20{width:5rem}.w-24{width:6rem}.w-32{width:8rem}.w-5{width:1.25rem}.w-56{width:14rem}.w-64{width:16rem}.w-8{width:2rem}.w-auto{width:auto}.w-full{width:100%}.min-w-0{min-width:0}.min-w-\[110px\]{min-width:110px}.min-w-\[34px\]{min-width:34px}.min-w-\[600px\]{min-width:600px}.min-w-\[650px\]{min-width:650px}.min-w-\[700px\]{min-width:700px}.min-w-\[800px\]{min-width:800px}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-\[200px\]{max-width:200px}.max-w-\[95px\]{max-width:95px}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.border-collapse{border-collapse:collapse}.-translate-x-1\/2{--tw-translate-x:-50%}.-translate-x-1\/2,.-translate-x-full{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-x-full{--tw-translate-x:-100%}.translate-x-full{--tw-translate-x:100%}.translate-x-full,.translate-y-2{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-2{--tw-translate-y:0.5rem}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}.cursor-pointer{cursor:pointer}.select-all{-webkit-user-select:all;-moz-user-select:all;user-select:all}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.space-x-1>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.25rem*var(--tw-space-x-reverse));margin-left:calc(.25rem*(1 - var(--tw-space-x-reverse)))}.space-x-1\.5>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.375rem*var(--tw-space-x-reverse));margin-left:calc(.375rem*(1 - var(--tw-space-x-reverse)))}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.5rem*var(--tw-space-x-reverse));margin-left:calc(.5rem*(1 - var(--tw-space-x-reverse)))}.space-x-3>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.75rem*var(--tw-space-x-reverse));margin-left:calc(.75rem*(1 - var(--tw-space-x-reverse)))}.space-y-0\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.125rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.125rem*var(--tw-space-y-reverse))}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.25rem*var(--tw-space-y-reverse))}.space-y-1\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.375rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.375rem*var(--tw-space-y-reverse))}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.space-y-5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem*var(--tw-space-y-reverse))}.space-y-6>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem*var(--tw-space-y-reverse))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-slate-800\/50>:not([hidden])~:not([hidden]){border-color:rgba(30,41,59,.5)}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.whitespace-pre-line{white-space:pre-line}.break-all{word-break:break-all}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-r{border-right-width:1px}.border-t{border-top-width:1px}.border-amber-500\/20{border-color:rgba(245,158,11,.2)}.border-amber-500\/30{border-color:rgba(245,158,11,.3)}.border-amber-500\/40{border-color:rgba(245,158,11,.4)}.border-amber-500\/50{border-color:rgba(245,158,11,.5)}.border-amber-500\/60{border-color:rgba(245,158,11,.6)}.border-emerald-500\/20{border-color:rgba(16,185,129,.2)}.border-emerald-500\/40{border-color:rgba(16,185,129,.4)}.border-emerald-500\/70{border-color:rgba(16,185,129,.7)}.border-indigo-500\/30{border-color:rgba(99,102,241,.3)}.border-rose-500\/20{border-color:rgba(244,63,94,.2)}.border-rose-500\/40{border-color:rgba(244,63,94,.4)}.border-rose-500\/80{border-color:rgba(244,63,94,.8)}.border-sky-500\/20{border-color:rgba(14,165,233,.2)}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59/var(--tw-border-opacity,1))}.border-slate-800\/40{border-color:rgba(30,41,59,.4)}.border-slate-800\/60{border-color:rgba(30,41,59,.6)}.border-slate-800\/80{border-color:rgba(30,41,59,.8)}.border-stone-500\/70{border-color:hsla(25,5%,45%,.7)}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11/var(--tw-bg-opacity,1))}.bg-amber-500\/10{background-color:rgba(245,158,11,.1)}.bg-amber-500\/20{background-color:rgba(245,158,11,.2)}.bg-amber-500\/40{background-color:rgba(245,158,11,.4)}.bg-amber-950\/20{background-color:rgba(69,26,3,.2)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129/var(--tw-bg-opacity,1))}.bg-emerald-500\/10{background-color:rgba(16,185,129,.1)}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105/var(--tw-bg-opacity,1))}.bg-emerald-950\/20{background-color:rgba(2,44,34,.2)}.bg-fuchsia-500\/20{background-color:rgba(217,70,239,.2)}.bg-fuchsia-500\/25{background-color:rgba(217,70,239,.25)}.bg-indigo-500\/10{background-color:rgba(99,102,241,.1)}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229/var(--tw-bg-opacity,1))}.bg-rose-500{--tw-bg-opacity:1;background-color:rgb(244 63 94/var(--tw-bg-opacity,1))}.bg-rose-500\/10{background-color:rgba(244,63,94,.1)}.bg-rose-500\/20{background-color:rgba(244,63,94,.2)}.bg-rose-500\/40{background-color:rgba(244,63,94,.4)}.bg-rose-500\/5{background-color:rgba(244,63,94,.05)}.bg-rose-600{--tw-bg-opacity:1;background-color:rgb(225 29 72/var(--tw-bg-opacity,1))}.bg-rose-950\/30{background-color:rgba(76,5,25,.3)}.bg-sky-500\/10{background-color:rgba(14,165,233,.1)}.bg-sky-500\/5{background-color:rgba(14,165,233,.05)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.bg-slate-800\/30{background-color:rgba(30,41,59,.3)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-slate-900\/50{background-color:rgba(15,23,42,.5)}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23/var(--tw-bg-opacity,1))}.bg-slate-950\/60{background-color:rgba(2,6,23,.6)}.bg-slate-950\/70{background-color:rgba(2,6,23,.7)}.bg-stone-500{--tw-bg-opacity:1;background-color:rgb(120 113 108/var(--tw-bg-opacity,1))}.bg-stone-500\/20{background-color:hsla(25,5%,45%,.2)}.bg-stone-950\/40{background-color:rgba(12,10,9,.4)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.from-amber-500{--tw-gradient-from:#f59e0b var(--tw-gradient-from-position);--tw-gradient-to:rgba(245,158,11,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-amber-700{--tw-gradient-to:#b45309 var(--tw-gradient-to-position)}.to-emerald-500{--tw-gradient-to:#10b981 var(--tw-gradient-to-position)}.\!p-0{padding:0!important}.p-0{padding:0}.p-1{padding:.25rem}.p-1\.5{padding:.375rem}.p-2{padding:.5rem}.p-2\.5{padding:.625rem}.p-3{padding:.75rem}.p-3\.5{padding:.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.\!py-1{padding-top:.25rem!important;padding-bottom:.25rem!important}.\!py-1\.5{padding-top:.375rem!important;padding-bottom:.375rem!important}.px-1\.5{padding-left:.375rem;padding-right:.375rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-3\.5{padding-top:.875rem;padding-bottom:.875rem}.pb-2{padding-bottom:.5rem}.pt-1{padding-top:.25rem}.pt-2{padding-top:.5rem}.pt-3{padding-top:.75rem}.pt-4{padding-top:1rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.tracking-wide{letter-spacing:.025em}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.text-amber-400\/80{color:rgba(251,191,36,.8)}.text-amber-500{--tw-text-opacity:1;color:rgb(245 158 11/var(--tw-text-opacity,1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.text-emerald-500{--tw-text-opacity:1;color:rgb(16 185 129/var(--tw-text-opacity,1))}.text-fuchsia-300{--tw-text-opacity:1;color:rgb(240 171 252/var(--tw-text-opacity,1))}.text-fuchsia-400{--tw-text-opacity:1;color:rgb(232 121 249/var(--tw-text-opacity,1))}.text-indigo-400{--tw-text-opacity:1;color:rgb(129 140 248/var(--tw-text-opacity,1))}.text-rose-300{--tw-text-opacity:1;color:rgb(253 164 175/var(--tw-text-opacity,1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133/var(--tw-text-opacity,1))}.text-sky-400{--tw-text-opacity:1;color:rgb(56 189 248/var(--tw-text-opacity,1))}.text-slate-100{--tw-text-opacity:1;color:rgb(241 245 249/var(--tw-text-opacity,1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240/var(--tw-text-opacity,1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105/var(--tw-text-opacity,1))}.text-slate-950{--tw-text-opacity:1;color:rgb(2 6 23/var(--tw-text-opacity,1))}.text-stone-400{--tw-text-opacity:1;color:rgb(168 162 158/var(--tw-text-opacity,1))}.text-stone-500{--tw-text-opacity:1;color:rgb(120 113 108/var(--tw-text-opacity,1))}.text-violet-400{--tw-text-opacity:1;color:rgb(167 139 250/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-0{opacity:0}.opacity-40{opacity:.4}.opacity-70{opacity:.7}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-2xl,.shadow-lg{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.outline{outline-style:solid}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-inset{--tw-ring-inset:inset}.ring-fuchsia-400{--tw-ring-opacity:1;--tw-ring-color:rgb(232 121 249/var(--tw-ring-opacity,1))}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-300{transition-duration:.3s}.hover\:-translate-y-0\.5:hover{--tw-translate-y:-0.125rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-amber-400:hover{--tw-border-opacity:1;border-color:rgb(251 191 36/var(--tw-border-opacity,1))}.hover\:border-emerald-400:hover{--tw-border-opacity:1;border-color:rgb(52 211 153/var(--tw-border-opacity,1))}.hover\:border-rose-400:hover{--tw-border-opacity:1;border-color:rgb(251 113 133/var(--tw-border-opacity,1))}.hover\:bg-amber-500\/20:hover{background-color:rgba(245,158,11,.2)}.hover\:bg-amber-500\/60:hover{background-color:rgba(245,158,11,.6)}.hover\:bg-emerald-500\/20:hover{background-color:rgba(16,185,129,.2)}.hover\:bg-emerald-500\/25:hover{background-color:rgba(16,185,129,.25)}.hover\:bg-rose-500\/60:hover{background-color:rgba(244,63,94,.6)}.hover\:bg-slate-800:hover{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.hover\:bg-slate-800\/20:hover{background-color:rgba(30,41,59,.2)}.hover\:bg-slate-800\/30:hover{background-color:rgba(30,41,59,.3)}.hover\:text-amber-400:hover{--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.hover\:text-rose-400:hover{--tw-text-opacity:1;color:rgb(251 113 133/var(--tw-text-opacity,1))}@media (min-width:640px){.sm\:col-span-1{grid-column:span 1/span 1}.sm\:col-span-5{grid-column:span 5/span 5}.sm\:inline-block{display:inline-block}.sm\:w-56{width:14rem}.sm\:w-72{width:18rem}.sm\:w-auto{width:auto}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.sm\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.sm\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-start{align-items:flex-start}.sm\:items-center{align-items:center}.sm\:gap-4{gap:1rem}.sm\:p-6{padding:1.5rem}.sm\:p-8{padding:2rem}}@media (min-width:768px){.md\:inline-flex{display:inline-flex}.md\:p-4{padding:1rem}}@media (min-width:1024px){.lg\:relative{position:relative}.lg\:hidden{display:none}.lg\:translate-x-0{--tw-translate-x:0px;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.lg\:grid-cols-10{grid-template-columns:repeat(10,minmax(0,1fr))}.lg\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}@media (min-width:1280px){.xl\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}@media (min-width:1536px){.\32xl\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}}</style>
+<style>i.fa-solid{font-style:normal;display:inline-block;min-width:1em;text-align:center}.fa-address-book::before{content:"📒"}.fa-arrow-right-from-bracket::before{content:"⇥"}.fa-arrow-right-to-bracket::before{content:"⇤"}.fa-ban::before{content:"⛔"}.fa-bars::before{content:"☰"}.fa-bed::before{content:"🛏"}.fa-broom::before{content:"🧹"}.fa-building::before{content:"🏢"}.fa-calendar-check::before{content:"📅"}.fa-calendar-day::before{content:"📆"}.fa-calendar-days::before{content:"🗓"}.fa-calendar-plus::before{content:"➕"}.fa-cash-register::before{content:"🧾"}.fa-chart-line::before{content:"📈"}.fa-check::before{content:"✓"}.fa-chevron-left::before{content:"‹"}.fa-chevron-right::before{content:"›"}.fa-circle-check::before{content:"✔"}.fa-circle-exclamation::before{content:"⚠"}.fa-clock::before{content:"⏱"}.fa-copy::before{content:"⧉"}.fa-database::before{content:"🗄"}.fa-door-open::before{content:"🚪"}.fa-file-excel::before{content:"📊"}.fa-floppy-disk::before{content:"💾"}.fa-hard-drive::before{content:"💽"}.fa-hotel::before{content:"🏨"}.fa-id-card::before{content:"🪪"}.fa-key::before{content:"🔑"}.fa-list-check::before{content:"☑"}.fa-money-bill-wave::before{content:"💵"}.fa-moon::before{content:"🌙"}.fa-network-wired::before{content:"🔗"}.fa-pen::before{content:"✎"}.fa-plug-circle-xmark::before{content:"⚡"}.fa-plus::before{content:"+"}.fa-print::before{content:"🖨"}.fa-right-from-bracket::before{content:"⇥"}.fa-sliders::before{content:"⚙"}.fa-sun::before{content:"☀"}.fa-table-cells::before{content:"▦"}.fa-tags::before{content:"🏷"}.fa-trash::before{content:"🗑"}.fa-triangle-exclamation::before{content:"⚠"}.fa-turkish-lira-sign::before{content:"₺"}.fa-user-lock::before{content:"🔒"}.fa-user-pen::before{content:"✎"}.fa-user-shield::before{content:"🛡"}.fa-users::before{content:"👥"}.fa-users-gear::before{content:"👥"}.fa-wifi::before{content:"📶"}.fa-wine-bottle::before{content:"🍾"}.fa-wrench::before{content:"🔧"}.fa-xmark::before{content:"✕"}</style>
+<style>
+  body { font-family: 'Inter','Segoe UI',Roboto,'Helvetica Neue',Arial,system-ui,sans-serif; user-select: none; transition: background-color .3s; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; } ::-webkit-scrollbar-track { background: #0f172a; } ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+  body.light-theme { background-color: #f8fafc; color: #0f172a; }
+  .light-theme .bg-slate-950 { background-color: #f1f5f9 !important; } .light-theme .bg-slate-900 { background-color: #fff !important; box-shadow: 0 4px 6px -1px rgba(0,0,0,.05); }
+  .light-theme .border-slate-800 { border-color: #e2e8f0 !important; } .light-theme .text-slate-100, .light-theme .text-slate-200 { color: #0f172a !important; }
+  .light-theme .text-slate-300, .light-theme .text-slate-400 { color: #334155 !important; } .light-theme .text-slate-500 { color: #64748b !important; }
+  .light-theme input, .light-theme select, .light-theme textarea { background-color: #fff !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+  .light-theme .hover\:bg-slate-800:hover { background-color: #e2e8f0 !important; }
+  .drag-over { background-color: rgba(245,158,11,.3) !important; outline: 2px dashed #f59e0b; outline-offset: -2px; }
+  .rez-draggable { cursor: grab; } .rez-draggable:active { cursor: grabbing; opacity: .7; }
+  input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 1; } input, select, textarea { user-select: auto; }
+  .modal { position: fixed; inset: 0; background: rgba(2,6,23,.8); backdrop-filter: blur(4px); z-index: 50; display: flex; align-items: center; justify-content: center; padding: .75rem; }
+  .modal.hidden { display: none; }
+  .inp { width: 100%; background: #020617; border: 1px solid #1e293b; border-radius: .75rem; padding: .5rem .75rem; font-size: .75rem; color: #f1f5f9; }
+  .inp:focus { outline: none; border-color: #f59e0b; }
+  .lbl { display: block; font-size: 10px; color: #94a3b8; margin-bottom: .2rem; font-weight: 500; }
+  .btn { border-radius: .75rem; padding: .5rem .75rem; font-size: .75rem; font-weight: 700; transition: all .15s; }
+  .btn-amber { background: #f59e0b; color: #020617; } .btn-amber:hover { background: #d97706; }
+  .btn-ghost { background: #1e293b; color: #cbd5e1; } .btn-ghost:hover { background: #334155; }
+  .btn-emerald { background: #10b981; color: #020617; } .btn-emerald:hover { background: #059669; }
+  .btn-rose { background: rgba(244,63,94,.15); color: #fb7185; border: 1px solid rgba(244,63,94,.3); } .btn-rose:hover { background: #e11d48; color: #fff; }
+  .btn-sky { background: rgba(14,165,233,.1); color: #38bdf8; border: 1px solid rgba(14,165,233,.3); } .btn-sky:hover { background: #0ea5e9; color: #020617; }
+  .badge { padding: .15rem .5rem; border-radius: .375rem; font-size: 10px; font-weight: 700; border: 1px solid transparent; }
+  .badge-rose { background: rgba(244,63,94,.2); color: #fb7185; border-color: rgba(244,63,94,.3); } .badge-amber { background: rgba(245,158,11,.2); color: #fbbf24; border-color: rgba(245,158,11,.3); }
+  .badge-emerald { background: rgba(16,185,129,.2); color: #34d399; border-color: rgba(16,185,129,.3); } .badge-slate { background: rgba(100,116,139,.2); color: #94a3b8; } .badge-stone { background: rgba(120,113,108,.3); color: #a8a29e; }
+  .role-admin { display: none; } body.is-admin .role-admin { display: revert; } body.is-admin .role-admin.flex { display: flex; } body.is-admin .role-admin.inline-flex { display: inline-flex; }
+  #printArea { display: none; }
+  @media print { body > *:not(#printArea) { display: none !important; } #printArea { display: block !important; color: #000; background: #fff; font-family: 'Courier New', monospace; font-size: 12px; width: 72mm; padding: 4mm; } #printArea table { width: 100%; border-collapse: collapse; } #printArea td { padding: 1px 0; } #printArea .r { text-align: right; } #printArea hr { border: 0; border-top: 1px dashed #000; margin: 4px 0; } }
+</style>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen overflow-hidden flex flex-col">
+<div style="background:#4c1d95;color:#e9d5ff;font-size:11px;text-align:center;padding:4px 8px;font-weight:700">CANLI DEMO — veriler yalnızca bu sayfada, bellekte tutulur (sayfa yenilenince sıfırlanır). Giriş: <b>admin / 1234</b> (yönetici) veya <b>resep / 1234</b> (resepsiyonist)</div>
+
+<div id="toastContainer" class="fixed top-5 right-5 z-[100] flex flex-col space-y-2 pointer-events-none"></div>
+<div id="monthlyTooltip" class="fixed z-[100] hidden pointer-events-none bg-slate-950 border border-amber-500/40 rounded-xl shadow-2xl p-3 text-xs w-56"></div>
+<div id="offlineBanner" class="hidden fixed bottom-3 left-1/2 -translate-x-1/2 z-[100] bg-rose-600 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-2xl"><i class="fa-solid fa-plug-circle-xmark me-1"></i> Sunucuya ulaşılamıyor — bağlantı bekleniyor…</div>
+
+<!-- GİRİŞ -->
+<div id="loginOverlay" class="fixed inset-0 bg-slate-950 z-[60] flex items-center justify-center p-4">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-2xl shadow-2xl p-6 sm:p-8 space-y-6">
+    <div class="text-center space-y-2">
+      <div class="w-14 h-12 mx-auto rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-slate-950 text-2xl shadow-lg"><i class="fa-solid fa-hotel"></i></div>
+      <h1 id="loginHotelName" class="text-2xl font-black tracking-wide">MESOFT BİLİŞİM</h1>
+      <p class="text-xs text-amber-500 font-medium">Otel Yönetim Sistemine Giriş Yapın</p>
+    </div>
+    <form id="loginForm" class="space-y-4 text-xs" autocomplete="on">
+      <div><label class="lbl">Kullanıcı Adı</label><input type="text" id="loginUsername" required autocomplete="username" value="admin" class="inp py-2.5"></div>
+      <div><label class="lbl">Şifre</label><input type="password" id="loginPassword" required autocomplete="current-password" value="1234" class="inp py-2.5"></div>
+      <div id="loginError" class="text-rose-400 text-center font-medium hidden"></div>
+      <button type="submit" id="loginBtn" class="btn btn-amber w-full py-3 text-sm">Giriş Yap</button>
+    </form>
+    <p class="text-[10px] text-slate-500 text-center">İlk kurulum: <b>admin</b> / <b>1234</b> — girişten sonra şifre değiştirmeniz istenir.</p>
+  </div>
+</div>
+
+<!-- ÜST BAR -->
+<div class="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center justify-between text-xs shrink-0 z-30">
+  <div class="flex items-center space-x-3">
+    <span id="headerHotelTitle" class="text-slate-400 font-medium hidden sm:inline-block"><i class="fa-solid fa-building text-amber-500 me-1.5"></i>Resepsiyon</span>
+    <span id="syncDot" class="w-2 h-2 rounded-full bg-emerald-500 inline-block" title="Sunucu bağlantısı"></span>
+  </div>
+  <div class="flex items-center space-x-3 text-slate-400">
+    <span id="currentUserBadge" class="hidden md:inline-flex items-center space-x-1.5 bg-slate-950 px-2.5 py-1 rounded border border-slate-800 text-[10px]"><i class="fa-solid fa-user-shield text-amber-500"></i><span id="currentUserName">-</span></span>
+    <button onclick="toggleTheme()" class="hover:text-amber-400" title="Tema"><i id="themeIcon" class="fa-solid fa-sun text-base"></i></button>
+    <button onclick="openModal('networkGuideModal')" class="hidden md:inline-flex items-center space-x-1.5 bg-slate-950 hover:bg-slate-800 px-2.5 py-1 rounded border border-slate-800 text-[10px] text-sky-400"><i class="fa-solid fa-wifi"></i><span>Ağ</span></button>
+    <span id="liveClock" class="font-mono bg-slate-950 px-2.5 py-1 rounded border border-slate-800 text-amber-400 font-bold">00:00:00</span>
+    <button onclick="toggleMobileMenu()" class="lg:hidden p-1 text-slate-300"><i class="fa-solid fa-bars text-base"></i></button>
+  </div>
+</div>
+
+<div class="flex flex-1 overflow-hidden relative">
+  <aside id="sidebarNav" class="fixed lg:relative inset-y-0 left-0 w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between p-4 z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+    <div class="space-y-5 overflow-y-auto">
+      <div class="flex items-center justify-between px-2 py-1">
+        <div class="flex items-center space-x-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-slate-950 text-xl shrink-0"><i class="fa-solid fa-hotel"></i></div>
+          <div class="min-w-0"><h1 id="displayHotelName" class="font-bold text-base truncate">MESOFT BİLİŞİM</h1><p id="displayHotelSubtitle" class="text-xs text-amber-500 font-medium truncate">Otel Yönetim Paneli</p></div>
+        </div>
+        <button onclick="toggleMobileMenu()" class="lg:hidden text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <nav class="space-y-1 text-sm" id="mainNav">
+        <button onclick="switchTab('rooms')" data-tab="rooms" class="nav-btn"><i class="fa-solid fa-bed w-5"></i><span>Oda Durumları</span></button>
+        <button onclick="switchTab('today')" data-tab="today" class="nav-btn"><i class="fa-solid fa-calendar-day w-5 text-fuchsia-400"></i><span>Bugün</span><span id="todayBadge" class="ml-auto text-[10px] bg-fuchsia-500/20 text-fuchsia-300 px-1.5 rounded hidden">0</span></button>
+        <button onclick="switchTab('monthly')" data-tab="monthly" class="nav-btn"><i class="fa-solid fa-table-cells w-5 text-sky-400"></i><span>Aylık Görünüm</span></button>
+        <button onclick="switchTab('reservations')" data-tab="reservations" class="nav-btn"><i class="fa-solid fa-calendar-check w-5"></i><span>Rezervasyonlar</span></button>
+        <button onclick="switchTab('guests')" data-tab="guests" class="nav-btn"><i class="fa-solid fa-address-book w-5"></i><span>Müşteriler</span></button>
+        <button onclick="switchTab('reports')" data-tab="reports" class="nav-btn role-admin"><i class="fa-solid fa-chart-line w-5 text-emerald-400"></i><span>Ciro & Raporlar</span></button>
+        <button onclick="switchTab('cash')" data-tab="cash" class="nav-btn"><i class="fa-solid fa-cash-register w-5 text-amber-400"></i><span>Kasa (Vardiya)</span></button>
+        <div class="border-t border-slate-800 my-2"></div>
+        <button onclick="openRoomSettings()" class="nav-btn role-admin"><i class="fa-solid fa-sliders w-5 text-amber-500"></i><span>Odalar & Fiyatlar</span></button>
+        <button onclick="openSettings()" class="nav-btn role-admin"><i class="fa-solid fa-building w-5 text-amber-500"></i><span>Otel Ayarları</span></button>
+        <button onclick="openUsers()" class="nav-btn role-admin"><i class="fa-solid fa-users-gear w-5 text-violet-400"></i><span>Kullanıcılar</span></button>
+        <button onclick="openModal('dbModal'); toggleMobileMenu(false)" class="nav-btn role-admin"><i class="fa-solid fa-database w-5 text-amber-500"></i><span>Yedek & Veritabanı</span></button>
+        <button onclick="openModal('networkGuideModal'); toggleMobileMenu(false)" class="nav-btn"><i class="fa-solid fa-network-wired w-5 text-sky-400"></i><span>Ağ & Cihazlar</span></button>
+      </nav>
+    </div>
+    <div class="space-y-3 pt-4 border-t border-slate-800">
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+        <div class="flex justify-between text-xs text-slate-400 mb-1"><span>Doluluk</span><span id="occupancyRate" class="font-bold text-amber-400">0%</span></div>
+        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden"><div id="occupancyBar" class="bg-gradient-to-r from-amber-500 to-emerald-500 h-full w-0 transition-all"></div></div>
+        <div class="mt-2 text-[11px] text-slate-500 flex justify-between"><span>Dolu: <b id="statOccupied" class="text-slate-300">0</b></span><span>Boş: <b id="statVacant" class="text-slate-300">0</b></span><span>Kirli: <b id="statDirty" class="text-amber-400">0</b></span></div>
+      </div>
+      <div class="flex space-x-2">
+        <button onclick="openNewBookingModal(); toggleMobileMenu(false)" class="btn btn-amber flex-1 flex items-center justify-center space-x-2"><i class="fa-solid fa-plus"></i><span>Hızlı Rezervasyon</span></button>
+        <button onclick="openChangePassword()" title="Şifre Değiştir" class="btn btn-ghost"><i class="fa-solid fa-key"></i></button>
+        <button onclick="handleLogout()" title="Çıkış" class="btn btn-ghost hover:text-rose-400"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+    </div>
+  </aside>
+  <div id="mobileOverlay" onclick="toggleMobileMenu(false)" class="fixed inset-0 bg-slate-950/70 z-30 hidden lg:hidden"></div>
+
+  <main class="flex-1 bg-slate-950 flex flex-col overflow-hidden w-full">
+    <header class="bg-slate-900/50 border-b border-slate-800 p-3 md:p-4 grid grid-cols-2 lg:grid-cols-4 gap-3 shrink-0">
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center space-x-3"><div class="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-lg"><i class="fa-solid fa-door-open"></i></div><div class="min-w-0"><p class="text-[11px] text-slate-400 truncate">Boş Odalar</p><h3 id="dashVacant" class="text-lg font-bold truncate">0</h3></div></div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center space-x-3"><div class="p-2.5 bg-rose-500/10 text-rose-400 rounded-lg"><i class="fa-solid fa-user-lock"></i></div><div class="min-w-0"><p class="text-[11px] text-slate-400 truncate">Dolu Odalar</p><h3 id="dashOccupied" class="text-lg font-bold truncate">0</h3></div></div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center space-x-3"><div class="p-2.5 bg-amber-500/10 text-amber-400 rounded-lg"><i class="fa-solid fa-clock"></i></div><div class="min-w-0"><p class="text-[11px] text-slate-400 truncate">Bugün Giriş / Çıkış</p><h3 id="dashToday" class="text-lg font-bold truncate">0 / 0</h3></div></div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center space-x-3"><div class="p-2.5 bg-sky-500/10 text-sky-400 rounded-lg"><i class="fa-solid fa-turkish-lira-sign"></i></div><div class="min-w-0"><p class="text-[11px] text-slate-400 truncate">Bugünkü Tahsilat</p><h3 id="dashRevenue" class="text-lg font-bold truncate">₺0</h3></div></div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto p-3 sm:p-6 space-y-6">
+      <!-- ODALAR -->
+      <section id="tab-rooms" class="tab space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div><div class="flex items-center space-x-2"><h2 class="text-xl font-bold">Oda Durum Panosu</h2><span id="totalRoomsBadge" class="badge badge-amber">0 Oda</span></div><p class="text-xs text-slate-400">Odaya tıklayın: giriş/çıkış, minibar, tahsilat, temizlik</p></div>
+          <div class="flex items-center gap-2">
+            <select id="roomFilter" onchange="renderRoomsGrid()" class="inp w-auto py-1.5"><option value="">Tüm Odalar</option><option value="Boş">Boş</option><option value="Dolu">Dolu</option><option value="Kirli">Kirli</option><option value="Arızalı">Arızalı</option></select>
+          </div>
+        </div>
+        <div id="roomsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-3 sm:gap-4"></div>
+      </section>
+
+      <!-- BUGÜN -->
+      <section id="tab-today" class="tab hidden space-y-4">
+        <h2 class="text-xl font-bold">Bugünün Hareketleri</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2"><h3 class="font-bold text-emerald-400 text-sm"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Beklenen Girişler</h3><div id="todayArrivals" class="space-y-2 text-xs"></div></div>
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2"><h3 class="font-bold text-rose-400 text-sm"><i class="fa-solid fa-arrow-right-from-bracket me-1"></i>Beklenen Çıkışlar</h3><div id="todayDepartures" class="space-y-2 text-xs"></div></div>
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2"><h3 class="font-bold text-amber-400 text-sm"><i class="fa-solid fa-broom me-1"></i>Temizlik Bekleyen</h3><div id="todayDirty" class="space-y-2 text-xs"></div></div>
+        </div>
+      </section>
+
+      <!-- MÜŞTERİLER -->
+      <section id="tab-guests" class="tab hidden space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div><h2 class="text-xl font-bold">Müşteri Veritabanı</h2><p class="text-xs text-slate-400">Kayıtlı misafirler ve konaklama geçmişi</p></div>
+          <input type="text" id="guestSearchInput" oninput="renderGuestTable()" placeholder="Ad, T.C. veya telefon…" class="inp w-full sm:w-72">
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-x-auto"><table class="w-full text-left text-xs text-slate-300 min-w-[700px]"><thead class="bg-slate-950 text-slate-400 border-b border-slate-800"><tr><th class="p-3">Ad Soyad</th><th class="p-3">Kimlik No</th><th class="p-3">Telefon</th><th class="p-3">Uyruk / Doğum</th><th class="p-3">Konaklama</th><th class="p-3">Not</th><th class="p-3 text-right">İşlem</th></tr></thead><tbody id="guestTableBody" class="divide-y divide-slate-800/50"></tbody></table></div>
+      </section>
+
+      <!-- REZERVASYONLAR -->
+      <section id="tab-reservations" class="tab hidden space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div><h2 class="text-xl font-bold">Rezervasyon Kayıtları</h2><p class="text-xs text-slate-400">Tüm hareketler; filtreleyip düzenleyebilirsiniz</p></div>
+          <div class="flex gap-2 w-full sm:w-auto">
+            <input type="text" id="rezSearch" oninput="renderReservationTable()" placeholder="Ad, oda, telefon…" class="inp flex-1 sm:w-56">
+            <select id="rezStatusFilter" onchange="renderReservationTable()" class="inp w-auto"><option value="">Aktif (Rezerve+Dolu)</option><option value="Rezerve">Rezerve</option><option value="Dolu">Dolu</option><option value="Tamamlandı">Tamamlandı</option><option value="İptal">İptal</option><option value="No-Show">No-Show</option><option value="*">Hepsi</option></select>
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-x-auto"><table class="w-full text-left text-xs text-slate-300 min-w-[800px]"><thead class="bg-slate-950 text-slate-400 border-b border-slate-800"><tr><th class="p-3">Oda</th><th class="p-3">Konuklar</th><th class="p-3">Giriş / Çıkış</th><th class="p-3">Toplam</th><th class="p-3">Tahsil</th><th class="p-3">Kalan</th><th class="p-3">Kaynak</th><th class="p-3">Durum</th><th class="p-3 text-right">İşlem</th></tr></thead><tbody id="reservationTableBody" class="divide-y divide-slate-800/50"></tbody></table></div>
+      </section>
+
+      <!-- AYLIK -->
+      <section id="tab-monthly" class="tab hidden space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div><h2 class="text-xl font-bold">Aylık Görünüm (Gantt)</h2><p class="text-xs text-slate-400">Rezervasyonları sürükleyip başka oda/güne taşıyın</p></div>
+          <div class="flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-xl p-1.5">
+            <button onclick="changeMonth(-1)" class="btn btn-ghost w-8 h-8 !p-0"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+            <span id="monthlyOverviewLabel" class="text-sm font-bold text-amber-400 w-32 text-center">-</span>
+            <button onclick="changeMonth(1)" class="btn btn-ghost w-8 h-8 !p-0"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+            <button onclick="changeMonth(0)" class="btn btn-amber !py-1.5">Bugün</button>
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-auto" style="max-height:65vh"><table class="text-left text-[11px] text-slate-300 border-collapse w-full"><thead id="monthlyOverviewHead" class="bg-slate-950 text-slate-400 sticky top-0 z-10"></thead><tbody id="monthlyOverviewBody" class="divide-y divide-slate-800/50"></tbody></table></div>
+      </section>
+
+      <!-- RAPORLAR -->
+      <section id="tab-reports" class="tab hidden space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div><h2 class="text-xl font-bold">Dönemsel Gelir & Ciro</h2><p class="text-xs text-slate-400">Konaklama, minibar ve gerçek tahsilat</p></div>
+          <div class="flex gap-2 flex-wrap"><button onclick="exportReportsCSV()" class="btn btn-emerald"><i class="fa-solid fa-file-excel me-1"></i>Excel (CSV)</button><button onclick="exportKbs()" class="btn btn-sky"><i class="fa-solid fa-id-card me-1"></i>KBS Bildirim (CSV)</button></div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs items-end">
+          <div class="col-span-2 sm:col-span-5 flex flex-wrap gap-1.5"><button onclick="setReportQuickDate('today')" class="btn btn-ghost !py-1">Bugün</button><button onclick="setReportQuickDate('this_month')" class="btn btn-ghost !py-1">Bu Ay</button><button onclick="setReportQuickDate('last_month')" class="btn btn-ghost !py-1">Geçen Ay</button><button onclick="setReportQuickDate('last_3_months')" class="btn btn-ghost !py-1">Son 3 Ay</button><button onclick="setReportQuickDate('this_year')" class="btn btn-ghost !py-1">Bu Yıl</button></div>
+          <div><label class="lbl">Başlangıç</label><input type="date" id="reportStartDate" onchange="renderReports()" class="inp"></div>
+          <div><label class="lbl">Bitiş</label><input type="date" id="reportEndDate" onchange="renderReports()" class="inp"></div>
+          <div><label class="lbl">Kaynak</label><select id="reportSource" onchange="renderReports()" class="inp"><option value="">Hepsi</option></select></div>
+          <div><label class="lbl">Ölçüt</label><select id="reportBasis" onchange="renderReports()" class="inp"><option value="stay">Konaklama tarihine göre</option><option value="payment">Tahsilat tarihine göre</option></select></div>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4"><span class="text-xs text-slate-400 block">Toplam Ciro</span><h3 id="reportTotalRevenue" class="text-2xl font-black text-emerald-400">₺0</h3><p id="reportPeriodText" class="text-[11px] text-slate-500 mt-1"></p></div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4"><span class="text-xs text-slate-400 block">Konaklama</span><h3 id="reportRoomRevenue" class="text-2xl font-black text-amber-400">₺0</h3></div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4"><span class="text-xs text-slate-400 block">Minibar & Ekstra</span><h3 id="reportMinibarRevenue" class="text-2xl font-black text-sky-400">₺0</h3></div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4"><span class="text-xs text-slate-400 block">Tahsil Edilen / Kalan</span><h3 id="reportCollected" class="text-2xl font-black text-fuchsia-400">₺0</h3><p id="reportOutstanding" class="text-[11px] text-rose-400 mt-1"></p></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4"><h4 class="text-xs font-bold text-slate-300 mb-2">Doluluk Oranı (dönem)</h4><h3 id="reportOccupancy" class="text-2xl font-black">0%</h3><p id="reportNights" class="text-[11px] text-slate-500"></p></div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4"><h4 class="text-xs font-bold text-slate-300 mb-2">Ödeme Yöntemleri</h4><div id="reportByMethod" class="text-xs space-y-1"></div></div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4"><h4 class="text-xs font-bold text-slate-300 mb-2">Kaynağa Göre</h4><div id="reportBySource" class="text-xs space-y-1"></div></div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-x-auto"><table class="w-full text-left text-xs text-slate-300 min-w-[800px]"><thead class="bg-slate-950 text-slate-400 border-b border-slate-800"><tr><th class="p-3">Oda</th><th class="p-3">Misafir</th><th class="p-3">Giriş / Çıkış</th><th class="p-3">Gece</th><th class="p-3">Oda</th><th class="p-3">Minibar</th><th class="p-3">Toplam</th><th class="p-3">Tahsil</th><th class="p-3">Kalan</th><th class="p-3">Durum</th></tr></thead><tbody id="reportTableBody" class="divide-y divide-slate-800/50"></tbody></table></div>
+      </section>
+
+      <!-- KASA -->
+      <section id="tab-cash" class="tab hidden space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div><h2 class="text-xl font-bold">Kasa / Vardiya Raporu</h2><p class="text-xs text-slate-400">Seçili günde alınan tüm ödemeler (kapora, tahsilat, iade)</p></div>
+          <div class="flex gap-2"><input type="date" id="cashDate" onchange="renderCash()" class="inp w-auto"><button onclick="printCash()" class="btn btn-ghost"><i class="fa-solid fa-print me-1"></i>Yazdır</button></div>
+        </div>
+        <div id="cashSummary" class="grid grid-cols-2 lg:grid-cols-4 gap-3"></div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-x-auto"><table class="w-full text-left text-xs text-slate-300 min-w-[600px]"><thead class="bg-slate-950 text-slate-400 border-b border-slate-800"><tr><th class="p-3">Saat</th><th class="p-3">Oda</th><th class="p-3">Misafir</th><th class="p-3">Tür</th><th class="p-3">Yöntem</th><th class="p-3">Tutar</th><th class="p-3">Alan</th><th class="p-3">Not</th><th class="p-3 text-right role-admin">Sil</th></tr></thead><tbody id="cashTableBody" class="divide-y divide-slate-800/50"></tbody></table></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- MODAL: REZERVASYON -->
+<div id="bookingModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
+    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center"><div><h3 class="font-bold">Konuk Kaydı & Rezervasyon</h3><p class="text-[11px] text-amber-500">Giriş bugün ise doğrudan <b>Check-in</b>, ileri tarih ise <b>Rezerve</b></p></div><button onclick="closeModal('bookingModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <form id="bookingForm" onsubmit="handleSaveBooking(event)" class="p-4 sm:p-6 space-y-4 overflow-y-auto text-xs">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="col-span-2"><label class="lbl">Oda *</label><select id="modalRoomSelect" onchange="handleModalRoomChange()" required class="inp"></select></div>
+        <div><label class="lbl">Yetişkin</label><select id="modalAdultCount" onchange="updateGuestInputFields(); requestQuote()" class="inp"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+        <div><label class="lbl">Çocuk</label><select id="modalChildCount" onchange="requestQuote()" class="inp"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 border-t border-slate-800 pt-3">
+        <div><label class="lbl">Giriş *</label><input type="date" id="modalCheckIn" required onchange="requestQuote()" class="inp"></div>
+        <div><label class="lbl">Çıkış *</label><input type="date" id="modalCheckOut" required onchange="requestQuote()" class="inp"></div>
+        <div class="col-span-2 sm:col-span-1"><label class="lbl">Kaynak</label><select id="modalSource" class="inp"><option>Resepsiyon</option><option>Telefon</option><option>Booking.com</option><option>Airbnb</option><option>Etstur</option><option>Acente</option><option>Web Sitesi</option><option>Diğer</option></select></div>
+      </div>
+      <div class="border-t border-slate-800 pt-3 space-y-2">
+        <div class="flex justify-between"><span class="font-bold text-amber-500">MİSAFİR BİLGİLERİ</span><span class="text-[10px] text-slate-500">Ad, T.C. veya telefon yazarak kayıtlı misafir arayın</span></div>
+        <div class="bg-slate-950 p-3.5 rounded-xl border border-amber-500/30 space-y-2">
+          <span class="text-[11px] font-bold text-amber-400">1. Misafir (Rezervasyon Sahibi)</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div class="relative"><label class="lbl">T.C. / Pasaport No</label><input type="text" id="g1_tc" oninput="suggestGuest(this.value,1)" class="inp"><div id="suggest1" class="absolute left-0 right-0 top-full mt-1 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-20 max-h-40 overflow-y-auto hidden"></div></div>
+            <div><label class="lbl">Ad Soyad *</label><input type="text" id="g1_name" required oninput="suggestGuest(this.value,1)" class="inp"></div>
+            <div><label class="lbl">Telefon *</label><input type="tel" id="g1_phone" required oninput="suggestGuest(this.value,1)" placeholder="05XX XXX XX XX" class="inp"></div>
+            <div><label class="lbl">E-Posta</label><input type="email" id="g1_email" class="inp"></div>
+            <div><label class="lbl">Doğum Tarihi (KBS)</label><input type="date" id="g1_birth" class="inp"></div>
+            <div><label class="lbl">Uyruk (KBS)</label><input type="text" id="g1_nat" value="TC" maxlength="3" class="inp uppercase"></div>
+          </div>
+        </div>
+        <div id="additionalGuestsContainer" class="space-y-2"></div>
+      </div>
+      <div><label class="lbl">Notlar / İstekler</label><textarea id="modalNotes" rows="2" class="inp"></textarea></div>
+      <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-3">
+        <div class="flex justify-between items-center"><span class="text-slate-400">Hesaplama:</span><span id="calculatedNights" class="text-amber-400 font-bold">-</span></div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-slate-800">
+          <div><label class="lbl">Toplam Oda Tutarı (₺)</label><input type="number" id="modalTotalPriceInput" required oninput="updateBalance()" min="0" step="1" class="inp border-amber-500/50 font-bold"></div>
+          <div><label class="lbl text-amber-400">Kapora (₺)</label><input type="number" id="modalAdvancePaymentInput" value="0" oninput="updateBalance()" min="0" class="inp"></div>
+          <div><label class="lbl">Kapora Yöntemi</label><select id="modalAdvanceMethod" class="inp"><option>Nakit</option><option>Kart</option><option>Havale</option></select></div>
+          <div><label class="lbl">Kalan (₺)</label><input type="number" id="modalRemainingBalanceInput" readonly class="inp text-rose-400 font-black"></div>
+        </div>
+      </div>
+      <div class="flex space-x-3 pt-2"><button type="button" onclick="closeModal('bookingModal')" class="btn btn-ghost flex-1">İptal</button><button type="submit" id="bookingSubmitBtn" class="btn btn-amber flex-1">Kaydet</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL: ODA DETAYI -->
+<div id="roomDetailModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center"><div><h3 id="detailRoomTitle" class="font-bold">Oda</h3><p id="detailRoomSub" class="text-xs text-slate-400"></p></div><button onclick="closeModal('roomDetailModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <div class="p-5 space-y-5 overflow-y-auto flex-1 text-xs">
+      <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 bg-slate-950 p-4 rounded-2xl border border-slate-800">
+        <div class="space-y-2"><div class="flex gap-2 flex-wrap"><span id="detailRoomStatusBadge" class="badge">Durum</span><span id="detailCleanBadge" class="badge">Temizlik</span></div><p id="detailRoomPriceText" class="text-sm font-bold text-amber-500"></p><div id="detailGuestInfo" class="text-slate-300 space-y-0.5"></div></div>
+        <div id="detailRoomActions" class="flex flex-wrap gap-2"></div>
+      </div>
+      <div id="folioSection" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
+          <div class="flex justify-between border-b border-slate-800 pb-2"><h4 class="font-bold text-sm"><i class="fa-solid fa-wine-bottle text-amber-500 me-1"></i>Minibar & Ekstra</h4><span id="detailMinibarTotalText" class="font-bold text-amber-400 font-mono"></span></div>
+          <div class="grid grid-cols-5 gap-2"><input type="text" id="minibarItemName" placeholder="Ürün / hizmet" class="inp col-span-2"><input type="number" id="minibarItemPrice" placeholder="₺" min="0" class="inp"><input type="number" id="minibarItemQty" value="1" min="1" class="inp"><button onclick="addMinibar()" class="btn btn-amber">Ekle</button></div>
+          <div id="minibarItemsList" class="space-y-1.5"></div>
+        </div>
+        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
+          <div class="flex justify-between border-b border-slate-800 pb-2"><h4 class="font-bold text-sm"><i class="fa-solid fa-money-bill-wave text-emerald-500 me-1"></i>Folyo & Ödemeler</h4><span id="detailBalanceText" class="font-bold font-mono"></span></div>
+          <div id="folioSummary" class="grid grid-cols-3 gap-2 text-center"></div>
+          <div class="grid grid-cols-4 gap-2"><input type="number" id="payAmount" placeholder="Tutar ₺" min="0" class="inp"><select id="payMethod" class="inp"><option>Nakit</option><option>Kart</option><option>Havale</option></select><select id="payType" class="inp"><option>Tahsilat</option><option>Kapora</option><option>İade</option></select><button onclick="addPayment()" class="btn btn-emerald">Ödeme Al</button></div>
+          <div id="paymentsList" class="space-y-1.5"></div>
+        </div>
+      </div>
+      <div class="space-y-2"><h4 class="font-bold text-sm"><i class="fa-solid fa-calendar-days text-amber-500 me-1"></i>Önümüzdeki 30 Gün</h4><div id="roomCalendarGrid" class="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-10 gap-2"></div></div>
+      <div class="space-y-2"><h4 class="font-bold text-sm"><i class="fa-solid fa-list-check text-sky-400 me-1"></i>Odanın Rezervasyonları</h4><div class="bg-slate-950 border border-slate-800 rounded-xl overflow-x-auto"><table class="w-full text-left min-w-[650px]"><thead class="bg-slate-900 text-slate-400 border-b border-slate-800"><tr><th class="p-3">Konuk</th><th class="p-3">Giriş / Çıkış</th><th class="p-3">Toplam</th><th class="p-3">Tahsil</th><th class="p-3">Kalan</th><th class="p-3">Durum</th><th class="p-3 text-right">İşlem</th></tr></thead><tbody id="detailRoomReservationTable" class="divide-y divide-slate-800/50"></tbody></table></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: CHECKOUT -->
+<div id="checkoutModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-2xl shadow-2xl p-5 space-y-4 text-xs">
+    <div class="flex justify-between items-center"><h3 class="font-bold text-base">Çıkış & Tahsilat</h3><button onclick="closeModal('checkoutModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <div id="checkoutSummary" class="bg-slate-950 border border-slate-800 rounded-xl p-3 space-y-1"></div>
+    <div id="checkoutPayments" class="space-y-2"></div>
+    <button onclick="addCheckoutPayRow()" class="btn btn-ghost w-full">+ Ödeme Satırı Ekle (bölünmüş ödeme)</button>
+    <div id="checkoutWarning" class="text-rose-400 font-bold hidden"></div>
+    <div class="flex gap-2"><button onclick="closeModal('checkoutModal')" class="btn btn-ghost flex-1">İptal</button><button onclick="confirmCheckout()" class="btn btn-emerald flex-1"><i class="fa-solid fa-cash-register me-1"></i>Çıkışı Tamamla</button></div>
+  </div>
+</div>
+
+<!-- MODAL: REZERVASYON DÜZENLE -->
+<div id="editRezModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden">
+    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center"><h3 class="font-bold">Rezervasyonu Düzenle</h3><button onclick="closeModal('editRezModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <form onsubmit="handleSaveEditedRez(event)" class="p-5 grid grid-cols-2 gap-3 text-xs">
+      <input type="hidden" id="er_id">
+      <div class="col-span-2"><label class="lbl">Oda</label><select id="er_room" class="inp"></select></div>
+      <div><label class="lbl">Giriş</label><input type="date" id="er_in" class="inp" required></div>
+      <div><label class="lbl">Çıkış</label><input type="date" id="er_out" class="inp" required></div>
+      <div class="col-span-2"><label class="lbl">Ad Soyad</label><input type="text" id="er_name" class="inp" required></div>
+      <div><label class="lbl">Kimlik No</label><input type="text" id="er_tc" class="inp"></div>
+      <div><label class="lbl">Telefon</label><input type="tel" id="er_phone" class="inp"></div>
+      <div><label class="lbl">Yetişkin</label><input type="number" id="er_adult" min="1" class="inp"></div>
+      <div><label class="lbl">Çocuk</label><input type="number" id="er_child" min="0" class="inp"></div>
+      <div class="col-span-2"><label class="lbl">Toplam Oda Tutarı (₺)</label><input type="number" id="er_total" min="0" class="inp"></div>
+      <div class="col-span-2"><label class="lbl">Not</label><textarea id="er_notes" rows="2" class="inp"></textarea></div>
+      <div class="col-span-2 flex gap-2 pt-1"><button type="button" onclick="closeModal('editRezModal')" class="btn btn-ghost flex-1">İptal</button><button type="submit" class="btn btn-amber flex-1">Kaydet</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL: MİSAFİR DÜZENLE -->
+<div id="editGuestModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-2xl shadow-2xl overflow-hidden">
+    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center"><h3 class="font-bold">Müşteri Bilgileri</h3><button onclick="closeModal('editGuestModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <form onsubmit="handleSaveEditedGuest(event)" class="p-5 grid grid-cols-2 gap-3 text-xs">
+      <input type="hidden" id="eg_key">
+      <div class="col-span-2"><label class="lbl">Ad Soyad *</label><input type="text" id="eg_name" required class="inp"></div>
+      <div><label class="lbl">Kimlik No</label><input type="text" id="eg_tc" class="inp"></div>
+      <div><label class="lbl">Telefon *</label><input type="tel" id="eg_phone" required class="inp"></div>
+      <div class="col-span-2"><label class="lbl">E-Posta</label><input type="email" id="eg_email" class="inp"></div>
+      <div><label class="lbl">Doğum Tarihi</label><input type="date" id="eg_birth" class="inp"></div>
+      <div><label class="lbl">Uyruk</label><input type="text" id="eg_nat" maxlength="3" class="inp uppercase"></div>
+      <div><label class="lbl">Cinsiyet</label><select id="eg_gender" class="inp"><option value="">-</option><option value="E">Erkek</option><option value="K">Kadın</option></select></div>
+      <div class="col-span-2"><label class="lbl">Not</label><textarea id="eg_notes" rows="2" class="inp"></textarea></div>
+      <div class="col-span-2 flex gap-2 pt-1"><button type="button" onclick="closeModal('editGuestModal')" class="btn btn-ghost flex-1">İptal</button><button type="submit" class="btn btn-amber flex-1">Kaydet</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL: ODALAR & FİYAT -->
+<div id="roomSettingsModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center"><div><h3 class="font-bold">Odalar & Fiyatlandırma</h3><p id="pricingModeHint" class="text-[11px] text-amber-500"></p></div><button onclick="closeModal('roomSettingsModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <div class="p-5 overflow-y-auto flex-1 space-y-4 text-xs">
+      <form onsubmit="handleAddNewRoom(event)" class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl grid grid-cols-2 sm:grid-cols-6 gap-2 items-end">
+        <div><label class="lbl">Oda No *</label><input type="text" id="newRoomId" required class="inp"></div>
+        <div><label class="lbl">Tip *</label><input type="text" id="newRoomType" required placeholder="Standart" class="inp"></div>
+        <div><label class="lbl">Baz Fiyat ₺ *</label><input type="number" id="newRoomPrice" required min="0" class="inp"></div>
+        <div><label class="lbl">Ek Kişi ₺</label><input type="number" id="newRoomExtra" min="0" value="0" class="inp"></div>
+        <div><label class="lbl">Kapasite</label><input type="number" id="newRoomCap" min="1" value="2" class="inp"></div>
+        <button type="submit" class="btn btn-amber">Ekle</button>
+      </form>
+      <div class="bg-slate-950 border border-slate-800 rounded-xl overflow-x-auto"><table class="w-full text-left min-w-[600px]"><thead class="bg-slate-900 text-slate-400 border-b border-slate-800"><tr><th class="p-2.5">Oda</th><th class="p-2.5">Tip</th><th class="p-2.5">Baz ₺</th><th class="p-2.5">Ek Kişi ₺</th><th class="p-2.5">Kap.</th><th class="p-2.5 text-right">İşlem</th></tr></thead><tbody id="roomSettingsTableBody" class="divide-y divide-slate-800/50"></tbody></table></div>
+      <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl space-y-2">
+        <h4 class="font-bold text-sky-400"><i class="fa-solid fa-calendar-plus me-1"></i>iCal Senkron (Booking / Airbnb)</h4>
+        <p class="text-[11px] text-slate-400">Platformdan aldığınız .ics dosyasını odaya yükleyin; dolu günler "Rezerve" olarak eklenir. Kendi takviminizi platforma vermek için dışa aktarın.</p>
+        <div class="flex flex-wrap gap-2 items-center"><select id="icalRoom" class="inp w-auto"></select><label class="btn btn-sky cursor-pointer">.ics Yükle<input type="file" accept=".ics" onchange="importIcal(event)" class="hidden"></label><button onclick="exportIcal()" class="btn btn-ghost">Odanın .ics Dosyasını İndir</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: OTEL AYARLARI -->
+<div id="settingsModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center"><h3 class="font-bold">Otel Ayarları</h3><button onclick="closeModal('settingsModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <form onsubmit="handleSaveSettings(event)" class="p-5 space-y-4 text-xs overflow-y-auto">
+      <div class="grid grid-cols-2 gap-3">
+        <div><label class="lbl">Otel Adı *</label><input type="text" id="s_hotel_name" required class="inp"></div>
+        <div><label class="lbl">Alt Başlık</label><input type="text" id="s_hotel_subtitle" class="inp"></div>
+        <div class="col-span-2"><label class="lbl">Adres (fişte görünür)</label><input type="text" id="s_hotel_address" class="inp"></div>
+        <div><label class="lbl">Telefon</label><input type="text" id="s_hotel_phone" class="inp"></div>
+        <div><label class="lbl">Vergi No</label><input type="text" id="s_hotel_tax_no" class="inp"></div>
+      </div>
+      <div class="border-t border-slate-800 pt-3 space-y-3">
+        <p class="font-bold text-amber-500"><i class="fa-solid fa-tags me-1"></i>Fiyatlandırma</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="col-span-2"><label class="lbl">Mod</label><select id="s_pricing_mode" class="inp"><option value="per_room">Oda bazlı (baz + kapasite üstü ek kişi)</option><option value="per_person">Kişi başı (baz × kişi)</option></select></div>
+          <div><label class="lbl">Çocuk Katsayısı</label><input type="number" id="s_child_factor" step="0.1" min="0" max="1" class="inp"></div>
+          <div><label class="lbl">Hafta Sonu Çarpanı</label><input type="number" id="s_weekend_multiplier" step="0.05" min="0.5" class="inp"></div>
+          <div class="col-span-2"><label class="lbl">Hafta sonu günleri (0=Paz…6=Cmt)</label><input type="text" id="s_weekend_days" placeholder="5,6" class="inp"></div>
+          <div class="col-span-2"><label class="lbl">Çıkış Saati</label><input type="time" id="s_checkout_hour" class="inp"></div>
+        </div>
+        <div><div class="flex justify-between items-center mb-1"><label class="lbl !mb-0">Sezonlar (MM-GG aralığı × çarpan)</label><button type="button" onclick="addSeasonRow()" class="text-amber-400 text-[11px] font-bold">+ Sezon Ekle</button></div><div id="seasonRows" class="space-y-1.5"></div></div>
+        <label class="flex items-center gap-2"><input type="checkbox" id="s_allow_overbooking"><span>Çakışan rezervasyona izin ver (overbooking) — <span class="text-rose-400">önerilmez</span></span></label>
+      </div>
+      <div class="border-t border-slate-800 pt-3 space-y-3">
+        <p class="font-bold text-emerald-500"><i class="fa-solid fa-hard-drive me-1"></i>Yedekleme</p>
+        <div class="grid grid-cols-3 gap-3"><div><label class="lbl">Yedek saklama (gün)</label><input type="number" id="s_backup_keep_days" min="1" class="inp"></div><div class="col-span-2"><label class="lbl">Ek yedek klasörü (USB/Ağ) — isteğe bağlı</label><div class="flex gap-2"><input type="text" id="s_backup_extra_dir" placeholder="D:\OtelYedek" class="inp"><button type="button" id="pickFolderBtn" onclick="pickBackupFolder()" class="btn btn-ghost hidden">Seç</button></div></div></div>
+      </div>
+      <div class="flex gap-2 pt-2"><button type="button" onclick="closeModal('settingsModal')" class="btn btn-ghost flex-1">İptal</button><button type="submit" class="btn btn-amber flex-1">Kaydet</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL: KULLANICILAR -->
+<div id="usersModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center"><div><h3 class="font-bold">Kullanıcılar & Roller</h3><p class="text-[11px] text-slate-400">Resepsiyonist: rezervasyon, giriş/çıkış, tahsilat. Yönetici: her şey + raporlar, fiyatlar, silme.</p></div><button onclick="closeModal('usersModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <div class="p-5 space-y-4 text-xs overflow-y-auto">
+      <form onsubmit="handleAddUser(event)" class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl grid grid-cols-2 sm:grid-cols-5 gap-2 items-end">
+        <div><label class="lbl">Kullanıcı Adı *</label><input type="text" id="nu_username" required class="inp" autocomplete="off"></div>
+        <div><label class="lbl">Ad Soyad</label><input type="text" id="nu_name" class="inp"></div>
+        <div><label class="lbl">Şifre *</label><input type="password" id="nu_password" required minlength="4" class="inp" autocomplete="new-password"></div>
+        <div><label class="lbl">Rol</label><select id="nu_role" class="inp"><option value="receptionist">Resepsiyonist</option><option value="admin">Yönetici</option></select></div>
+        <button type="submit" class="btn btn-amber">Ekle</button>
+      </form>
+      <div class="bg-slate-950 border border-slate-800 rounded-xl overflow-x-auto"><table class="w-full text-left"><thead class="bg-slate-900 text-slate-400 border-b border-slate-800"><tr><th class="p-2.5">Kullanıcı</th><th class="p-2.5">Ad</th><th class="p-2.5">Rol</th><th class="p-2.5">Durum</th><th class="p-2.5 text-right">İşlem</th></tr></thead><tbody id="usersTableBody" class="divide-y divide-slate-800/50"></tbody></table></div>
+      <details class="bg-slate-950 border border-slate-800 rounded-xl p-3"><summary class="cursor-pointer font-bold text-slate-300">İşlem Günlüğü (son 500)</summary><div id="auditList" class="mt-2 max-h-60 overflow-y-auto font-mono text-[10px] text-slate-400 space-y-0.5"></div></details>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: ŞİFRE -->
+<div id="passwordModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-2xl shadow-2xl p-5 space-y-3 text-xs">
+    <h3 class="font-bold text-base">Şifre Değiştir</h3>
+    <p id="passwordForceNote" class="text-amber-400 hidden">Güvenliğiniz için varsayılan şifreyi değiştirmeniz gerekiyor.</p>
+    <form onsubmit="handleChangePassword(event)" class="space-y-3">
+      <div><label class="lbl">Mevcut Şifre</label><input type="password" id="pw_current" required class="inp" autocomplete="current-password"></div>
+      <div><label class="lbl">Yeni Şifre (en az 4)</label><input type="password" id="pw_next" required minlength="4" class="inp" autocomplete="new-password"></div>
+      <div><label class="lbl">Yeni Şifre (tekrar)</label><input type="password" id="pw_next2" required class="inp" autocomplete="new-password"></div>
+      <div class="flex gap-2"><button type="button" id="pwCancelBtn" onclick="closeModal('passwordModal')" class="btn btn-ghost flex-1">Vazgeç</button><button type="submit" class="btn btn-amber flex-1">Değiştir</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL: AĞ -->
+<div id="networkGuideModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden">
+    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center"><h3 class="font-bold"><i class="fa-solid fa-network-wired text-sky-400 me-2"></i>Ağ & Çoklu Cihaz</h3><button onclick="closeModal('networkGuideModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <div class="p-5 space-y-3 text-xs">
+      <p class="text-slate-300">Aynı Wi-Fi ağındaki telefon, tablet veya bilgisayarların tarayıcısına aşağıdaki adresi yazın. Her cihaz kendi kullanıcı adıyla giriş yapar.</p>
+      <div id="networkUrlList" class="space-y-2"></div>
+      <div class="bg-slate-950 border border-slate-800 p-3 rounded-xl text-[11px] text-slate-400 space-y-1"><p>• Ana bilgisayarda uygulama açık (veya tepside) olmalıdır.</p><p>• Windows Güvenlik Duvarı sorarsa <b>"Özel ağlarda izin ver"</b> seçin.</p><p>• Ana bilgisayara sabit IP vermeniz adresin değişmemesini sağlar.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: VERİTABANI -->
+<div id="dbModal" class="modal hidden">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-2xl shadow-2xl overflow-hidden">
+    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex justify-between items-center"><h3 class="font-bold">Yedek & Veritabanı</h3><button onclick="closeModal('dbModal')" class="text-slate-400"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+    <div class="p-5 space-y-3 text-xs">
+      <div id="updateRow" class="bg-indigo-500/10 border border-indigo-500/30 rounded-xl p-3 flex items-center justify-between hidden"><div><h4 class="font-bold text-indigo-400">Yazılım Güncellemesi</h4><p id="updateStatusText" class="text-[11px] text-slate-400">Sürüm kontrolü</p></div><button onclick="checkUpdates()" class="btn bg-indigo-600 text-white">Kontrol Et</button></div>
+      <div id="dbStorageInfoBox" class="bg-sky-500/5 border border-sky-500/20 rounded-xl p-3 hidden"><h4 class="font-bold text-sky-400">Veri Konumu</h4><p id="dbStoragePathText" class="text-[10px] text-slate-400 font-mono break-all mt-1"></p></div>
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex items-center justify-between"><div><h4 class="font-bold">Şimdi Yedekle</h4><p class="text-[11px] text-slate-500">Tutarlı .db yedeği (WAL-güvenli)</p></div><button onclick="backupNow()" class="btn btn-emerald">Yedekle</button></div>
+      <div id="autoBackupsRow" class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex items-center justify-between hidden"><div><h4 class="font-bold">Otomatik Yedekler</h4><p class="text-[11px] text-slate-500">Her gece 03:00</p></div><button onclick="openBackupsFolder()" class="btn btn-ghost">Klasörü Aç</button></div>
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex items-center justify-between"><div><h4 class="font-bold">JSON Dışa Aktar</h4><p class="text-[11px] text-slate-500">Taşınabilir tam yedek</p></div><button onclick="exportJson()" class="btn btn-ghost">İndir</button></div>
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex items-center justify-between"><div><h4 class="font-bold">JSON İçe Aktar</h4><p class="text-[11px] text-slate-500">v6 ve v7 yedekleri desteklenir</p></div><label class="btn btn-sky cursor-pointer">Dosya Seç<input type="file" accept=".json" onchange="importJson(event)" class="hidden"></label></div>
+      <div class="bg-rose-500/5 border border-rose-500/20 rounded-xl p-3 flex items-center justify-between"><div><h4 class="font-bold text-rose-400">Fabrika Ayarları</h4><p class="text-[11px] text-slate-500">Önce otomatik yedek alınır</p></div><button onclick="resetDatabase()" class="btn btn-rose">Sıfırla</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: ONAY -->
+<div id="confirmModal" class="modal hidden" style="z-index:70">
+  <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-2xl shadow-2xl p-5 space-y-4">
+    <div class="flex items-center space-x-3 text-amber-500"><i class="fa-solid fa-triangle-exclamation text-xl"></i><h3 id="confirmModalTitle" class="font-bold">Onay</h3></div>
+    <p id="confirmModalMessage" class="text-xs text-slate-300 whitespace-pre-line"></p>
+    <div class="flex space-x-2"><button id="confirmModalCancelBtn" class="btn btn-ghost flex-1">İptal</button><button id="confirmModalOkBtn" class="btn btn-amber flex-1">Onayla</button></div>
+  </div>
+</div>
+
+<div id="printArea"></div>
+
+<script>window.demoStore={_d:{},getItem(k){return this._d[k]??null},setItem(k,v){this._d[k]=String(v)},removeItem(k){delete this._d[k]}};window.alert=(m)=>{document.getElementById('confirmModalTitle').innerText='Demo';document.getElementById('confirmModalMessage').innerText=m;document.getElementById('confirmModalCancelBtn').style.display='none';document.getElementById('confirmModalOkBtn').onclick=()=>{document.getElementById('confirmModal').classList.add('hidden');document.getElementById('confirmModalCancelBtn').style.display='';bindConfirmButtons();};document.getElementById('confirmModal').classList.remove('hidden');};</script>
+<script>/* DEMO MODU — sunucu yerine tarayıcı içinde çalışan bellek-içi API taklidi.
+   Gerçek üründe bu dosya yoktur; iş kuralları server.js'ten birebir taşınmıştır. */
+(function () {
+  const localDate = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const today = () => localDate(new Date());
+  const addDays = (s, n) => { const [y, m, d] = s.split('-').map(Number); return localDate(new Date(y, m - 1, d + n)); };
+  const nightsBetween = (a, b) => { const [y1, m1, d1] = a.split('-').map(Number), [y2, m2, d2] = b.split('-').map(Number); return Math.round((new Date(y2, m2 - 1, d2) - new Date(y1, m1 - 1, d1)) / 86400000); };
+  const num = (v, d = 0) => { const n = parseFloat(v); return Number.isFinite(n) ? n : d; };
+  const now = () => new Date().toISOString();
+  let seq = 1; const gid = (p) => `${p}-DEMO${String(seq++).padStart(3, '0')}`;
+  const T = today();
+
+  const DB = {
+    revision: 1,
+    users: [{ id: 1, username: 'admin', name: 'Yönetici (Demo)', role: 'admin', pass: '1234', active: 1 }, { id: 2, username: 'resep', name: 'Resepsiyon (Demo)', role: 'receptionist', pass: '1234', active: 1 }],
+    rooms: [
+      { id: '101', type: 'Standart', price: 1600, extraPersonPrice: 500, capacity: 2, status: 'Dolu', clean: 1 },
+      { id: '102', type: 'Standart', price: 1600, extraPersonPrice: 500, capacity: 2, status: 'Boş', clean: 0 },
+      { id: '103', type: 'Standart', price: 1800, extraPersonPrice: 500, capacity: 2, status: 'Boş', clean: 1 },
+      { id: '104', type: 'Deluxe', price: 2400, extraPersonPrice: 700, capacity: 3, status: 'Dolu', clean: 1 },
+      { id: '201', type: 'Aile', price: 3200, extraPersonPrice: 600, capacity: 4, status: 'Boş', clean: 1 },
+      { id: '202', type: 'Suit', price: 4500, extraPersonPrice: 900, capacity: 2, status: 'Boş', clean: 1 },
+      { id: '203', type: 'Standart', price: 1800, extraPersonPrice: 500, capacity: 2, status: 'Arızalı', clean: 1, notes: 'Klima arızası' },
+      { id: '204', type: 'Deluxe', price: 2400, extraPersonPrice: 700, capacity: 3, status: 'Boş', clean: 1 }
+    ],
+    guests: [
+      { key: 'G1', tc: '11111111110', name: 'Ali Veli', phone: '0555 111 22 33', email: 'ali@ornek.com', birthDate: '1988-04-12', nationality: 'TC', notes: 'Deniz manzarası ister', visits: 3 },
+      { key: 'G2', tc: '22222222220', name: 'Ayşe Kaya', phone: '0532 444 55 66', email: '', birthDate: '1992-09-01', nationality: 'TC', notes: '', visits: 1 },
+      { key: 'G3', tc: 'P1234567', name: 'John Smith', phone: '+44 7700 900123', email: 'john@example.co.uk', birthDate: '1975-01-20', nationality: 'GBR', notes: '', visits: 2 },
+      { key: 'G4', tc: '33333333330', name: 'Mehmet Demir', phone: '0505 777 88 99', email: '', birthDate: '', nationality: 'TC', notes: '', visits: 1 }
+    ],
+    reservations: [
+      { id: 'REZ-DEMO001', roomId: '101', primaryName: 'Ali Veli', tc: '11111111110', phone: '0555 111 22 33', adultCount: 2, childCount: 0, allGuestsNames: 'Ali Veli, Zeynep Veli', guestsJson: JSON.stringify([{ name: 'Ali Veli', tc: '11111111110', phone: '0555 111 22 33' }, { name: 'Zeynep Veli', tc: '44444444440' }]), checkIn: addDays(T, -2), checkOut: addDays(T, 1), totalPrice: 4800, status: 'Dolu', notes: 'Geç çıkış talebi', source: 'Telefon', createdBy: 'admin', createdAt: now(), checkedInAt: now() },
+      { id: 'REZ-DEMO002', roomId: '104', primaryName: 'John Smith', tc: 'P1234567', phone: '+44 7700 900123', adultCount: 2, childCount: 1, allGuestsNames: 'John Smith, Mary Smith (+1 Çocuk)', guestsJson: JSON.stringify([{ name: 'John Smith', tc: 'P1234567', nationality: 'GBR' }, { name: 'Mary Smith', nationality: 'GBR' }]), checkIn: addDays(T, -1), checkOut: T, totalPrice: 4800, status: 'Dolu', notes: '', source: 'Booking.com', createdBy: 'admin', createdAt: now(), checkedInAt: now() },
+      { id: 'REZ-DEMO003', roomId: '103', primaryName: 'Ayşe Kaya', tc: '22222222220', phone: '0532 444 55 66', adultCount: 1, childCount: 0, allGuestsNames: 'Ayşe Kaya', guestsJson: '[]', checkIn: T, checkOut: addDays(T, 2), totalPrice: 3600, status: 'Rezerve', notes: '', source: 'Resepsiyon', createdBy: 'resep', createdAt: now() },
+      { id: 'REZ-DEMO004', roomId: '201', primaryName: 'Mehmet Demir', tc: '33333333330', phone: '0505 777 88 99', adultCount: 4, childCount: 0, allGuestsNames: 'Mehmet Demir', guestsJson: '[]', checkIn: addDays(T, 3), checkOut: addDays(T, 6), totalPrice: 9600, status: 'Rezerve', notes: 'Bayram tatili', source: 'Airbnb', createdBy: 'admin', createdAt: now() },
+      { id: 'REZ-DEMO005', roomId: '102', primaryName: 'Fatma Şahin', tc: '', phone: '0533 000 11 22', adultCount: 2, childCount: 0, allGuestsNames: 'Fatma Şahin', guestsJson: '[]', checkIn: addDays(T, -4), checkOut: addDays(T, -1), totalPrice: 4800, status: 'Tamamlandı', notes: '', source: 'Resepsiyon', createdBy: 'resep', createdAt: now(), checkedOutAt: now() },
+      { id: 'REZ-DEMO006', roomId: '202', primaryName: 'Can Yılmaz', tc: '', phone: '0542 123 45 67', adultCount: 2, childCount: 0, allGuestsNames: 'Can Yılmaz', guestsJson: '[]', checkIn: addDays(T, -3), checkOut: addDays(T, -2), totalPrice: 4500, status: 'No-Show', notes: '', source: 'Telefon', createdBy: 'admin', createdAt: now() },
+      { id: 'REZ-DEMO007', roomId: '204', primaryName: 'Elif Arslan', tc: '', phone: '0544 987 65 43', adultCount: 2, childCount: 0, allGuestsNames: 'Elif Arslan', guestsJson: '[]', checkIn: addDays(T, 8), checkOut: addDays(T, 12), totalPrice: 9600, status: 'Rezerve', notes: '', source: 'Etstur', createdBy: 'admin', createdAt: now() }
+    ],
+    payments: [
+      { id: 1, reservationId: 'REZ-DEMO001', roomId: '101', amount: 1500, method: 'Kart', type: 'Kapora', note: 'Rezervasyon sırasında', createdAt: new Date(Date.now() - 2 * 86400000).toISOString(), createdBy: 'admin' },
+      { id: 2, reservationId: 'REZ-DEMO002', roomId: '104', amount: 4800, method: 'Havale', type: 'Kapora', note: 'Booking ön ödeme', createdAt: new Date(Date.now() - 86400000).toISOString(), createdBy: 'admin' },
+      { id: 3, reservationId: 'REZ-DEMO005', roomId: '102', amount: 1000, method: 'Nakit', type: 'Kapora', note: '', createdAt: new Date(Date.now() - 4 * 86400000).toISOString(), createdBy: 'resep' },
+      { id: 4, reservationId: 'REZ-DEMO005', roomId: '102', amount: 3800, method: 'Kart', type: 'Tahsilat', note: 'Çıkış tahsilatı', createdAt: new Date(Date.now() - 86400000).toISOString(), createdBy: 'resep' },
+      { id: 5, reservationId: 'REZ-DEMO005', roomId: '102', amount: 120, method: 'Kart', type: 'Tahsilat', note: 'Minibar', createdAt: new Date(Date.now() - 86400000).toISOString(), createdBy: 'resep' },
+      { id: 6, reservationId: 'REZ-DEMO003', roomId: '103', amount: 500, method: 'Nakit', type: 'Kapora', note: '', createdAt: new Date(Date.now() - 3600000).toISOString(), createdBy: 'resep' }
+    ],
+    minibar: [
+      { id: 1, reservationId: 'REZ-DEMO001', roomId: '101', name: 'Su (2x)', price: 20, qty: 2, createdAt: now(), createdBy: 'resep' },
+      { id: 2, reservationId: 'REZ-DEMO001', roomId: '101', name: 'Kola', price: 60, qty: 1, createdAt: now(), createdBy: 'resep' },
+      { id: 3, reservationId: 'REZ-DEMO002', roomId: '104', name: 'Çamaşır servisi', price: 250, qty: 1, createdAt: now(), createdBy: 'admin' },
+      { id: 4, reservationId: 'REZ-DEMO005', roomId: '102', name: 'Bira (2x)', price: 60, qty: 2, createdAt: now(), createdBy: 'resep' }
+    ],
+    settings: { hotel_name: 'MESOFT DEMO OTEL', hotel_subtitle: 'Canlı Demo — veriler bellekte', hotel_address: 'Kadıköy, İstanbul', hotel_phone: '0216 000 00 00', hotel_tax_no: '1234567890', pricing_mode: 'per_room', child_factor: '0.5', weekend_multiplier: '1.25', weekend_days: '5,6', seasons: JSON.stringify([{ name: 'Yaz', start: '06-15', end: '09-15', multiplier: 1.3 }]), checkout_hour: '12:00', currency: '₺', backup_keep_days: '30', backup_extra_dir: '', allow_overbooking: '0', force_password_change: '0' },
+    audit: []
+  };
+  let session = null, payId = 100, mbId = 100;
+  const audit = (u, a, d) => DB.audit.unshift({ id: DB.audit.length + 1, ts: now(), user: u, action: a, detail: typeof d === 'string' ? d : JSON.stringify(d || {}) });
+  audit('sistem', 'demo_başlat', 'Bellek-içi demo verisi yüklendi');
+  const bump = () => DB.revision++;
+  class E extends Error { constructor(s, m) { super(m); this.status = s; } }
+  const auth = (role) => { if (!session) throw new E(401, 'Oturum geçersiz'); if (role === 'admin' && session.role !== 'admin') throw new E(403, 'Bu işlem için yönetici yetkisi gerekir'); return session; };
+  const room = (id) => DB.rooms.find(r => r.id === String(id));
+  const rez = (id) => DB.reservations.find(r => r.id === id);
+
+  function state() {
+    const paySum = {}, mbSum = {};
+    for (const p of DB.payments) paySum[p.reservationId] = (paySum[p.reservationId] || 0) + (p.type === 'İade' ? -p.amount : p.amount);
+    for (const m of DB.minibar) mbSum[m.reservationId] = (mbSum[m.reservationId] || 0) + m.price * (m.qty || 1);
+    const reservations = DB.reservations.map(r => { const o = { ...r }; o.collectedTotal = +(paySum[r.id] || 0).toFixed(2); o.minibarTotal = +(mbSum[r.id] || 0).toFixed(2); o.grandTotal = +((num(r.totalPrice)) + o.minibarTotal).toFixed(2); o.remainingBalance = +Math.max(0, o.grandTotal - o.collectedTotal).toFixed(2); try { o.guests = JSON.parse(r.guestsJson || '[]'); } catch (_) { o.guests = []; } delete o.guestsJson; return o; });
+    const st = { rooms: DB.rooms.map(r => ({ ...r })), guests: DB.guests.map(g => ({ ...g })), reservations, payments: DB.payments.map(p => ({ ...p })), minibar: DB.minibar.map(m => ({ ...m })), settings: { ...DB.settings }, revision: DB.revision, me: session };
+    if (session && session.role === 'admin') st.users = DB.users.map(u => ({ id: u.id, username: u.username, name: u.name, role: u.role, active: u.active }));
+    return st;
+  }
+  function quote({ roomId, checkIn, checkOut, adultCount = 1, childCount = 0 }) {
+    const r = room(roomId); if (!r) throw new E(404, 'Oda bulunamadı');
+    const n = nightsBetween(checkIn, checkOut); if (!(n >= 1)) throw new E(400, 'Çıkış tarihi giriş tarihinden sonra olmalıdır');
+    const s = DB.settings, mode = s.pricing_mode, cf = num(s.child_factor, .5), wm = num(s.weekend_multiplier, 1), wd = s.weekend_days.split(',').map(Number); let seasons = []; try { seasons = JSON.parse(s.seasons); } catch (_) {}
+    const adults = Math.max(1, +adultCount || 1), children = Math.max(0, +childCount || 0); let total = 0; const breakdown = [];
+    for (let i = 0; i < n; i++) { const ds = addDays(checkIn, i); const [y, m, d] = ds.split('-').map(Number); const dow = new Date(y, m - 1, d).getDay(); let nightly = mode === 'per_person' ? r.price * (adults + children * cf) : r.price + Math.max(0, adults - r.capacity) * r.extraPersonPrice + children * cf * r.extraPersonPrice; let mult = wd.includes(dow) ? wm : 1; const mmdd = ds.slice(5); for (const se of seasons) if (se.start <= se.end ? (mmdd >= se.start && mmdd <= se.end) : (mmdd >= se.start || mmdd <= se.end)) mult *= num(se.multiplier, 1); nightly = Math.round(nightly * mult); total += nightly; breakdown.push({ date: ds, price: nightly }); }
+    return { nights: n, total, breakdown, mode, room: { id: r.id, type: r.type, price: r.price, capacity: r.capacity } };
+  }
+  const conflict = (roomId, ci, co, ex) => DB.settings.allow_overbooking === '1' ? null : DB.reservations.find(r => r.roomId === String(roomId) && ['Rezerve', 'Dolu'].includes(r.status) && r.id !== ex && r.checkIn < co && r.checkOut > ci);
+  const syncRoom = (id) => { const r = room(id); if (!r || r.status === 'Arızalı') return; r.status = DB.reservations.some(x => x.roomId === id && x.status === 'Dolu') ? 'Dolu' : 'Boş'; };
+  function upsertGuests(list) { for (const g of list) { if (!g.name) continue; let ex = g.tc && DB.guests.find(x => x.tc === g.tc); if (!ex && g.phone) ex = DB.guests.find(x => x.name.toLowerCase() === g.name.toLowerCase() && x.phone === g.phone); if (ex) { Object.assign(ex, { name: g.name, tc: g.tc || ex.tc, phone: g.phone || ex.phone, email: g.email || ex.email, birthDate: g.birthDate || ex.birthDate, nationality: g.nationality || ex.nationality }); ex.visits = (ex.visits || 0) + 1; } else DB.guests.push({ key: gid('G'), tc: g.tc || '', name: g.name, phone: g.phone || '', email: g.email || '', birthDate: g.birthDate || '', nationality: g.nationality || 'TC', notes: '', visits: 1 }); } }
+
+  function handle(method, path, body) {
+    const seg = path.replace(/^\/api\//, '').split('?')[0].split('/').filter(Boolean); const id = seg[1] ? decodeURIComponent(seg[1]) : null;
+    const route = seg[0] === 'me' ? `${method} /me${seg[1] ? '/' + seg[1] : ''}` : `${method} /${seg[0]}${seg[1] ? '/:id' : ''}${seg[2] ? '/' + seg[2] : ''}`;
+    switch (route) {
+      case 'GET /health': return { ok: true };
+      case 'GET /revision': return { revision: DB.revision };
+      case 'POST /login': { const u = DB.users.find(x => x.username === body.username && x.active); if (!u || u.pass !== body.password) throw new E(401, 'Kullanıcı adı veya şifre hatalı (demo: admin/1234 veya resep/1234)'); session = { id: u.id, username: u.username, name: u.name, role: u.role }; audit(u.username, 'giriş', 'demo'); return { token: 'demo-token', user: session, forcePasswordChange: false }; }
+      case 'POST /logout': session = null; return { ok: true };
+      case 'GET /me': return { user: auth() };
+      case 'POST /me/password': { const u = DB.users.find(x => x.id === auth().id); if (u.pass !== body.current) throw new E(400, 'Mevcut şifre hatalı'); if (String(body.next || '').length < 4) throw new E(400, 'Yeni şifre en az 4 karakter'); u.pass = body.next; audit(u.username, 'şifre_değişti', ''); return { ok: true }; }
+      case 'GET /state': auth(); return state();
+      case 'POST /quote': auth(); return quote(body);
+      case 'POST /rooms': { auth('admin'); const rid = String(body.id || '').trim(); if (!rid || !body.type) throw new E(400, 'Oda numarası ve tipi zorunlu'); if (room(rid)) throw new E(409, `${rid} numaralı oda zaten var`); DB.rooms.push({ id: rid, type: body.type, price: num(body.price), extraPersonPrice: num(body.extraPersonPrice), capacity: Math.max(1, +body.capacity || 2), status: 'Boş', clean: 1 }); DB.rooms.sort((a, b) => (+a.id || 0) - (+b.id || 0)); bump(); audit(session.username, 'oda_ekle', rid); return { ok: true }; }
+      case 'PUT /rooms/:id': { auth('admin'); const r = room(id); if (!r) throw new E(404, 'Oda bulunamadı'); const nid = String(body.id || id); if (nid !== id && room(nid)) throw new E(409, `${nid} numaralı oda zaten var`); Object.assign(r, { id: nid, type: body.type ?? r.type, price: num(body.price ?? r.price), extraPersonPrice: num(body.extraPersonPrice ?? r.extraPersonPrice), capacity: Math.max(1, +(body.capacity ?? r.capacity) || 2) }); if (nid !== id) for (const c of [DB.reservations, DB.payments, DB.minibar]) c.forEach(x => { if (x.roomId === id) x.roomId = nid; }); bump(); audit(session.username, 'oda_güncelle', { id, nid }); return { ok: true }; }
+      case 'DELETE /rooms/:id': { auth('admin'); if (DB.reservations.some(x => x.roomId === id && ['Rezerve', 'Dolu'].includes(x.status))) throw new E(409, 'Aktif rezervasyonu/konuğu olan oda silinemez'); DB.rooms = DB.rooms.filter(r => r.id !== id); bump(); audit(session.username, 'oda_sil', id); return { ok: true }; }
+      case 'POST /rooms/:id/status': { auth(); const r = room(id); if (!['Boş', 'Arızalı'].includes(body.status)) throw new E(400, 'Geçersiz durum'); if (DB.reservations.some(x => x.roomId === id && x.status === 'Dolu')) throw new E(409, 'Konuğu olan odanın durumu değiştirilemez; önce çıkış yapın'); r.status = body.status; bump(); audit(session.username, 'oda_durum', { id, status: body.status }); return { ok: true }; }
+      case 'POST /rooms/:id/clean': { auth(); room(id).clean = body.clean ? 1 : 0; bump(); audit(session.username, 'oda_temizlik', { id, clean: !!body.clean }); return { ok: true }; }
+      case 'POST /reservations': { auth(); const guests = (body.guests || []).filter(g => g.name); if (!guests.length || !guests[0].phone) throw new E(400, '1. misafirin adı ve telefonu zorunludur'); const q = quote(body); const c = conflict(body.roomId, body.checkIn, body.checkOut, null); if (c) throw new E(409, `Çakışma: ${c.primaryName} (${c.checkIn} → ${c.checkOut})`); const r = room(body.roomId); if (r.status === 'Arızalı') throw new E(409, 'Arızalı odaya rezervasyon yapılamaz'); const status = body.checkIn <= today() && r.status !== 'Dolu' ? 'Dolu' : 'Rezerve'; const rid = gid('REZ'); const children = +body.childCount || 0; DB.reservations.push({ id: rid, roomId: String(body.roomId), primaryName: guests[0].name, tc: guests[0].tc || '', phone: guests[0].phone, adultCount: +body.adultCount || 1, childCount: children, allGuestsNames: guests.map(g => g.name).join(', ') + (children ? ` (+${children} Çocuk)` : ''), guestsJson: JSON.stringify(guests), checkIn: body.checkIn, checkOut: body.checkOut, totalPrice: body.totalPrice != null ? num(body.totalPrice) : q.total, status, notes: body.notes || '', source: body.source || 'Resepsiyon', createdBy: session.username, createdAt: now(), checkedInAt: status === 'Dolu' ? now() : null }); if (num(body.advancePayment) > 0) DB.payments.push({ id: payId++, reservationId: rid, roomId: String(body.roomId), amount: num(body.advancePayment), method: body.advanceMethod || 'Nakit', type: 'Kapora', note: 'Rezervasyon sırasında', createdAt: now(), createdBy: session.username }); upsertGuests(guests); if (status === 'Dolu') r.status = 'Dolu'; bump(); audit(session.username, 'rezervasyon_oluştur', { rid, status }); return { ok: true, id: rid, status, quote: q }; }
+      case 'PUT /reservations/:id': { auth(); const r = rez(id); if (!r) throw new E(404, 'Rezervasyon bulunamadı'); if (['Tamamlandı', 'İptal', 'No-Show'].includes(r.status)) throw new E(409, 'Kapanmış rezervasyon düzenlenemez'); const roomId = String(body.roomId ?? r.roomId), ci = body.checkIn ?? r.checkIn, co = body.checkOut ?? r.checkOut; if (nightsBetween(ci, co) < 1) throw new E(400, 'Geçersiz tarih aralığı'); const c = conflict(roomId, ci, co, id); if (c) throw new E(409, `Çakışma: ${c.primaryName} (${c.checkIn} → ${c.checkOut})`); const old = r.roomId; Object.assign(r, { roomId, checkIn: ci, checkOut: co, primaryName: body.primaryName ?? r.primaryName, tc: body.tc ?? r.tc, phone: body.phone ?? r.phone, adultCount: +(body.adultCount ?? r.adultCount) || 1, childCount: +(body.childCount ?? r.childCount) || 0, totalPrice: num(body.totalPrice ?? r.totalPrice), notes: body.notes ?? r.notes }); if (old !== roomId) { for (const c2 of [DB.payments, DB.minibar]) c2.forEach(x => { if (x.reservationId === id) x.roomId = roomId; }); syncRoom(old); syncRoom(roomId); } bump(); audit(session.username, 'rezervasyon_güncelle', id); return { ok: true }; }
+      case 'POST /reservations/:id/checkin': { auth(); const r = rez(id); if (!r || r.status !== 'Rezerve') throw new E(409, 'Sadece "Rezerve" kayıtlar için giriş yapılabilir'); const rm = room(r.roomId); if (rm.status === 'Dolu') throw new E(409, 'Oda şu an dolu; önce mevcut konuğun çıkışını yapın'); if (rm.status === 'Arızalı') throw new E(409, 'Oda arızalı'); r.status = 'Dolu'; r.checkedInAt = now(); rm.status = 'Dolu'; bump(); audit(session.username, 'checkin', id); return { ok: true }; }
+      case 'POST /reservations/:id/checkout': { auth(); const r = rez(id); if (!r || r.status !== 'Dolu') throw new E(409, 'Sadece "Dolu" kayıtlar için çıkış yapılabilir'); for (const p of (body.payments || [])) if (num(p.amount) > 0) DB.payments.push({ id: payId++, reservationId: id, roomId: r.roomId, amount: num(p.amount), method: p.method || 'Nakit', type: 'Tahsilat', note: 'Çıkış tahsilatı', createdAt: now(), createdBy: session.username }); r.status = 'Tamamlandı'; r.checkedOutAt = now(); const rm = room(r.roomId); if (rm.status !== 'Arızalı') { rm.status = 'Boş'; rm.clean = 0; } bump(); audit(session.username, 'checkout', id); return { ok: true }; }
+      case 'POST /reservations/:id/cancel': case 'POST /reservations/:id/noshow': { auth(); const r = rez(id); if (!r || !['Rezerve', 'Dolu'].includes(r.status)) throw new E(409, 'Bu kayıt iptal edilemez'); r.status = seg[2] === 'cancel' ? 'İptal' : 'No-Show'; syncRoom(r.roomId); bump(); audit(session.username, r.status.toLowerCase(), id); return { ok: true }; }
+      case 'DELETE /reservations/:id': { auth('admin'); const r = rez(id); if (!r) throw new E(404, 'Kayıt yok'); DB.payments = DB.payments.filter(p => p.reservationId !== id); DB.minibar = DB.minibar.filter(m => m.reservationId !== id); DB.reservations = DB.reservations.filter(x => x.id !== id); syncRoom(r.roomId); bump(); audit(session.username, 'rezervasyon_sil', id); return { ok: true }; }
+      case 'POST /reservations/:id/minibar': { auth(); const r = rez(id); if (!r || r.status !== 'Dolu') throw new E(409, 'Minibar sadece konaklayan misafire eklenir'); if (!body.name || num(body.price) <= 0) throw new E(400, 'Ürün adı ve tutar zorunlu'); DB.minibar.push({ id: mbId++, reservationId: id, roomId: r.roomId, name: body.name, price: num(body.price), qty: Math.max(1, +body.qty || 1), createdAt: now(), createdBy: session.username }); bump(); return { ok: true }; }
+      case 'DELETE /minibar/:id': auth(); DB.minibar = DB.minibar.filter(m => m.id !== +id); bump(); return { ok: true };
+      case 'POST /payments': { auth(); const r = rez(body.reservationId); if (!r) throw new E(404, 'Rezervasyon bulunamadı'); if (num(body.amount) <= 0) throw new E(400, 'Tutar sıfırdan büyük olmalı'); DB.payments.push({ id: payId++, reservationId: r.id, roomId: r.roomId, amount: num(body.amount), method: body.method || 'Nakit', type: ['Kapora', 'Tahsilat', 'İade'].includes(body.type) ? body.type : 'Tahsilat', note: body.note || '', createdAt: now(), createdBy: session.username }); bump(); audit(session.username, 'ödeme', body); return { ok: true }; }
+      case 'DELETE /payments/:id': auth('admin'); DB.payments = DB.payments.filter(p => p.id !== +id); bump(); audit(session.username, 'ödeme_sil', id); return { ok: true };
+      case 'PUT /guests/:id': { auth(); const g = DB.guests.find(x => x.key === id); if (!g) throw new E(404, 'Misafir yok'); if (!body.name) throw new E(400, 'Ad Soyad zorunlu'); Object.assign(g, { name: body.name, tc: body.tc || '', phone: body.phone || '', email: body.email || '', birthDate: body.birthDate || '', nationality: body.nationality || 'TC', gender: body.gender || '', notes: body.notes || '' }); bump(); audit(session.username, 'misafir_güncelle', id); return { ok: true }; }
+      case 'DELETE /guests/:id': auth('admin'); DB.guests = DB.guests.filter(g => g.key !== id); bump(); return { ok: true };
+      case 'PUT /settings': { auth('admin'); for (const [k, v] of Object.entries(body)) if (k in DB.settings) DB.settings[k] = typeof v === 'string' ? v : JSON.stringify(v); bump(); audit(session.username, 'ayar_güncelle', Object.keys(body)); return { ok: true }; }
+      case 'POST /users': { auth('admin'); if (!body.username || String(body.password || '').length < 4) throw new E(400, 'Kullanıcı adı ve en az 4 karakter şifre zorunlu'); if (DB.users.some(u => u.username === body.username)) throw new E(409, 'Bu kullanıcı adı kullanımda'); DB.users.push({ id: Math.max(...DB.users.map(u => u.id)) + 1, username: body.username, name: body.name || '', role: body.role === 'admin' ? 'admin' : 'receptionist', pass: body.password, active: 1 }); bump(); audit(session.username, 'kullanıcı_ekle', body.username); return { ok: true }; }
+      case 'PUT /users/:id': { auth('admin'); const u = DB.users.find(x => x.id === +id); if (!u) throw new E(404, 'Kullanıcı yok'); const admins = DB.users.filter(x => x.role === 'admin' && x.active).length; const nr = body.role ? (body.role === 'admin' ? 'admin' : 'receptionist') : u.role; const na = body.active === undefined ? u.active : (body.active ? 1 : 0); if (u.role === 'admin' && admins <= 1 && (nr !== 'admin' || !na)) throw new E(409, 'Son aktif yönetici düşürülemez'); Object.assign(u, { name: body.name ?? u.name, role: nr, active: na }); if (body.password) u.pass = body.password; bump(); audit(session.username, 'kullanıcı_güncelle', u.username); return { ok: true }; }
+      case 'DELETE /users/:id': { auth('admin'); if (session.id === +id) throw new E(409, 'Kendinizi silemezsiniz'); DB.users = DB.users.filter(u => u.id !== +id); bump(); return { ok: true }; }
+      case 'GET /audit': auth('admin'); return DB.audit.slice(0, 500);
+      case 'POST /backup': auth('admin'); audit(session.username, 'yedek_manuel', 'demo'); return { ok: true, file: 'DEMO/yedekler/Mesoft_Yedek_' + T + '.db (demo modunda gerçek dosya yazılmaz)' };
+      case 'POST /reset': auth('admin'); DB.reservations = []; DB.payments = []; DB.minibar = []; DB.guests = []; DB.rooms = []; bump(); audit(session.username, 'sıfırlama', ''); return { ok: true };
+      case 'POST /import': { auth('admin'); if (body.ics && body.roomId) { let added = 0, skipped = 0, cur = null; for (const line of String(body.ics).split(/\r?\n/)) { const l = line.trim(); if (l === 'BEGIN:VEVENT') cur = {}; else if (l === 'END:VEVENT' && cur) { const d = (v) => v && /^\d{8}/.test(v) ? `${v.slice(0, 4)}-${v.slice(4, 6)}-${v.slice(6, 8)}` : null; const ci = d(cur.start), co = d(cur.end); if (!ci || !co || nightsBetween(ci, co) < 1 || co < today() || (cur.uid && DB.reservations.some(r => r.externalUid === cur.uid)) || conflict(body.roomId, ci, co, null)) skipped++; else { DB.reservations.push({ id: gid('REZ'), roomId: String(body.roomId), primaryName: cur.summary || 'Harici Rezervasyon', tc: '', phone: '', adultCount: 1, childCount: 0, allGuestsNames: cur.summary || 'Harici Rezervasyon', guestsJson: '[]', checkIn: ci, checkOut: co, totalPrice: 0, status: 'Rezerve', notes: 'iCal içe aktarım', source: 'iCal', createdBy: session.username, createdAt: now(), externalUid: cur.uid }); added++; } cur = null; } else if (cur) { const i = l.indexOf(':'); if (i > 0) { const k = l.slice(0, i).split(';')[0], v = l.slice(i + 1); if (k === 'UID') cur.uid = v; if (k === 'DTSTART') cur.start = v; if (k === 'DTEND') cur.end = v; if (k === 'SUMMARY') cur.summary = v; } } } bump(); return { ok: true, added, skipped }; } throw new E(400, 'Demo modunda JSON içe aktarım devre dışı'); }
+      default: throw new E(404, 'Uç nokta bulunamadı: ' + route);
+    }
+  }
+
+  const realFetch = window.fetch.bind(window);
+  window.fetch = async (url, opt = {}) => {
+    const u = String(url); if (!u.includes('/api/')) return realFetch(url, opt);
+    await new Promise(r => setTimeout(r, 40 + Math.random() * 60)); // ağ gecikmesi hissi
+    let body = {}; try { body = opt.body ? JSON.parse(opt.body) : {}; } catch (_) {}
+    try { const data = handle((opt.method || 'GET').toUpperCase(), u.slice(u.indexOf('/api/')), body); return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } }); }
+    catch (e) { return new Response(JSON.stringify({ error: e.message }), { status: e.status || 500, headers: { 'Content-Type': 'application/json' } }); }
+  };
+  window.open = (u) => { const t = /type=kbs/.test(u) ? 'KBS CSV' : /type=ical/.test(u) ? 'iCal (.ics)' : 'JSON yedek'; alert(`Demo modu: gerçek uygulamada burada ${t} dosyası indirilir.`); return null; };
+  window.print = () => { const el = document.getElementById('printArea'); alert('Demo modu — 72 mm fiş içeriği:\n\n' + el.innerText.replace(/\n{3,}/g, '\n\n')); };
+})();
+</script>
+<script>'use strict';
+/* Mesoft Otel — Arayüz Mantığı v7 */
+
+// ============ DURUM ============
+const S = { rooms: [], guests: [], reservations: [], payments: [], minibar: [], settings: {}, users: [], me: null, revision: -1 };
+let token = demoStore.getItem('ms_token') || null;
+let desktopInfo = null;
+let currentDetailRoomId = null, currentCheckoutRezId = null, confirmCb = null, monthDate = new Date(), quoteTimer = null, pollTimer = null, offline = false;
+const isDesktop = !!window.mesoft;
+const API = `${location.protocol === 'file:' ? 'http://127.0.0.1:8080' : location.origin}/api`;
+
+// ============ YARDIMCILAR ============
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const cur = () => S.settings.currency || '₺';
+const money = (n) => `${cur()}${(parseFloat(n) || 0).toLocaleString('tr-TR', { maximumFractionDigits: 2 })}`;
+const localDate = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const todayStr = () => localDate(new Date());
+const addDays = (s, n) => { const [y, m, d] = s.split('-').map(Number); return localDate(new Date(y, m - 1, d + n)); };
+const nights = (a, b) => { const [y1, m1, d1] = a.split('-').map(Number), [y2, m2, d2] = b.split('-').map(Number); return Math.round((new Date(y2, m2 - 1, d2) - new Date(y1, m1 - 1, d1)) / 86400000); };
+const fmtDate = (s) => { if (!s) return '-'; const p = s.split('-'); return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : s; };
+const fmtDT = (iso) => iso ? new Date(iso).toLocaleString('tr-TR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '-';
+const isAdmin = () => S.me && S.me.role === 'admin';
+const room = (id) => S.rooms.find(r => String(r.id) === String(id));
+const rez = (id) => S.reservations.find(r => r.id === id);
+const activeRez = (roomId) => S.reservations.find(r => String(r.roomId) === String(roomId) && r.status === 'Dolu');
+const statusBadge = (st) => `<span class="badge ${({ Dolu: 'badge-rose', Rezerve: 'badge-amber', Tamamlandı: 'badge-emerald', İptal: 'badge-slate', 'No-Show': 'badge-stone' })[st] || 'badge-slate'}">${esc(st)}</span>`;
+
+function toast(msg, type = 'success') {
+  const el = document.createElement('div');
+  el.className = `${type === 'success' ? 'bg-emerald-600' : 'bg-rose-600'} text-white px-4 py-3 rounded-xl shadow-2xl text-xs font-bold flex items-center space-x-2 transition-all duration-300 opacity-0 translate-y-2 pointer-events-auto`;
+  el.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'}"></i><span>${esc(msg)}</span>`;
+  $('toastContainer').appendChild(el);
+  requestAnimationFrame(() => el.classList.remove('opacity-0', 'translate-y-2'));
+  setTimeout(() => { el.classList.add('opacity-0'); setTimeout(() => el.remove(), 300); }, 3500);
+}
+const openModal = (id) => $(id).classList.remove('hidden');
+const closeModal = (id) => $(id).classList.add('hidden');
+function confirmAsk(title, message, cb) { $('confirmModalTitle').innerText = title; $('confirmModalMessage').innerText = message; confirmCb = cb; openModal('confirmModal'); }
+function toggleMobileMenu(force) { const s = $('sidebarNav'), o = $('mobileOverlay'); const open = typeof force === 'boolean' ? force : s.classList.contains('-translate-x-full'); s.classList.toggle('-translate-x-full', !open); o.classList.toggle('hidden', !open); }
+function toggleTheme() { const light = document.body.classList.toggle('light-theme'); demoStore.setItem('ms_theme', light ? 'light' : 'dark'); $('themeIcon').className = `fa-solid ${light ? 'fa-moon' : 'fa-sun'} text-base`; }
+function download(name, content, type) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([content], { type })); a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
+
+// ============ API ============
+async function api(path, method = 'GET', body) {
+  const opt = { method, headers: { 'Content-Type': 'application/json' } };
+  if (token) opt.headers.Authorization = `Bearer ${token}`;
+  if (body !== undefined) opt.body = JSON.stringify(body);
+  let res;
+  try { res = await fetch(`${API}${path}`, opt); setOffline(false); }
+  catch (e) { setOffline(true); throw new Error('Sunucuya ulaşılamıyor'); }
+  const data = await res.json().catch(() => ({}));
+  if (res.status === 401 && path !== '/login') { logoutLocal(); throw new Error(data.error || 'Oturum süresi doldu'); }
+  if (!res.ok) throw new Error(data.error || `Hata ${res.status}`);
+  return data;
+}
+function setOffline(v) { if (offline === v) return; offline = v; $('offlineBanner').classList.toggle('hidden', !v); $('syncDot').className = `w-2 h-2 rounded-full inline-block ${v ? 'bg-rose-500 animate-pulse' : 'bg-emerald-500'}`; }
+async function act(fn, okMsg) { try { const r = await fn(); if (okMsg) toast(okMsg); await refresh(true); return r; } catch (e) { toast(e.message, 'error'); return null; } }
+
+async function refresh(force) {
+  try {
+    if (!force) { const { revision } = await api('/revision'); if (revision === S.revision) return; }
+    const st = await api('/state');
+    Object.assign(S, st);
+    applyRole(); renderAll();
+  } catch (e) { /* offline banner zaten gösteriliyor */ }
+}
+function startPolling() { clearInterval(pollTimer); pollTimer = setInterval(() => refresh(false), 3000); }
+
+// ============ KİMLİK ============
+function applyRole() {
+  document.body.classList.toggle('is-admin', !!isAdmin());
+  $('currentUserName').innerText = S.me ? `${S.me.name || S.me.username} (${S.me.role === 'admin' ? 'Yönetici' : 'Resepsiyon'})` : '-';
+  $('currentUserBadge').classList.remove('hidden');
+}
+async function handleLogin(e) {
+  e.preventDefault();
+  $('loginBtn').disabled = true; $('loginError').classList.add('hidden');
+  try {
+    const r = await api('/login', 'POST', { username: $('loginUsername').value.trim(), password: $('loginPassword').value });
+    token = r.token; demoStore.setItem('ms_token', token);
+    $('loginOverlay').classList.add('hidden'); $('loginPassword').value = '';
+    await refresh(true); startPolling();
+    toast(`Hoş geldiniz, ${r.user.name || r.user.username}!`);
+    if (r.forcePasswordChange) openChangePassword(true);
+  } catch (err) { $('loginError').innerText = err.message; $('loginError').classList.remove('hidden'); }
+  finally { $('loginBtn').disabled = false; }
+}
+function logoutLocal() { token = null; demoStore.removeItem('ms_token'); clearInterval(pollTimer); document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden')); S.me = null; S.revision = -1; $('loginOverlay').classList.remove('hidden'); $('loginUsername').focus(); }
+function handleLogout() { confirmAsk('Oturum Kapatma', 'Oturumu kapatmak istiyor musunuz?', async () => { try { await api('/logout', 'POST'); } catch (_) {} logoutLocal(); }); }
+function openChangePassword(force) { $('passwordForceNote').classList.toggle('hidden', !force); $('pwCancelBtn').classList.toggle('hidden', !!force); openModal('passwordModal'); }
+async function handleChangePassword(e) {
+  e.preventDefault();
+  if ($('pw_next').value !== $('pw_next2').value) return toast('Yeni şifreler eşleşmiyor', 'error');
+  const ok = await act(() => api('/me/password', 'POST', { current: $('pw_current').value, next: $('pw_next').value }), 'Şifre değiştirildi');
+  if (ok) { closeModal('passwordModal'); e.target.reset(); }
+}
+
+// ============ SEKME ============
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.add('hidden'));
+  document.querySelectorAll('.nav-btn').forEach(b => { b.className = 'nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 font-medium transition' + (b.classList.contains('role-admin') ? ' role-admin' : ''); });
+  $(`tab-${tab}`).classList.remove('hidden');
+  const nb = document.querySelector(`.nav-btn[data-tab="${tab}"]`); if (nb) nb.className = nb.className.replace('text-slate-400 hover:bg-slate-800', 'bg-amber-500/10 text-amber-400 border border-amber-500/20');
+  toggleMobileMenu(false);
+  ({ reports: renderReports, monthly: renderMonthly, cash: renderCash, today: renderToday })[tab]?.();
+}
+
+// ============ RENDER ============
+function renderAll() {
+  loadHotelUI(); renderRoomsGrid(); renderStats(); renderToday(); renderGuestTable(); renderReservationTable();
+  if (!$('tab-monthly').classList.contains('hidden')) renderMonthly();
+  if (!$('tab-reports').classList.contains('hidden')) renderReports();
+  if (!$('tab-cash').classList.contains('hidden')) renderCash();
+  if (!$('roomDetailModal').classList.contains('hidden') && currentDetailRoomId) openRoomAction(currentDetailRoomId, true);
+  if (!$('roomSettingsModal').classList.contains('hidden')) populateRoomSettingsTable();
+  if (!$('usersModal').classList.contains('hidden')) renderUsers();
+}
+function loadHotelUI() {
+  const n = S.settings.hotel_name || 'MESOFT BİLİŞİM';
+  $('displayHotelName').innerText = n; $('loginHotelName').innerText = n; $('displayHotelSubtitle').innerText = S.settings.hotel_subtitle || '';
+  $('headerHotelTitle').innerHTML = `<i class="fa-solid fa-building text-amber-500 me-1.5"></i>${esc(n)} Resepsiyon ${desktopInfo ? `<span class="text-slate-600">v${esc(desktopInfo.version)}</span>` : ''}`;
+  document.title = `${n} - Otel Yönetim`;
+}
+function renderRoomsGrid() {
+  const grid = $('roomsGrid'); grid.innerHTML = '';
+  const f = $('roomFilter').value;
+  const list = S.rooms.filter(r => !f || (f === 'Kirli' ? !r.clean && r.status !== 'Arızalı' : r.status === f));
+  if (!S.rooms.length) { grid.innerHTML = '<div class="col-span-full p-8 text-center text-slate-500">Kayıtlı oda yok. Yönetici olarak <b class="text-amber-400">Odalar & Fiyatlar</b> menüsünden ekleyin.</div>'; return; }
+  for (const r of list) {
+    const ar = activeRez(r.id);
+    let card, badge, line, extra = '';
+    if (r.status === 'Arızalı') { card = 'bg-stone-950/40 border-stone-500/70 opacity-70'; badge = 'bg-stone-500'; line = '<i class="fa-solid fa-wrench me-1 text-stone-400"></i>Arızalı / Tadilatta'; }
+    else if (r.status === 'Dolu' && ar) { card = 'bg-rose-950/30 border-rose-500/80 hover:border-rose-400'; badge = 'bg-rose-500'; line = `<i class="fa-solid fa-users me-1 text-amber-400"></i>${esc(ar.primaryName)}`; extra = `<span class="text-[10px] ${ar.checkOut <= todayStr() ? 'text-rose-300 font-bold' : 'text-slate-500'}">Çıkış: ${fmtDate(ar.checkOut)}${ar.remainingBalance > 0 ? ` • Kalan ${money(ar.remainingBalance)}` : ''}</span>`; }
+    else if (!r.clean) { card = 'bg-amber-950/20 border-amber-500/60 hover:border-amber-400'; badge = 'bg-amber-500'; line = '<i class="fa-solid fa-broom me-1 text-amber-400"></i>Kirli — temizlik bekliyor'; }
+    else { card = 'bg-emerald-950/20 border-emerald-500/70 hover:border-emerald-400'; badge = 'bg-emerald-500'; line = '<i class="fa-solid fa-bed me-1 text-emerald-400"></i>Müsait'; const next = S.reservations.filter(x => String(x.roomId) === String(r.id) && x.status === 'Rezerve' && x.checkIn >= todayStr()).sort((a, b) => a.checkIn.localeCompare(b.checkIn))[0]; if (next) extra = `<span class="text-[10px] text-amber-400">${next.checkIn === todayStr() ? 'BUGÜN GİRİŞ' : 'Sonraki: ' + fmtDate(next.checkIn)} • ${esc(next.primaryName)}</span>`; }
+    const el = document.createElement('div');
+    el.className = `${card} border-2 rounded-2xl p-4 flex flex-col justify-between h-44 cursor-pointer transition hover:-translate-y-0.5 shadow-lg`;
+    el.onclick = () => openRoomAction(r.id);
+    el.innerHTML = `<div class="flex justify-between items-start"><div><span class="text-[10px] text-slate-400 font-mono">ODA</span><h3 class="text-2xl font-black">${esc(r.id)}</h3></div><span class="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-black text-slate-950 ${badge}">${r.status === 'Dolu' ? 'DOLU' : r.status === 'Arızalı' ? 'ARIZALI' : (!r.clean ? 'KİRLİ' : 'BOŞ')}</span></div>
+      <div><p class="text-[11px] text-slate-300 truncate">${esc(r.type)} • ${r.capacity || 2} kişi</p><p class="text-xs font-bold text-amber-400">${money(r.price)} <span class="text-[10px] text-slate-500 font-normal">/${S.settings.pricing_mode === 'per_person' ? 'kişi' : 'gece'}</span></p></div>
+      <div class="border-t border-slate-800/80 pt-2 text-[11px] text-slate-300 truncate font-medium flex flex-col">${line}${extra}</div>`;
+    grid.appendChild(el);
+  }
+}
+function renderStats() {
+  const total = S.rooms.length, occ = S.rooms.filter(r => r.status === 'Dolu').length, broken = S.rooms.filter(r => r.status === 'Arızalı').length, dirty = S.rooms.filter(r => !r.clean && r.status !== 'Arızalı').length;
+  const vac = Math.max(0, total - occ - broken), rate = total - broken > 0 ? Math.round(occ / (total - broken) * 100) : 0;
+  const t = todayStr();
+  const arrivals = S.reservations.filter(r => r.status === 'Rezerve' && r.checkIn === t).length, departures = S.reservations.filter(r => r.status === 'Dolu' && r.checkOut <= t).length;
+  const todayPay = S.payments.filter(p => p.createdAt && p.createdAt.slice(0, 10) === new Date().toISOString().slice(0, 10) || (p.createdAt && localDate(new Date(p.createdAt)) === t)).reduce((a, p) => a + (p.type === 'İade' ? -p.amount : p.amount), 0);
+  $('totalRoomsBadge').innerText = `${total} Oda`; $('occupancyRate').innerText = `${rate}%`; $('occupancyBar').style.width = `${rate}%`;
+  $('statOccupied').innerText = occ; $('statVacant').innerText = vac; $('statDirty').innerText = dirty;
+  $('dashVacant').innerText = `${vac} Oda`; $('dashOccupied').innerText = `${occ} Oda`; $('dashToday').innerText = `${arrivals} / ${departures}`; $('dashRevenue').innerText = money(todayPay);
+  const tb = $('todayBadge'); tb.innerText = arrivals + departures; tb.classList.toggle('hidden', !(arrivals + departures));
+}
+function renderToday() {
+  const t = todayStr();
+  const item = (r, btn) => `<div class="flex justify-between items-center bg-slate-950 border border-slate-800 rounded-lg p-2"><div><b class="text-amber-400">Oda ${esc(r.roomId)}</b> • ${esc(r.primaryName)}<div class="text-[10px] text-slate-500">${fmtDate(r.checkIn)} → ${fmtDate(r.checkOut)} • ${esc(r.phone || '')}${r.remainingBalance > 0 ? ` • Kalan <b class="text-rose-400">${money(r.remainingBalance)}</b>` : ''}</div></div>${btn}</div>`;
+  const arr = S.reservations.filter(r => r.status === 'Rezerve' && r.checkIn <= t).sort((a, b) => a.checkIn.localeCompare(b.checkIn));
+  $('todayArrivals').innerHTML = arr.length ? arr.map(r => item(r, `<button onclick="doCheckin('${esc(r.id)}')" class="btn btn-emerald !py-1">Check-in</button>`)).join('') : '<p class="text-slate-500 italic">Bekleyen giriş yok</p>';
+  const dep = S.reservations.filter(r => r.status === 'Dolu' && r.checkOut <= t);
+  $('todayDepartures').innerHTML = dep.length ? dep.map(r => item(r, `<button onclick="openCheckout('${esc(r.id)}')" class="btn btn-rose !py-1">Check-out</button>`)).join('') : '<p class="text-slate-500 italic">Bekleyen çıkış yok</p>';
+  const dirty = S.rooms.filter(r => !r.clean && r.status !== 'Arızalı');
+  $('todayDirty').innerHTML = dirty.length ? dirty.map(r => `<div class="flex justify-between items-center bg-slate-950 border border-slate-800 rounded-lg p-2"><span><b class="text-amber-400">Oda ${esc(r.id)}</b> • ${esc(r.type)}${r.status === 'Dolu' ? ' <span class="text-[10px] text-rose-400">(dolu)</span>' : ''}</span><button onclick="setClean('${esc(r.id)}',true)" class="btn btn-emerald !py-1"><i class="fa-solid fa-check me-1"></i>Temizlendi</button></div>`).join('') : '<p class="text-slate-500 italic">Tüm odalar temiz</p>';
+}
+function renderGuestTable() {
+  const q = ($('guestSearchInput').value || '').toLowerCase().replace(/\s/g, '');
+  const rows = S.guests.filter(g => !q || `${g.name}${g.tc}${g.phone}${g.email}`.toLowerCase().replace(/\s/g, '').includes(q));
+  $('guestTableBody').innerHTML = rows.map(g => `<tr class="hover:bg-slate-800/30"><td class="p-3 font-semibold">${esc(g.name)}</td><td class="p-3 font-mono text-slate-400">${esc(g.tc || '-')}</td><td class="p-3">${esc(g.phone || '-')}</td><td class="p-3 text-slate-400">${esc(g.nationality || 'TC')}${g.birthDate ? ' • ' + fmtDate(g.birthDate) : ''}</td><td class="p-3"><span class="badge badge-amber">${g.visits || 1} Kez</span></td><td class="p-3 text-slate-400 truncate max-w-[200px]">${esc(g.notes || '-')}</td>
+    <td class="p-3 text-right space-x-1 whitespace-nowrap"><button onclick="openEditGuest('${esc(g.key)}')" class="btn btn-sky !py-1"><i class="fa-solid fa-pen"></i></button><button onclick="bookForGuest('${esc(g.key)}')" class="btn btn-amber !py-1">Oda Ver</button><button onclick="deleteGuest('${esc(g.key)}')" class="btn btn-rose !py-1 role-admin inline-flex"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('') || '<tr><td colspan="7" class="p-4 text-center text-slate-500">Kayıt yok</td></tr>';
+}
+function rezActions(r) {
+  const b = [];
+  if (r.status === 'Rezerve' && r.checkIn <= todayStr()) b.push(`<button onclick="doCheckin('${esc(r.id)}')" class="btn btn-emerald !py-1" title="Check-in"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>`);
+  if (r.status === 'Dolu') b.push(`<button onclick="openCheckout('${esc(r.id)}')" class="btn btn-rose !py-1" title="Check-out"><i class="fa-solid fa-cash-register"></i></button>`);
+  if (['Rezerve', 'Dolu'].includes(r.status)) b.push(`<button onclick="openEditRez('${esc(r.id)}')" class="btn btn-sky !py-1" title="Düzenle"><i class="fa-solid fa-pen"></i></button><button onclick="cancelRez('${esc(r.id)}')" class="btn btn-ghost !py-1" title="İptal / No-Show"><i class="fa-solid fa-ban"></i></button>`);
+  if (r.status !== 'Rezerve') b.push(`<button onclick="printReceipt('${esc(r.id)}')" class="btn btn-ghost !py-1" title="Fiş"><i class="fa-solid fa-print"></i></button>`);
+  b.push(`<button onclick="deleteRez('${esc(r.id)}')" class="btn btn-ghost !py-1 text-rose-400 role-admin inline-flex" title="Kalıcı sil"><i class="fa-solid fa-trash"></i></button>`);
+  return b.join('');
+}
+function renderReservationTable() {
+  const q = ($('rezSearch').value || '').toLowerCase(), f = $('rezStatusFilter').value;
+  const rows = S.reservations.filter(r => (f === '*' || (f ? r.status === f : ['Rezerve', 'Dolu'].includes(r.status))) && (!q || `${r.primaryName} ${r.allGuestsNames} ${r.roomId} ${r.phone} ${r.id}`.toLowerCase().includes(q))).sort((a, b) => (b.checkIn || '').localeCompare(a.checkIn || ''));
+  $('reservationTableBody').innerHTML = rows.map(r => `<tr class="hover:bg-slate-800/30"><td class="p-3 font-bold text-amber-500">Oda ${esc(r.roomId)}</td><td class="p-3"><p class="font-medium">${esc(r.allGuestsNames || r.primaryName)}</p><p class="text-[10px] text-slate-500">${esc(r.phone || '')} • ${esc(r.id)}</p></td><td class="p-3">${fmtDate(r.checkIn)} → ${fmtDate(r.checkOut)}<div class="text-[10px] text-slate-500">${nights(r.checkIn, r.checkOut)} gece</div></td><td class="p-3 font-bold text-emerald-400">${money(r.grandTotal)}</td><td class="p-3 text-amber-400">${money(r.collectedTotal)}</td><td class="p-3 font-bold ${r.remainingBalance > 0 ? 'text-rose-400' : 'text-slate-500'}">${money(r.remainingBalance)}</td><td class="p-3 text-slate-400">${esc(r.source || '-')}</td><td class="p-3">${statusBadge(r.status)}</td><td class="p-3 text-right whitespace-nowrap space-x-1">${rezActions(r)}</td></tr>`).join('') || '<tr><td colspan="9" class="p-4 text-center text-slate-500">Kayıt yok</td></tr>';
+}
+
+// ============ ODA DETAY ============
+function openRoomAction(roomId, silent) {
+  const r = room(roomId); if (!r) return;
+  currentDetailRoomId = roomId;
+  const ar = activeRez(roomId);
+  $('detailRoomTitle').innerText = `Oda ${r.id} (${r.type})`; $('detailRoomSub').innerText = `Kapasite ${r.capacity || 2} • ${r.floor ? 'Kat ' + r.floor + ' • ' : ''}${r.notes || ''}`;
+  const sb = $('detailRoomStatusBadge');
+  if (r.status === 'Arızalı') { sb.innerText = 'Arızalı / Tadilatta'; sb.className = 'badge badge-stone'; } else if (ar) { sb.innerText = 'Dolu'; sb.className = 'badge badge-rose'; } else { sb.innerText = 'Boş (Müsait)'; sb.className = 'badge badge-emerald'; }
+  $('detailCleanBadge').innerText = r.clean ? 'Temiz' : 'Kirli'; $('detailCleanBadge').className = `badge ${r.clean ? 'badge-emerald' : 'badge-amber'}`;
+  $('detailRoomPriceText').innerText = `${money(r.price)} / ${S.settings.pricing_mode === 'per_person' ? 'kişi' : 'gece'}${r.extraPersonPrice ? ` • Ek kişi ${money(r.extraPersonPrice)}` : ''}`;
+  $('detailGuestInfo').innerHTML = ar ? `<p><b>${esc(ar.allGuestsNames || ar.primaryName)}</b> • ${esc(ar.phone || '')}</p><p class="text-slate-400">${fmtDate(ar.checkIn)} → ${fmtDate(ar.checkOut)} (${nights(ar.checkIn, ar.checkOut)} gece) • Giriş: ${fmtDT(ar.checkedInAt)}</p>${ar.notes ? `<p class="text-amber-400/80 italic">${esc(ar.notes)}</p>` : ''}` : '';
+
+  const acts = [];
+  if (ar) {
+    acts.push(`<button onclick="openCheckout('${esc(ar.id)}')" class="btn btn-emerald"><i class="fa-solid fa-cash-register me-1"></i>Çıkış & Tahsilat (${money(ar.remainingBalance)})</button>`);
+    acts.push(`<button onclick="openEditRez('${esc(ar.id)}')" class="btn btn-sky"><i class="fa-solid fa-user-pen me-1"></i>Düzenle</button>`);
+    acts.push(`<button onclick="printReceipt('${esc(ar.id)}')" class="btn btn-ghost"><i class="fa-solid fa-print me-1"></i>Ara Fiş</button>`);
+  } else {
+    const pending = S.reservations.find(x => String(x.roomId) === String(roomId) && x.status === 'Rezerve' && x.checkIn <= todayStr());
+    if (pending && r.status !== 'Arızalı') acts.push(`<button onclick="doCheckin('${esc(pending.id)}')" class="btn btn-emerald"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Check-in: ${esc(pending.primaryName)}</button>`);
+    if (r.status !== 'Arızalı') acts.push(`<button onclick="closeModal('roomDetailModal'); openNewBookingModal('${esc(r.id)}')" class="btn btn-amber"><i class="fa-solid fa-calendar-plus me-1"></i>Yeni Rezervasyon</button>`);
+    acts.push(`<button onclick="setRoomStatus('${esc(r.id)}','${r.status === 'Arızalı' ? 'Boş' : 'Arızalı'}')" class="btn btn-ghost"><i class="fa-solid fa-wrench me-1"></i>${r.status === 'Arızalı' ? 'Arıza Giderildi' : 'Arızaya Al'}</button>`);
+  }
+  acts.push(`<button onclick="setClean('${esc(r.id)}',${r.clean ? 'false' : 'true'})" class="btn ${r.clean ? 'btn-ghost' : 'btn-amber'}"><i class="fa-solid fa-broom me-1"></i>${r.clean ? 'Kirli İşaretle' : 'Temizlendi'}</button>`);
+  if (!ar) acts.push(`<button onclick="deleteRoom('${esc(r.id)}')" class="btn btn-rose role-admin inline-flex">Odayı Sil</button>`);
+  $('detailRoomActions').innerHTML = acts.join('');
+
+  $('folioSection').classList.toggle('hidden', !ar);
+  if (ar) {
+    const items = S.minibar.filter(m => m.reservationId === ar.id), pays = S.payments.filter(p => p.reservationId === ar.id);
+    $('detailMinibarTotalText').innerText = money(ar.minibarTotal);
+    $('minibarItemsList').innerHTML = items.map(m => `<div class="flex justify-between items-center bg-slate-900 p-2 rounded-lg border border-slate-800"><span>${esc(m.name)} ${m.qty > 1 ? `× ${m.qty}` : ''} <span class="text-slate-500 text-[10px]">${fmtDT(m.createdAt)}</span></span><span class="flex items-center gap-2"><b class="text-amber-400 font-mono">${money(m.price * (m.qty || 1))}</b><button onclick="removeMinibar(${m.id})" class="text-rose-400"><i class="fa-solid fa-xmark"></i></button></span></div>`).join('') || '<p class="text-slate-500 italic">Harcama yok</p>';
+    $('detailBalanceText').innerHTML = `Kalan: <span class="${ar.remainingBalance > 0 ? 'text-rose-400' : 'text-emerald-400'}">${money(ar.remainingBalance)}</span>`;
+    $('folioSummary').innerHTML = [['Oda', ar.totalPrice, 'text-slate-200'], ['Minibar', ar.minibarTotal, 'text-sky-400'], ['Tahsil', ar.collectedTotal, 'text-emerald-400']].map(([l, v, c]) => `<div class="bg-slate-900 rounded-lg p-2"><div class="text-[10px] text-slate-500">${l}</div><b class="${c}">${money(v)}</b></div>`).join('');
+    $('paymentsList').innerHTML = pays.map(p => `<div class="flex justify-between items-center bg-slate-900 p-2 rounded-lg border border-slate-800"><span>${esc(p.type)} • ${esc(p.method)} <span class="text-slate-500 text-[10px]">${fmtDT(p.createdAt)} ${esc(p.createdBy || '')}</span></span><span class="flex items-center gap-2"><b class="${p.type === 'İade' ? 'text-rose-400' : 'text-emerald-400'} font-mono">${p.type === 'İade' ? '-' : ''}${money(p.amount)}</b><button onclick="deletePayment(${p.id})" class="text-rose-400 role-admin inline-flex"><i class="fa-solid fa-xmark"></i></button></span></div>`).join('') || '<p class="text-slate-500 italic">Ödeme yok</p>';
+    $('payAmount').placeholder = `Kalan ${money(ar.remainingBalance)}`;
+  }
+
+  const grid = $('roomCalendarGrid'); grid.innerHTML = '';
+  const roomRez = S.reservations.filter(x => String(x.roomId) === String(roomId) && ['Rezerve', 'Dolu'].includes(x.status));
+  for (let i = 0; i < 30; i++) {
+    const ds = addDays(todayStr(), i); const [y, m, d] = ds.split('-').map(Number); const dt = new Date(y, m - 1, d);
+    const mr = roomRez.find(x => ds >= x.checkIn && ds < x.checkOut);
+    const c = document.createElement('div');
+    c.className = `rounded-xl p-2 text-center cursor-pointer border ${mr ? (mr.status === 'Dolu' ? 'bg-rose-500/20 border-rose-500/40' : 'bg-amber-500/20 border-amber-500/40') : 'bg-emerald-500/10 border-emerald-500/20 hover:bg-emerald-500/20'}`;
+    c.innerHTML = `<p class="font-bold text-[11px]">${d} ${dt.toLocaleDateString('tr-TR', { month: 'short' })}</p><span class="text-[9px] block truncate">${mr ? esc(mr.primaryName) : 'Müsait'}</span>`;
+    c.title = mr ? `${mr.primaryName} • ${fmtDate(mr.checkIn)} → ${fmtDate(mr.checkOut)}` : 'Rezervasyon oluştur';
+    c.onclick = () => { if (mr) openEditRez(mr.id); else { closeModal('roomDetailModal'); openNewBookingModal(roomId, ds); } };
+    grid.appendChild(c);
+  }
+  const all = S.reservations.filter(x => String(x.roomId) === String(roomId)).sort((a, b) => (b.checkIn || '').localeCompare(a.checkIn || ''));
+  $('detailRoomReservationTable').innerHTML = all.map(x => `<tr class="hover:bg-slate-800/30"><td class="p-3 font-semibold">${esc(x.allGuestsNames || x.primaryName)}</td><td class="p-3">${fmtDate(x.checkIn)} → ${fmtDate(x.checkOut)}</td><td class="p-3 text-emerald-400 font-bold">${money(x.grandTotal)}</td><td class="p-3 text-amber-400">${money(x.collectedTotal)}</td><td class="p-3 ${x.remainingBalance > 0 ? 'text-rose-400 font-bold' : 'text-slate-500'}">${money(x.remainingBalance)}</td><td class="p-3">${statusBadge(x.status)}</td><td class="p-3 text-right whitespace-nowrap space-x-1">${rezActions(x)}</td></tr>`).join('') || '<tr><td colspan="7" class="p-4 text-center text-slate-500">Rezervasyon yok</td></tr>';
+  if (!silent) openModal('roomDetailModal');
+}
+const setClean = (id, c) => act(() => api(`/rooms/${encodeURIComponent(id)}/clean`, 'POST', { clean: c }), c ? 'Oda temiz olarak işaretlendi' : 'Oda kirli olarak işaretlendi');
+const setRoomStatus = (id, status) => act(() => api(`/rooms/${encodeURIComponent(id)}/status`, 'POST', { status }), `Oda durumu: ${status}`);
+function deleteRoom(id) { confirmAsk('Oda Silme', `Oda ${id} silinecek. Emin misiniz?`, async () => { if (await act(() => api(`/rooms/${encodeURIComponent(id)}`, 'DELETE'), 'Oda silindi')) closeModal('roomDetailModal'); }); }
+async function addMinibar() {
+  const ar = activeRez(currentDetailRoomId); if (!ar) return;
+  const name = $('minibarItemName').value.trim(), price = parseFloat($('minibarItemPrice').value), qty = parseInt($('minibarItemQty').value, 10) || 1;
+  if (!name || !(price > 0)) return toast('Ürün adı ve tutar girin', 'error');
+  if (await act(() => api(`/reservations/${ar.id}/minibar`, 'POST', { name, price, qty }), `"${name}" eklendi`)) { $('minibarItemName').value = ''; $('minibarItemPrice').value = ''; $('minibarItemQty').value = 1; }
+}
+const removeMinibar = (id) => act(() => api(`/minibar/${id}`, 'DELETE'), 'Minibar kalemi silindi');
+async function addPayment() {
+  const ar = activeRez(currentDetailRoomId); if (!ar) return;
+  const amount = parseFloat($('payAmount').value); if (!(amount > 0)) return toast('Tutar girin', 'error');
+  if (await act(() => api('/payments', 'POST', { reservationId: ar.id, amount, method: $('payMethod').value, type: $('payType').value }), 'Ödeme kaydedildi')) $('payAmount').value = '';
+}
+function deletePayment(id) { confirmAsk('Ödeme Sil', 'Bu ödeme kaydı silinecek.', () => act(() => api(`/payments/${id}`, 'DELETE'), 'Ödeme silindi')); }
+
+// ============ CHECK-IN / OUT / İPTAL ============
+const doCheckin = (id) => act(() => api(`/reservations/${id}/checkin`, 'POST'), 'Check-in yapıldı');
+function cancelRez(id) {
+  const r = rez(id); if (!r) return;
+  confirmAsk('İptal / No-Show', `${r.primaryName} — Oda ${r.roomId}\n\n"Onayla" = İptal. Misafir gelmedi ise sonraki soruda No-Show seçin.`, async () => {
+    confirmAsk('Tür', 'Misafir hiç gelmedi mi? (Onayla = No-Show, İptal = normal iptal)', () => act(() => api(`/reservations/${id}/noshow`, 'POST'), 'No-Show olarak işaretlendi'));
+    $('confirmModalCancelBtn').onclick = () => { closeModal('confirmModal'); confirmCb = null; act(() => api(`/reservations/${id}/cancel`, 'POST'), 'Rezervasyon iptal edildi'); bindConfirmButtons(); };
+  });
+}
+function deleteRez(id) { confirmAsk('Kalıcı Silme', 'Rezervasyon, ödemeleri ve minibar kayıtları kalıcı olarak silinir. Raporları etkiler!', () => act(() => api(`/reservations/${id}`, 'DELETE'), 'Kayıt silindi')); }
+function openCheckout(id) {
+  const r = rez(id); if (!r) return; currentCheckoutRezId = id;
+  $('checkoutSummary').innerHTML = `<div class="flex justify-between"><span>Oda ${esc(r.roomId)} • ${esc(r.primaryName)}</span><span>${fmtDate(r.checkIn)} → ${fmtDate(r.checkOut)}</span></div><div class="flex justify-between text-slate-400"><span>Konaklama</span><span>${money(r.totalPrice)}</span></div><div class="flex justify-between text-slate-400"><span>Minibar</span><span>${money(r.minibarTotal)}</span></div><div class="flex justify-between text-slate-400"><span>Tahsil edilen</span><span>-${money(r.collectedTotal)}</span></div><div class="flex justify-between font-black text-base border-t border-slate-800 pt-1 mt-1"><span>KALAN</span><span class="${r.remainingBalance > 0 ? 'text-rose-400' : 'text-emerald-400'}">${money(r.remainingBalance)}</span></div>`;
+  $('checkoutPayments').innerHTML = ''; $('checkoutWarning').classList.add('hidden');
+  if (r.remainingBalance > 0) addCheckoutPayRow(r.remainingBalance);
+  openModal('checkoutModal');
+}
+function addCheckoutPayRow(amount) { const d = document.createElement('div'); d.className = 'grid grid-cols-3 gap-2 co-row'; d.innerHTML = `<input type="number" min="0" step="0.01" value="${amount || ''}" placeholder="Tutar" class="inp co-amt"><select class="inp co-method"><option>Nakit</option><option>Kart</option><option>Havale</option></select><button onclick="this.parentElement.remove()" class="btn btn-ghost"><i class="fa-solid fa-xmark"></i></button>`; $('checkoutPayments').appendChild(d); }
+async function confirmCheckout() {
+  const r = rez(currentCheckoutRezId); if (!r) return;
+  const payments = [...document.querySelectorAll('.co-row')].map(x => ({ amount: parseFloat(x.querySelector('.co-amt').value) || 0, method: x.querySelector('.co-method').value })).filter(p => p.amount > 0);
+  const sum = payments.reduce((a, p) => a + p.amount, 0);
+  if (Math.abs(sum - r.remainingBalance) > 0.01) {
+    const w = $('checkoutWarning'); w.classList.remove('hidden');
+    if (w.dataset.ack !== currentCheckoutRezId) { w.innerText = sum < r.remainingBalance ? `Dikkat: ${money(r.remainingBalance - sum)} eksik tahsilat. Tekrar "Çıkışı Tamamla"ya basarsanız kalan borç açık kalır.` : `Dikkat: ${money(sum - r.remainingBalance)} fazla tahsilat. Tekrar basarsanız kaydedilir.`; w.dataset.ack = currentCheckoutRezId; return; }
+  }
+  $('checkoutWarning').dataset.ack = '';
+  if (await act(() => api(`/reservations/${r.id}/checkout`, 'POST', { payments }), 'Çıkış tamamlandı, oda temizliğe alındı')) { closeModal('checkoutModal'); closeModal('roomDetailModal'); setTimeout(() => confirmAsk('Fiş', 'Konaklama fişi yazdırılsın mı?', () => printReceipt(r.id)), 300); }
+}
+
+// ============ REZERVASYON FORMU ============
+function populateRoomSelect(sel, selectedId) { sel.innerHTML = S.rooms.filter(r => r.status !== 'Arızalı').map(r => `<option value="${esc(r.id)}" ${String(r.id) === String(selectedId) ? 'selected' : ''}>Oda ${esc(r.id)} — ${esc(r.type)} (${money(r.price)}) [${r.status}]</option>`).join(''); }
+function firstFreeDates(roomId) {
+  const rr = S.reservations.filter(r => String(r.roomId) === String(roomId) && ['Rezerve', 'Dolu'].includes(r.status));
+  for (let i = 0; i < 180; i++) { const ci = addDays(todayStr(), i); if (!rr.some(r => ci >= r.checkIn && ci < r.checkOut)) return { checkIn: ci, checkOut: addDays(ci, 1) }; }
+  return { checkIn: todayStr(), checkOut: addDays(todayStr(), 1) };
+}
+function openNewBookingModal(roomId, preferredCheckIn, guest) {
+  if (!S.rooms.length) return toast('Önce oda ekleyin', 'error');
+  $('bookingForm').reset(); $('additionalGuestsContainer').innerHTML = ''; $('g1_nat').value = 'TC'; $('modalAdvancePaymentInput').value = 0;
+  const rid = roomId || S.rooms.find(r => r.status === 'Boş')?.id || S.rooms[0].id;
+  populateRoomSelect($('modalRoomSelect'), rid);
+  const d = preferredCheckIn ? { checkIn: preferredCheckIn, checkOut: addDays(preferredCheckIn, 1) } : firstFreeDates(rid);
+  $('modalCheckIn').value = d.checkIn; $('modalCheckOut').value = d.checkOut; $('modalCheckIn').min = todayStr();
+  if (guest) { $('g1_tc').value = guest.tc || ''; $('g1_name').value = guest.name || ''; $('g1_phone').value = guest.phone || ''; $('g1_email').value = guest.email || ''; $('g1_birth').value = guest.birthDate || ''; $('g1_nat').value = guest.nationality || 'TC'; }
+  requestQuote(); openModal('bookingModal');
+}
+function bookForGuest(key) { const g = S.guests.find(x => x.key === key); switchTab('rooms'); openNewBookingModal(null, null, g); }
+function handleModalRoomChange() { const d = firstFreeDates($('modalRoomSelect').value); $('modalCheckIn').value = d.checkIn; $('modalCheckOut').value = d.checkOut; requestQuote(); }
+function requestQuote() {
+  clearTimeout(quoteTimer);
+  quoteTimer = setTimeout(async () => {
+    const roomId = $('modalRoomSelect').value, checkIn = $('modalCheckIn').value, checkOut = $('modalCheckOut').value;
+    if (!roomId || !checkIn || !checkOut || nights(checkIn, checkOut) < 1) { $('calculatedNights').innerText = 'Geçersiz tarih'; $('modalTotalPriceInput').value = 0; return updateBalance(); }
+    try {
+      const q = await api('/quote', 'POST', { roomId, checkIn, checkOut, adultCount: $('modalAdultCount').value, childCount: $('modalChildCount').value });
+      $('calculatedNights').innerText = `${q.nights} gece • ${$('modalAdultCount').value} yet. + ${$('modalChildCount').value} çoc. → ${money(q.total)}` + (q.breakdown.some(b => b.price !== q.breakdown[0].price) ? ' (değişken gecelik)' : '');
+      $('modalTotalPriceInput').value = q.total;
+      const conflict = S.reservations.find(r => String(r.roomId) === String(roomId) && ['Rezerve', 'Dolu'].includes(r.status) && checkIn < r.checkOut && checkOut > r.checkIn);
+      $('bookingSubmitBtn').disabled = !!conflict && S.settings.allow_overbooking !== '1';
+      if (conflict) { $('calculatedNights').innerText = `ÇAKIŞMA: ${conflict.primaryName} (${fmtDate(conflict.checkIn)} → ${fmtDate(conflict.checkOut)})`; $('calculatedNights').className = 'text-rose-400 font-bold'; } else $('calculatedNights').className = 'text-amber-400 font-bold';
+    } catch (e) { $('calculatedNights').innerText = e.message; }
+    updateBalance();
+  }, 250);
+}
+function updateBalance() { const t = parseFloat($('modalTotalPriceInput').value) || 0, a = parseFloat($('modalAdvancePaymentInput').value) || 0; $('modalRemainingBalanceInput').value = Math.max(0, t - a).toFixed(2); }
+function updateGuestInputFields() {
+  const n = parseInt($('modalAdultCount').value, 10) || 1, c = $('additionalGuestsContainer'); c.innerHTML = '';
+  for (let i = 2; i <= n; i++) c.insertAdjacentHTML('beforeend', `<div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-2 relative"><span class="col-span-full text-[11px] font-bold text-slate-400">${i}. Misafir (KBS için önerilir)</span><div class="relative"><input type="text" id="g${i}_tc" placeholder="Kimlik No" oninput="suggestGuest(this.value,${i})" class="inp"><div id="suggest${i}" class="absolute left-0 right-0 top-full mt-1 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-20 max-h-40 overflow-y-auto hidden"></div></div><input type="text" id="g${i}_name" placeholder="Ad Soyad" oninput="suggestGuest(this.value,${i})" class="inp"><input type="date" id="g${i}_birth" class="inp"><input type="text" id="g${i}_nat" value="TC" maxlength="3" placeholder="Uyruk" class="inp uppercase"></div>`);
+}
+function suggestGuest(q, idx) {
+  const box = $(`suggest${idx}`); if (!box) return; q = q.trim().toLowerCase().replace(/\s/g, '');
+  if (q.length < 2) return box.classList.add('hidden');
+  const m = S.guests.filter(g => `${g.name}`.toLowerCase().replace(/\s/g, '').includes(q) || (g.tc || '').includes(q) || (g.phone || '').replace(/\s/g, '').includes(q)).slice(0, 8);
+  if (!m.length) return box.classList.add('hidden');
+  box.innerHTML = m.map(g => `<div onclick="pickGuest('${esc(g.key)}',${idx})" class="p-2.5 hover:bg-amber-500/20 cursor-pointer border-b border-slate-800/80 flex justify-between text-xs"><div><p class="font-bold">${esc(g.name)}</p><p class="text-[10px] text-slate-400 font-mono">${esc(g.tc || '-')} • ${esc(g.phone || '-')}</p></div><span class="badge badge-amber">${g.visits || 1}×</span></div>`).join('');
+  box.classList.remove('hidden');
+}
+function pickGuest(key, idx) {
+  const g = S.guests.find(x => x.key === key); if (!g) return;
+  const set = (id, v) => { const el = $(id); if (el) el.value = v || ''; };
+  set(`g${idx}_tc`, g.tc); set(`g${idx}_name`, g.name); set(`g${idx}_birth`, g.birthDate); set(`g${idx}_nat`, g.nationality || 'TC');
+  if (idx === 1) { set('g1_phone', g.phone); set('g1_email', g.email); if (g.notes) $('modalNotes').value = g.notes; }
+  $(`suggest${idx}`).classList.add('hidden'); toast(`Misafir seçildi: ${g.name}`);
+}
+async function handleSaveBooking(e) {
+  e.preventDefault();
+  const n = parseInt($('modalAdultCount').value, 10) || 1, guests = [];
+  for (let i = 1; i <= n; i++) { const name = ($(`g${i}_name`)?.value || '').trim(); if (!name) continue; guests.push({ name, tc: $(`g${i}_tc`)?.value, phone: i === 1 ? $('g1_phone').value : '', email: i === 1 ? $('g1_email').value : '', birthDate: $(`g${i}_birth`)?.value, nationality: ($(`g${i}_nat`)?.value || 'TC').toUpperCase() }); }
+  const body = { roomId: $('modalRoomSelect').value, checkIn: $('modalCheckIn').value, checkOut: $('modalCheckOut').value, adultCount: n, childCount: parseInt($('modalChildCount').value, 10) || 0, guests, notes: $('modalNotes').value, source: $('modalSource').value, totalPrice: parseFloat($('modalTotalPriceInput').value) || 0, advancePayment: parseFloat($('modalAdvancePaymentInput').value) || 0, advanceMethod: $('modalAdvanceMethod').value };
+  const r = await act(() => api('/reservations', 'POST', body));
+  if (r) { closeModal('bookingModal'); toast(r.status === 'Dolu' ? `Check-in yapıldı — Oda ${body.roomId}` : `Rezervasyon oluşturuldu — Oda ${body.roomId}`); }
+}
+function openEditRez(id) {
+  const r = rez(id); if (!r) return;
+  $('er_id').value = id; populateRoomSelect($('er_room'), r.roomId); $('er_in').value = r.checkIn; $('er_out').value = r.checkOut; $('er_name').value = r.primaryName; $('er_tc').value = r.tc || ''; $('er_phone').value = r.phone || ''; $('er_adult').value = r.adultCount || 1; $('er_child').value = r.childCount || 0; $('er_total').value = r.totalPrice; $('er_notes').value = r.notes || '';
+  $('er_in').disabled = r.status === 'Dolu'; openModal('editRezModal');
+}
+async function handleSaveEditedRez(e) {
+  e.preventDefault(); const id = $('er_id').value;
+  if (await act(() => api(`/reservations/${id}`, 'PUT', { roomId: $('er_room').value, checkIn: $('er_in').value, checkOut: $('er_out').value, primaryName: $('er_name').value, tc: $('er_tc').value, phone: $('er_phone').value, adultCount: $('er_adult').value, childCount: $('er_child').value, totalPrice: $('er_total').value, notes: $('er_notes').value }), 'Rezervasyon güncellendi')) closeModal('editRezModal');
+}
+
+// ============ MİSAFİR ============
+function openEditGuest(key) { const g = S.guests.find(x => x.key === key); if (!g) return; $('eg_key').value = key; $('eg_name').value = g.name; $('eg_tc').value = g.tc || ''; $('eg_phone').value = g.phone || ''; $('eg_email').value = g.email || ''; $('eg_birth').value = g.birthDate || ''; $('eg_nat').value = g.nationality || 'TC'; $('eg_gender').value = g.gender || ''; $('eg_notes').value = g.notes || ''; openModal('editGuestModal'); }
+async function handleSaveEditedGuest(e) { e.preventDefault(); if (await act(() => api(`/guests/${encodeURIComponent($('eg_key').value)}`, 'PUT', { name: $('eg_name').value, tc: $('eg_tc').value, phone: $('eg_phone').value, email: $('eg_email').value, birthDate: $('eg_birth').value, nationality: $('eg_nat').value.toUpperCase(), gender: $('eg_gender').value, notes: $('eg_notes').value }), 'Müşteri güncellendi')) closeModal('editGuestModal'); }
+function deleteGuest(key) { confirmAsk('Müşteri Silme', 'Bu müşteri kaydı silinecek (rezervasyon geçmişi kalır).', () => act(() => api(`/guests/${encodeURIComponent(key)}`, 'DELETE'), 'Müşteri silindi')); }
+
+// ============ AYLIK GANTT ============
+function changeMonth(d) { monthDate = d === 0 ? new Date() : new Date(monthDate.getFullYear(), monthDate.getMonth() + d, 1); renderMonthly(); }
+function renderMonthly() {
+  const y = monthDate.getFullYear(), m = monthDate.getMonth(), dim = new Date(y, m + 1, 0).getDate(), t = todayStr();
+  $('monthlyOverviewLabel').innerText = `${['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'][m]} ${y}`;
+  const days = []; for (let d = 1; d <= dim; d++) { const ds = localDate(new Date(y, m, d)); days.push({ d, ds, dow: new Date(y, m, d).getDay() }); }
+  $('monthlyOverviewHead').innerHTML = `<tr><th class="p-2 sticky left-0 bg-slate-950 z-20 border-r border-slate-800 min-w-[110px] text-left">Oda</th>${days.map(x => `<th class="p-1.5 text-center min-w-[34px] border-r border-slate-800/60 ${x.ds === t ? 'bg-fuchsia-500/25 text-fuchsia-400' : (x.dow === 0 || x.dow === 6 ? 'text-amber-500' : 'text-slate-400')} ${x.ds < t ? 'opacity-40' : ''}"><div>${x.d}</div><div class="text-[9px] font-normal opacity-70">${['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'][x.dow]}</div></th>`).join('')}</tr>`;
+  const body = $('monthlyOverviewBody'); body.innerHTML = '';
+  for (const r of S.rooms) {
+    const rr = S.reservations.filter(x => String(x.roomId) === String(r.id) && ['Rezerve', 'Dolu'].includes(x.status));
+    let html = `<td class="p-2 sticky left-0 bg-slate-900 z-10 border-r border-slate-800 font-bold ${r.status === 'Arızalı' ? 'text-stone-500' : 'text-amber-500'} whitespace-nowrap">Oda ${esc(r.id)}<div class="text-[9px] font-normal text-slate-500 truncate max-w-[95px]">${esc(r.status === 'Arızalı' ? 'Arızalı' : r.type)}</div></td>`;
+    for (const x of days) {
+      const mr = rr.find(z => x.ds >= z.checkIn && x.ds < z.checkOut);
+      let cls = r.status === 'Arızalı' ? 'bg-stone-500/20' : (mr ? (mr.status === 'Dolu' ? 'bg-rose-500/40 hover:bg-rose-500/60 rez-draggable' : 'bg-amber-500/40 hover:bg-amber-500/60 rez-draggable') : (x.ds < t ? 'bg-slate-800/30' : 'bg-emerald-500/10 hover:bg-emerald-500/25'));
+      if (x.ds === t) cls += ' ring-2 ring-inset ring-fuchsia-400';
+      const first = mr && (mr.checkIn === x.ds || x.d === 1);
+      html += `<td class="p-0 text-center border-r border-slate-800/40 h-9 ${cls} transition relative" ${mr && mr.status === 'Rezerve' ? `draggable="true" ondragstart="dragStart(event,'${esc(mr.id)}')"` : ''} ${r.status !== 'Arızalı' && x.ds >= t ? `ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="drop(event,'${esc(r.id)}','${x.ds}')"` : ''} onmouseenter="showTip(event,'${esc(r.id)}','${x.ds}')" onmousemove="moveTip(event)" onmouseleave="hideTip()" onclick="cellClick('${esc(r.id)}','${x.ds}')">${first ? `<span class="absolute inset-y-0 left-1 flex items-center text-[9px] font-bold text-slate-950 whitespace-nowrap overflow-hidden pointer-events-none">${esc(mr.primaryName.split(' ')[0])}</span>` : ''}</td>`;
+    }
+    body.insertAdjacentHTML('beforeend', `<tr class="hover:bg-slate-800/20">${html}</tr>`);
+  }
+  if (!S.rooms.length) body.innerHTML = '<tr><td colspan="32" class="p-4 text-center text-slate-500">Oda yok</td></tr>';
+}
+function dragStart(e, id) { e.dataTransfer.setData('text/plain', id); }
+function dragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+function dragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+function drop(e, roomId, ds) {
+  e.preventDefault(); e.currentTarget.classList.remove('drag-over');
+  const r = rez(e.dataTransfer.getData('text/plain')); if (!r || r.status !== 'Rezerve') return;
+  const co = addDays(ds, nights(r.checkIn, r.checkOut));
+  confirmAsk('Rezervasyon Taşıma', `${r.primaryName} → Oda ${roomId}, ${fmtDate(ds)} - ${fmtDate(co)}`, () => act(() => api(`/reservations/${r.id}`, 'PUT', { roomId, checkIn: ds, checkOut: co }), 'Rezervasyon taşındı'));
+}
+function cellClick(roomId, ds) { const mr = S.reservations.find(z => String(z.roomId) === String(roomId) && ['Rezerve', 'Dolu'].includes(z.status) && ds >= z.checkIn && ds < z.checkOut); if (mr) openRoomAction(roomId); else if (ds >= todayStr() && room(roomId)?.status !== 'Arızalı') openNewBookingModal(roomId, ds); }
+function showTip(e, roomId, ds) { const r = room(roomId), mr = S.reservations.find(z => String(z.roomId) === String(roomId) && ['Rezerve', 'Dolu'].includes(z.status) && ds >= z.checkIn && ds < z.checkOut), tip = $('monthlyTooltip'); tip.innerHTML = mr ? `<p class="font-bold text-amber-400">Oda ${esc(roomId)} • ${esc(r.type)}</p><p class="font-semibold">${esc(mr.allGuestsNames || mr.primaryName)}</p><p class="text-slate-400">${fmtDate(mr.checkIn)} → ${fmtDate(mr.checkOut)} • ${money(mr.grandTotal)}</p><p class="mt-1">${statusBadge(mr.status)} ${esc(mr.source || '')}</p>` : `<p class="font-bold text-amber-400">Oda ${esc(roomId)}</p><p class="text-emerald-400">${r.status === 'Arızalı' ? 'Kapalı' : 'Müsait'} — ${fmtDate(ds)}</p>`; tip.classList.remove('hidden'); moveTip(e); }
+function moveTip(e) { const tip = $('monthlyTooltip'); if (tip.classList.contains('hidden')) return; let l = e.clientX + 16, t = e.clientY + 16; if (l + 230 > innerWidth) l = e.clientX - 240; if (t + 100 > innerHeight) t = e.clientY - 110; tip.style.left = l + 'px'; tip.style.top = t + 'px'; }
+function hideTip() { $('monthlyTooltip').classList.add('hidden'); }
+
+// ============ RAPORLAR ============
+function setReportQuickDate(type) {
+  const n = new Date(); let s = new Date(), e = new Date();
+  if (type === 'this_month') s = new Date(n.getFullYear(), n.getMonth(), 1); else if (type === 'last_month') { s = new Date(n.getFullYear(), n.getMonth() - 1, 1); e = new Date(n.getFullYear(), n.getMonth(), 0); } else if (type === 'last_3_months') s = new Date(n.getFullYear(), n.getMonth() - 3, 1); else if (type === 'this_year') s = new Date(n.getFullYear(), 0, 1);
+  $('reportStartDate').value = localDate(s); $('reportEndDate').value = localDate(e); renderReports();
+}
+function filteredReport() {
+  const s = $('reportStartDate').value, e = $('reportEndDate').value, src = $('reportSource').value, basis = $('reportBasis').value;
+  if (basis === 'payment') {
+    const payIds = new Set(S.payments.filter(p => { const d = localDate(new Date(p.createdAt)); return (!s || d >= s) && (!e || d <= e); }).map(p => p.reservationId));
+    return S.reservations.filter(r => payIds.has(r.id) && (!src || r.source === src));
+  }
+  return S.reservations.filter(r => !['İptal', 'No-Show'].includes(r.status) && (!src || r.source === src) && (!e || r.checkIn <= e) && (!s || r.checkOut > s));
+}
+function renderReports() {
+  const s = $('reportStartDate').value, e = $('reportEndDate').value;
+  const srcSel = $('reportSource'); const cur0 = srcSel.value; srcSel.innerHTML = '<option value="">Tüm Kaynaklar</option>' + [...new Set(S.reservations.map(r => r.source).filter(Boolean))].map(x => `<option ${x === cur0 ? 'selected' : ''}>${esc(x)}</option>`).join('');
+  const rows = filteredReport();
+  $('reportPeriodText').innerText = `${fmtDate(s)} — ${fmtDate(e)} • ${rows.length} kayıt`;
+  let roomRev = 0, mbRev = 0, col = 0, out = 0, nightSum = 0;
+  $('reportTableBody').innerHTML = rows.sort((a, b) => a.checkIn.localeCompare(b.checkIn)).map(r => { roomRev += +r.totalPrice || 0; mbRev += r.minibarTotal; col += r.collectedTotal; out += r.remainingBalance; const nn = nights(r.checkIn, r.checkOut); nightSum += nn; return `<tr class="hover:bg-slate-800/30"><td class="p-3 font-bold text-amber-500">Oda ${esc(r.roomId)}</td><td class="p-3">${esc(r.primaryName)}<div class="text-[10px] text-slate-500">${esc(r.source || '')}</div></td><td class="p-3">${fmtDate(r.checkIn)} → ${fmtDate(r.checkOut)}</td><td class="p-3">${nn}</td><td class="p-3 font-mono">${money(r.totalPrice)}</td><td class="p-3 font-mono text-sky-400">${money(r.minibarTotal)}</td><td class="p-3 font-bold text-emerald-400">${money(r.grandTotal)}</td><td class="p-3 text-amber-400">${money(r.collectedTotal)}</td><td class="p-3 ${r.remainingBalance > 0 ? 'text-rose-400 font-bold' : 'text-slate-500'}">${money(r.remainingBalance)}</td><td class="p-3">${statusBadge(r.status)}</td></tr>`; }).join('') || '<tr><td colspan="10" class="p-4 text-center text-slate-500 italic">Kayıt yok</td></tr>';
+  $('reportTotalRevenue').innerText = money(roomRev + mbRev); $('reportRoomRevenue').innerText = money(roomRev); $('reportMinibarRevenue').innerText = money(mbRev); $('reportCollected').innerText = money(col); $('reportOutstanding').innerText = out > 0 ? `Açık bakiye: ${money(out)}` : 'Açık bakiye yok';
+  const daysInPeriod = s && e ? Math.max(1, nights(s, e) + 1) : 1, avail = S.rooms.filter(r => r.status !== 'Arızalı').length * daysInPeriod;
+  const occNights = s && e ? rows.reduce((a, r) => a + Math.max(0, nights(r.checkIn < s ? s : r.checkIn, r.checkOut > addDays(e, 1) ? addDays(e, 1) : r.checkOut)), 0) : nightSum;
+  $('reportOccupancy').innerText = avail ? `${Math.round(occNights / avail * 100)}%` : '-'; $('reportNights').innerText = `${occNights} dolu gece / ${avail} müsait gece`;
+  const ids = new Set(rows.map(r => r.id)), byM = {}, byS = {};
+  for (const p of S.payments) { if (!ids.has(p.reservationId)) continue; if ($('reportBasis').value === 'payment') { const d = localDate(new Date(p.createdAt)); if ((s && d < s) || (e && d > e)) continue; } byM[p.method] = (byM[p.method] || 0) + (p.type === 'İade' ? -p.amount : p.amount); }
+  for (const r of rows) byS[r.source || '-'] = (byS[r.source || '-'] || 0) + r.grandTotal;
+  $('reportByMethod').innerHTML = Object.entries(byM).map(([k, v]) => `<div class="flex justify-between"><span>${esc(k)}</span><b>${money(v)}</b></div>`).join('') || '<span class="text-slate-500">-</span>';
+  $('reportBySource').innerHTML = Object.entries(byS).sort((a, b) => b[1] - a[1]).map(([k, v]) => `<div class="flex justify-between"><span>${esc(k)}</span><b>${money(v)}</b></div>`).join('') || '<span class="text-slate-500">-</span>';
+}
+function exportReportsCSV() {
+  const rows = filteredReport(); if (!rows.length) return toast('Kayıt yok', 'error');
+  const q = (v) => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
+  let csv = '\uFEFFRezervasyon No;Oda;Misafir;Kimlik;Telefon;Kaynak;Giris;Cikis;Gece;Oda Tutari;Minibar;Toplam;Tahsil;Kalan;Durum\n';
+  for (const r of rows) csv += [r.id, r.roomId, r.primaryName, r.tc, r.phone, r.source, fmtDate(r.checkIn), fmtDate(r.checkOut), nights(r.checkIn, r.checkOut), r.totalPrice, r.minibarTotal, r.grandTotal, r.collectedTotal, r.remainingBalance, r.status].map(q).join(';') + '\n';
+  download(`ciro_${$('reportStartDate').value}_${$('reportEndDate').value}.csv`, csv, 'text/csv;charset=utf-8'); toast('CSV indirildi');
+}
+function exportKbs() { const d = prompt('KBS bildirim tarihi (YYYY-AA-GG):', todayStr()); if (!d) return; window.open(`${API}/export?type=kbs&date=${encodeURIComponent(d)}&token=${token}`, '_blank'); }
+
+// ============ KASA ============
+function renderCash() {
+  if (!$('cashDate').value) $('cashDate').value = todayStr();
+  const d = $('cashDate').value;
+  const pays = S.payments.filter(p => localDate(new Date(p.createdAt)) === d).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+  const sum = (f) => pays.filter(f).reduce((a, p) => a + (p.type === 'İade' ? -p.amount : p.amount), 0);
+  $('cashSummary').innerHTML = [['Toplam', sum(() => true), 'text-emerald-400'], ['Nakit', sum(p => p.method === 'Nakit'), 'text-amber-400'], ['Kart', sum(p => p.method === 'Kart'), 'text-sky-400'], ['Havale', sum(p => p.method === 'Havale'), 'text-fuchsia-400']].map(([l, v, c]) => `<div class="bg-slate-900 border border-slate-800 rounded-xl p-3"><span class="text-xs text-slate-400">${l}</span><h3 class="text-xl font-black ${c}">${money(v)}</h3></div>`).join('');
+  $('cashTableBody').innerHTML = pays.map(p => { const r = rez(p.reservationId); return `<tr class="hover:bg-slate-800/30"><td class="p-3 font-mono">${new Date(p.createdAt).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}</td><td class="p-3 font-bold text-amber-500">${esc(p.roomId)}</td><td class="p-3">${esc(r ? r.primaryName : '-')}</td><td class="p-3">${esc(p.type)}</td><td class="p-3">${esc(p.method)}</td><td class="p-3 font-bold ${p.type === 'İade' ? 'text-rose-400' : 'text-emerald-400'}">${p.type === 'İade' ? '-' : ''}${money(p.amount)}</td><td class="p-3 text-slate-400">${esc(p.createdBy || '')}</td><td class="p-3 text-slate-500">${esc(p.note || '')}</td><td class="p-3 text-right role-admin"><button onclick="deletePayment(${p.id})" class="text-rose-400"><i class="fa-solid fa-trash"></i></button></td></tr>`; }).join('') || '<tr><td colspan="9" class="p-4 text-center text-slate-500 italic">Bu tarihte ödeme yok</td></tr>';
+}
+function printCash() {
+  const d = $('cashDate').value, pays = S.payments.filter(p => localDate(new Date(p.createdAt)) === d);
+  const tot = pays.reduce((a, p) => a + (p.type === 'İade' ? -p.amount : p.amount), 0);
+  $('printArea').innerHTML = `<div style="text-align:center"><b>${esc(S.settings.hotel_name)}</b><br>KASA RAPORU — ${fmtDate(d)}</div><hr><table>${pays.map(p => `<tr><td>${new Date(p.createdAt).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })} Oda ${esc(p.roomId)} ${esc(p.method)}</td><td class="r">${p.type === 'İade' ? '-' : ''}${money(p.amount)}</td></tr>`).join('')}</table><hr><table><tr><td><b>TOPLAM</b></td><td class="r"><b>${money(tot)}</b></td></tr></table><hr><div style="text-align:center">${new Date().toLocaleString('tr-TR')} • ${esc(S.me?.username || '')}</div>`;
+  window.print();
+}
+
+// ============ FİŞ ============
+function printReceipt(id) {
+  const r = rez(id); if (!r) return;
+  const items = S.minibar.filter(m => m.reservationId === id), pays = S.payments.filter(p => p.reservationId === id), st = S.settings;
+  $('printArea').innerHTML = `<div style="text-align:center"><b style="font-size:14px">${esc(st.hotel_name)}</b><br>${esc(st.hotel_address || '')}<br>${esc(st.hotel_phone || '')}${st.hotel_tax_no ? '<br>VN: ' + esc(st.hotel_tax_no) : ''}</div><hr>
+  <table><tr><td>Fiş No</td><td class="r">${esc(r.id)}</td></tr><tr><td>Oda</td><td class="r">${esc(r.roomId)}</td></tr><tr><td>Misafir</td><td class="r">${esc(r.primaryName)}</td></tr><tr><td>Giriş</td><td class="r">${fmtDate(r.checkIn)}</td></tr><tr><td>Çıkış</td><td class="r">${fmtDate(r.checkOut)}</td></tr><tr><td>Gece</td><td class="r">${nights(r.checkIn, r.checkOut)}</td></tr></table><hr>
+  <table><tr><td>Konaklama</td><td class="r">${money(r.totalPrice)}</td></tr>${items.map(m => `<tr><td>${esc(m.name)}${m.qty > 1 ? ' x' + m.qty : ''}</td><td class="r">${money(m.price * (m.qty || 1))}</td></tr>`).join('')}<tr><td><b>TOPLAM</b></td><td class="r"><b>${money(r.grandTotal)}</b></td></tr></table><hr>
+  <table>${pays.map(p => `<tr><td>${esc(p.type)} (${esc(p.method)}) ${fmtDate(localDate(new Date(p.createdAt)))}</td><td class="r">${p.type === 'İade' ? '-' : ''}${money(p.amount)}</td></tr>`).join('')}<tr><td>Tahsil Edilen</td><td class="r">${money(r.collectedTotal)}</td></tr><tr><td><b>KALAN</b></td><td class="r"><b>${money(r.remainingBalance)}</b></td></tr></table><hr>
+  <div style="text-align:center">${new Date().toLocaleString('tr-TR')}<br>Bizi tercih ettiğiniz için teşekkürler.<br><small>Bu belge mali değeri olan fatura/fiş yerine geçmez.</small></div>`;
+  window.print();
+}
+
+// ============ ODA AYARLARI ============
+function openRoomSettings() { populateRoomSettingsTable(); $('pricingModeHint').innerText = S.settings.pricing_mode === 'per_person' ? 'Mod: Kişi başı — baz fiyat × (yetişkin + çocuk×katsayı)' : 'Mod: Oda bazlı — baz fiyat + kapasite üstü her kişi için ek kişi ücreti'; $('icalRoom').innerHTML = S.rooms.map(r => `<option value="${esc(r.id)}">Oda ${esc(r.id)}</option>`).join(''); openModal('roomSettingsModal'); toggleMobileMenu(false); }
+function populateRoomSettingsTable() {
+  $('roomSettingsTableBody').innerHTML = S.rooms.map(r => `<tr><td class="p-2"><input type="text" id="rs_id_${esc(r.id)}" value="${esc(r.id)}" class="inp w-20 text-amber-400 font-bold"></td><td class="p-2"><input type="text" id="rs_type_${esc(r.id)}" value="${esc(r.type)}" class="inp"></td><td class="p-2"><input type="number" id="rs_price_${esc(r.id)}" value="${r.price}" class="inp w-24"></td><td class="p-2"><input type="number" id="rs_extra_${esc(r.id)}" value="${r.extraPersonPrice || 0}" class="inp w-24"></td><td class="p-2"><input type="number" id="rs_cap_${esc(r.id)}" value="${r.capacity || 2}" min="1" class="inp w-16"></td><td class="p-2 text-right whitespace-nowrap space-x-1"><button onclick="saveRoom('${esc(r.id)}')" class="btn btn-amber !py-1"><i class="fa-solid fa-floppy-disk"></i></button><button onclick="deleteRoom('${esc(r.id)}')" class="btn btn-rose !py-1"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('') || '<tr><td colspan="6" class="p-4 text-center text-slate-500">Oda yok</td></tr>';
+}
+async function handleAddNewRoom(e) { e.preventDefault(); if (await act(() => api('/rooms', 'POST', { id: $('newRoomId').value, type: $('newRoomType').value, price: $('newRoomPrice').value, extraPersonPrice: $('newRoomExtra').value, capacity: $('newRoomCap').value }), 'Oda eklendi')) e.target.reset(); }
+const saveRoom = (id) => act(() => api(`/rooms/${encodeURIComponent(id)}`, 'PUT', { id: $(`rs_id_${id}`).value, type: $(`rs_type_${id}`).value, price: $(`rs_price_${id}`).value, extraPersonPrice: $(`rs_extra_${id}`).value, capacity: $(`rs_cap_${id}`).value }), 'Oda güncellendi');
+function exportIcal() { window.open(`${API}/export?type=ical&roomId=${encodeURIComponent($('icalRoom').value)}&token=${token}`, '_blank'); }
+function importIcal(e) { const f = e.target.files[0]; if (!f) return; const rd = new FileReader(); rd.onload = async (ev) => { const r = await act(() => api('/import', 'POST', { roomId: $('icalRoom').value, ics: ev.target.result })); if (r) toast(`iCal: ${r.added} eklendi, ${r.skipped} atlandı`); }; rd.readAsText(f); e.target.value = ''; }
+
+// ============ OTEL AYARLARI ============
+function openSettings() {
+  for (const k of ['hotel_name', 'hotel_subtitle', 'hotel_address', 'hotel_phone', 'hotel_tax_no', 'pricing_mode', 'child_factor', 'weekend_multiplier', 'weekend_days', 'checkout_hour', 'backup_keep_days', 'backup_extra_dir']) { const el = $(`s_${k}`); if (el) el.value = S.settings[k] ?? ''; }
+  $('s_allow_overbooking').checked = S.settings.allow_overbooking === '1';
+  $('seasonRows').innerHTML = ''; let seasons = []; try { seasons = JSON.parse(S.settings.seasons || '[]'); } catch (_) {}
+  seasons.forEach(addSeasonRow);
+  $('pickFolderBtn').classList.toggle('hidden', !isDesktop);
+  openModal('settingsModal'); toggleMobileMenu(false);
+}
+function addSeasonRow(s = {}) { const d = document.createElement('div'); d.className = 'grid grid-cols-5 gap-2 season-row'; d.innerHTML = `<input type="text" placeholder="Ad (Yaz)" value="${esc(s.name || '')}" class="inp se-name col-span-2"><input type="text" placeholder="06-15" maxlength="5" value="${esc(s.start || '')}" class="inp se-start"><input type="text" placeholder="09-15" maxlength="5" value="${esc(s.end || '')}" class="inp se-end"><div class="flex gap-1"><input type="number" step="0.05" placeholder="1.3" value="${s.multiplier || ''}" class="inp se-mult"><button type="button" onclick="this.closest('.season-row').remove()" class="btn btn-ghost"><i class="fa-solid fa-xmark"></i></button></div>`; $('seasonRows').appendChild(d); }
+async function pickBackupFolder() { if (!isDesktop) return; const p = await window.mesoft.pickFolder(); if (p) $('s_backup_extra_dir').value = p; }
+async function handleSaveSettings(e) {
+  e.preventDefault(); const b = {};
+  for (const k of ['hotel_name', 'hotel_subtitle', 'hotel_address', 'hotel_phone', 'hotel_tax_no', 'pricing_mode', 'child_factor', 'weekend_multiplier', 'weekend_days', 'checkout_hour', 'backup_keep_days', 'backup_extra_dir']) b[k] = $(`s_${k}`).value;
+  b.allow_overbooking = $('s_allow_overbooking').checked ? '1' : '0';
+  b.seasons = JSON.stringify([...document.querySelectorAll('.season-row')].map(r => ({ name: r.querySelector('.se-name').value, start: r.querySelector('.se-start').value, end: r.querySelector('.se-end').value, multiplier: parseFloat(r.querySelector('.se-mult').value) || 1 })).filter(s => /^\d{2}-\d{2}$/.test(s.start) && /^\d{2}-\d{2}$/.test(s.end)));
+  if (await act(() => api('/settings', 'PUT', b), 'Ayarlar kaydedildi')) closeModal('settingsModal');
+}
+
+// ============ KULLANICILAR ============
+async function openUsers() { renderUsers(); openModal('usersModal'); toggleMobileMenu(false); try { const a = await api('/audit'); $('auditList').innerHTML = a.map(x => `<div>${esc(x.ts.slice(0, 16).replace('T', ' '))} <b>${esc(x.user)}</b> ${esc(x.action)} <span class="text-slate-600">${esc(x.detail)}</span></div>`).join(''); } catch (_) {} }
+function renderUsers() { $('usersTableBody').innerHTML = (S.users || []).map(u => `<tr><td class="p-2.5 font-bold">${esc(u.username)}</td><td class="p-2.5">${esc(u.name || '-')}</td><td class="p-2.5"><select onchange="updateUser(${u.id},{role:this.value})" class="inp w-auto !py-1"><option value="receptionist" ${u.role !== 'admin' ? 'selected' : ''}>Resepsiyonist</option><option value="admin" ${u.role === 'admin' ? 'selected' : ''}>Yönetici</option></select></td><td class="p-2.5"><button onclick="updateUser(${u.id},{active:${u.active ? 'false' : 'true'}})" class="badge ${u.active ? 'badge-emerald' : 'badge-slate'}">${u.active ? 'Aktif' : 'Pasif'}</button></td><td class="p-2.5 text-right space-x-1 whitespace-nowrap"><button onclick="resetUserPassword(${u.id},'${esc(u.username)}')" class="btn btn-sky !py-1" title="Şifre sıfırla"><i class="fa-solid fa-key"></i></button>${u.id !== S.me.id ? `<button onclick="deleteUser(${u.id})" class="btn btn-rose !py-1"><i class="fa-solid fa-trash"></i></button>` : ''}</td></tr>`).join(''); }
+async function handleAddUser(e) { e.preventDefault(); if (await act(() => api('/users', 'POST', { username: $('nu_username').value, name: $('nu_name').value, password: $('nu_password').value, role: $('nu_role').value }), 'Kullanıcı eklendi')) e.target.reset(); }
+const updateUser = (id, b) => act(() => api(`/users/${id}`, 'PUT', b), 'Kullanıcı güncellendi');
+function resetUserPassword(id, un) { const p = prompt(`${un} için yeni şifre (en az 4):`); if (p && p.length >= 4) updateUser(id, { password: p }); }
+function deleteUser(id) { confirmAsk('Kullanıcı Sil', 'Kullanıcı silinecek. İşlem günlüğü kayıtları kalır.', () => act(() => api(`/users/${id}`, 'DELETE'), 'Kullanıcı silindi')); }
+
+// ============ YEDEK / DB ============
+async function backupNow() { const r = await act(() => api('/backup', 'POST')); if (r) toast(`Yedek alındı: ${r.file.split(/[\\/]/).pop()}`); }
+function openBackupsFolder() { if (isDesktop) window.mesoft.openBackups(); else toast('Yalnızca masaüstü uygulamasında', 'error'); }
+function exportJson() { window.open(`${API}/export?type=json&token=${token}`, '_blank'); }
+function importJson(e) { const f = e.target.files[0]; if (!f) return; const rd = new FileReader(); rd.onload = (ev) => { let data; try { data = JSON.parse(ev.target.result); } catch (_) { return toast('Geçersiz dosya', 'error'); } confirmAsk('İçe Aktarım', 'Mevcut tüm odalar, misafirler ve rezervasyonlar bu yedekle DEĞİŞTİRİLECEK. Devam?', async () => { if (await act(() => api('/import', 'POST', data), 'Yedek geri yüklendi')) closeModal('dbModal'); }); }; rd.readAsText(f); e.target.value = ''; }
+function resetDatabase() { confirmAsk('Fabrika Ayarları', 'Tüm odalar, misafirler, rezervasyonlar ve ödemeler silinecek. Kullanıcılar ve ayarlar kalır. Önce otomatik yedek alınır.', async () => { if (await act(() => api('/reset', 'POST'), 'Veritabanı sıfırlandı')) closeModal('dbModal'); }); }
+
+// ============ GÜNCELLEME (masaüstü) ============
+async function checkUpdates() { if (!isDesktop) return; const r = await window.mesoft.checkUpdates(); if (r && r.reason) $('updateStatusText').innerText = r.reason; else $('updateStatusText').innerText = 'Kontrol ediliyor…'; }
+function setupDesktop() {
+  if (!isDesktop) return;
+  window.mesoft.info().then(info => {
+    desktopInfo = info; loadHotelUI();
+    $('dbStoragePathText').innerText = info.dbPath; $('dbStorageInfoBox').classList.remove('hidden'); $('autoBackupsRow').classList.remove('hidden');
+    $('updateRow').classList.toggle('hidden', !info.isPackaged);
+    $('networkUrlList').innerHTML = info.ips.map(ip => `<div class="bg-slate-950 border border-emerald-500/40 p-3 rounded-xl flex items-center justify-between"><div><span class="font-mono text-emerald-400 font-bold text-sm select-all">http://${esc(ip.address)}:${info.port}</span><div class="text-[10px] text-slate-500">${esc(ip.name)}</div></div><button onclick="navigator.clipboard.writeText('http://${esc(ip.address)}:${info.port}').then(()=>toast('Kopyalandı'))" class="btn btn-emerald !py-1"><i class="fa-solid fa-copy"></i></button></div>`).join('');
+  });
+  window.mesoft.onUpdate((ev, p) => { const t = $('updateStatusText'); if (ev === 'available') t.innerText = `Yeni sürüm v${p.version} indiriliyor…`; if (ev === 'progress') t.innerText = `İndiriliyor %${Math.round(p.percent)}`; if (ev === 'not-available') { t.innerText = 'Uygulama güncel'; toast('Uygulama güncel'); } if (ev === 'error') t.innerText = `Hata: ${p}`; if (ev === 'downloaded') { t.innerText = `v${p.version} hazır`; confirmAsk('Güncelleme Hazır', `v${p.version} indirildi. Şimdi yeniden başlatılsın mı? (Diğer cihazların bağlantısı kısa süre kesilir)`, () => window.mesoft.installUpdate()); } });
+}
+if (!isDesktop) $('networkUrlList').innerHTML = `<div class="bg-slate-950 border border-emerald-500/40 p-3 rounded-xl"><span class="font-mono text-emerald-400 font-bold text-sm select-all">${esc(location.origin)}</span><div class="text-[10px] text-slate-500 mt-1">Bu cihaz tarayıcı üzerinden bağlı. IP listesi ana bilgisayardaki uygulamada görünür.</div></div>`;
+
+// ============ BAŞLANGIÇ ============
+function bindConfirmButtons() {
+  $('confirmModalOkBtn').onclick = async () => { closeModal('confirmModal'); const cb = confirmCb; confirmCb = null; if (typeof cb === 'function') await cb(); };
+  $('confirmModalCancelBtn').onclick = () => { closeModal('confirmModal'); confirmCb = null; };
+}
+window.addEventListener('DOMContentLoaded', async () => {
+  if (demoStore.getItem('ms_theme') === 'light') { document.body.classList.add('light-theme'); $('themeIcon').className = 'fa-solid fa-moon text-base'; }
+  setInterval(() => { $('liveClock').innerText = new Date().toLocaleTimeString('tr-TR'); }, 1000);
+  $('loginForm').addEventListener('submit', handleLogin);
+  bindConfirmButtons(); setupDesktop();
+  document.addEventListener('click', (e) => { if (!e.target.closest('[id^="suggest"]') && !e.target.matches('input')) document.querySelectorAll('[id^="suggest"]').forEach(b => b.classList.add('hidden')); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.querySelectorAll('.modal:not(.hidden)').forEach(m => { if (m.id !== 'passwordModal' || !$('pwCancelBtn').classList.contains('hidden')) m.classList.add('hidden'); }); });
+  const t = todayStr(); $('reportStartDate').value = localDate(new Date(new Date().getFullYear(), new Date().getMonth(), 1)); $('reportEndDate').value = t; $('cashDate').value = t;
+  switchTab('rooms');
+  if (token) { try { await api('/me'); $('loginOverlay').classList.add('hidden'); await refresh(true); startPolling(); } catch (_) { logoutLocal(); } }
+  else { try { const s = await fetch(`${API}/health`); if (s.ok) setOffline(false); } catch (_) { setOffline(true); } }
+});
+</script>
+</body>
+</html>

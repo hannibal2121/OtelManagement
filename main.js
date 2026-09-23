@@ -1,357 +1,160 @@
-const { app, BrowserWindow, ipcMain, shell, Tray, Menu, dialog } = require('electron');
+'use strict';
+const { app, BrowserWindow, ipcMain, shell, Tray, Menu, dialog, nativeImage } = require('electron');
 const path = require('path');
 const fs = require('fs');
-const http = require('http');
 const os = require('os');
-const { execSync } = require('child_process');
-const sqlite3 = require('sqlite3').verbose();
+const { Server } = require('./server');
 
-// --- TEKİL ÇALIŞMA KİLİDİ ---
-const gotTheLock = app.requestSingleInstanceLock();
-let mainWindow = null;
-let tray = null;
-let backupInterval = null;
-let isQuitting = false;
+const PORT = parseInt(process.env.MESOFT_PORT || '8080', 10);
+const APP_FOLDER = 'MesoftOtelYonetim';
 
-if (!gotTheLock) {
-  app.quit();
-} else {
-  app.on('second-instance', (event, commandLine, workingDirectory) => {
-    if (mainWindow) {
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.show();
-      mainWindow.focus();
-    }
-  });
+let mainWindow = null, tray = null, server = null, backupTimer = null, isQuitting = false;
+let autoUpdater = null;
+
+// ---- tekil örnek ----
+if (!app.requestSingleInstanceLock()) { app.quit(); } else {
+  app.on('second-instance', () => { if (mainWindow) { if (mainWindow.isMinimized()) mainWindow.restore(); mainWindow.show(); mainWindow.focus(); } });
 }
 
-const FIXED_APP_FOLDER_NAME = 'MesoftOtelYonetim';
-const fixedUserDataPath = path.join(app.getPath('appData'), FIXED_APP_FOLDER_NAME);
-app.setPath('userData', fixedUserDataPath);
+app.setPath('userData', path.join(app.getPath('appData'), APP_FOLDER));
+const userData = () => app.getPath('userData');
+const dbPath = () => path.join(userData(), 'mesoft_otel.db');
+const backupsDir = () => { const d = path.join(userData(), 'yedekler'); fs.mkdirSync(d, { recursive: true }); return d; };
+const logFile = () => path.join(userData(), 'mesoft.log');
 
-function getUserDataDir() { return app.getPath('userData'); }
-
-function getBackupsDir() {
-  const dir = path.join(getUserDataDir(), 'yedekler');
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  return dir;
+function log(...args) {
+  const line = `[${new Date().toISOString()}] ${args.map(a => a instanceof Error ? a.stack : (typeof a === 'string' ? a : JSON.stringify(a))).join(' ')}\n`;
+  try { fs.appendFileSync(logFile(), line); } catch (_) {}
+  console.log(line.trim());
 }
 
-function getDbFilePath() {
-  return path.join(getUserDataDir(), 'mesoft_otel.db');
+function localIps() {
+  const out = [];
+  for (const [name, list] of Object.entries(os.networkInterfaces())) for (const n of list) if (n.family === 'IPv4' && !n.internal) out.push({ name, address: n.address });
+  return out.length ? out : [{ name: 'localhost', address: '127.0.0.1' }];
 }
 
-function getLocalIpAddress() {
-  const interfaces = os.networkInterfaces();
-  for (const name of Object.keys(interfaces)) {
-    for (const net of interfaces[name]) {
-      if (net.family === 'IPv4' && !net.internal) {
-        return net.address;
-      }
-    }
-  }
-  return '127.0.0.1';
-}
-
-let db = null;
-let httpServer = null;
-
-function initDatabase() {
-  const dbPath = getDbFilePath();
-  const dbDir = path.dirname(dbPath);
-  if (!fs.existsSync(dbDir)) fs.mkdirSync(dbDir, { recursive: true });
-
-  db = new sqlite3.Database(dbPath, (err) => {
-    if (err) {
-      console.error('SQLite bağlantı hatası:', err.message);
-    } else {
-      db.exec('PRAGMA journal_mode = WAL; PRAGMA busy_timeout = 5000;', () => {
-        console.log('SQLite veritabanı aktif (WAL Modu):', dbPath);
-        createTablesAndSeed();
-      });
-    }
-  });
-}
-
-function createTablesAndSeed() {
-  db.serialize(() => {
-    db.run(`CREATE TABLE IF NOT EXISTS rooms (id INTEGER PRIMARY KEY, type TEXT, price REAL, status TEXT, guest TEXT, minibar TEXT)`);
-    db.run(`CREATE TABLE IF NOT EXISTS guests (key TEXT PRIMARY KEY, tc TEXT, name TEXT, phone TEXT, email TEXT, notes TEXT, visits INTEGER)`);
-    db.run(`CREATE TABLE IF NOT EXISTS reservations (id TEXT PRIMARY KEY, roomId INTEGER, primaryName TEXT, adultCount INTEGER, childCount INTEGER, allGuestsNames TEXT, tc TEXT, phone TEXT, checkIn TEXT, checkOut TEXT, totalPrice REAL, advancePayment REAL, remainingBalance REAL, status TEXT, minibarTotal REAL, collectedTotal REAL)`);
-    db.run(`CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT)`, () => {
-      db.get(`SELECT COUNT(*) as cnt FROM rooms`, (err, row) => {
-        if (row && row.cnt === 0) {
-          const defaultRooms = [
-            { id: 101, type: "Standart", price: 800, status: "Boş", guest: null, minibar: [] },
-            { id: 102, type: "Standart", price: 900, status: "Boş", guest: null, minibar: [] },
-            { id: 103, type: "Standart", price: 900, status: "Boş", guest: null, minibar: [] },
-            { id: 104, type: "Deluxe", price: 1200, status: "Boş", guest: null, minibar: [] }
-          ];
-          const roomStmt = db.prepare(`INSERT INTO rooms (id, type, price, status, guest, minibar) VALUES (?, ?, ?, ?, ?, ?)`);
-          defaultRooms.forEach(r => roomStmt.run(r.id, r.type, r.price, r.status, null, JSON.stringify([])));
-          roomStmt.finalize();
-        }
-      });
-      db.get(`SELECT * FROM settings WHERE key = 'config'`, (err, row) => {
-        if (!row) {
-          const defaultSettings = { hotel_name: 'MESOFT BİLİŞİM', hotel_subtitle: 'Otel Yönetim Sistemi', admin_username: 'admin', admin_password: '1234' };
-          db.run(`INSERT INTO settings (key, value) VALUES ('config', ?)`, [JSON.stringify(defaultSettings)]);
-        }
-      });
-    });
-  });
-}
-
-function startDailyBackup() {
-  backupInterval = setInterval(() => {
+// ---- yedekleme: her gece 03:00 (dakika kontrolü yerine "günde bir kez" bayrağı) ----
+function scheduleBackups() {
+  let lastBackupDay = null;
+  backupTimer = setInterval(async () => {
     const now = new Date();
-    if (now.getHours() === 3 && now.getMinutes() === 0) {
-      const dateStr = now.toISOString().split('T')[0];
-      const backupDir = 'C:\\OTEL\\YEDEK';
-      if (!fs.existsSync(backupDir)) {
-        try { fs.mkdirSync(backupDir, { recursive: true }); } catch(e) {}
-      }
-      const backupFile = path.join(backupDir, `Mesoft_Yedek_${dateStr}.db`);
-      if (!fs.existsSync(backupFile)) {
-        try { fs.copyFileSync(getDbFilePath(), backupFile); } catch(e) {}
-      }
-    }
-  }, 60000);
-}
-
-function fetchDatabaseData(callback) {
-  if (!db) return callback({ rooms: [], guests: [], reservations: [], settings: {} });
-  db.serialize(() => {
-    let data = { rooms: [], guests: [], reservations: [], settings: {} };
-    db.all(`SELECT * FROM rooms`, (err, rows) => {
-      data.rooms = rows ? rows.map(r => ({ ...r, guest: r.guest ? JSON.parse(r.guest) : null, minibar: r.minibar ? JSON.parse(r.minibar) : [] })) : [];
-      db.all(`SELECT * FROM guests`, (err, gRows) => {
-        data.guests = gRows || [];
-        db.all(`SELECT * FROM reservations`, (err, resRows) => {
-          data.reservations = resRows || [];
-          db.get(`SELECT value FROM settings WHERE key = 'config'`, (err, setRow) => {
-            if (setRow && setRow.value) {
-              try { data.settings = JSON.parse(setRow.value); } catch(e) {}
-            }
-            callback(data);
-          });
-        });
-      });
-    });
-  });
-}
-
-function saveDatabaseData(payload, callback) {
-  if (!db) return callback(false, new Error('DB not initialized'));
-  db.serialize(() => {
-    db.run(`BEGIN TRANSACTION`);
-    db.run(`DELETE FROM rooms`);
-    const roomStmt = db.prepare(`INSERT INTO rooms (id, type, price, status, guest, minibar) VALUES (?, ?, ?, ?, ?, ?)`);
-    (payload.rooms || []).forEach(r => { roomStmt.run(r.id, r.type, r.price, r.status, r.guest ? JSON.stringify(r.guest) : null, JSON.stringify(r.minibar || [])); });
-    roomStmt.finalize();
-
-    db.run(`DELETE FROM guests`);
-    const guestStmt = db.prepare(`INSERT INTO guests (key, tc, name, phone, email, notes, visits) VALUES (?, ?, ?, ?, ?, ?, ?)`);
-    (payload.guests || []).forEach(g => { guestStmt.run(g.key || g.tc || ('G-' + Math.random().toString(36).substr(2, 9)), g.tc || '', g.name, g.phone || '', g.email || '', g.notes || '', g.visits || 1); });
-    guestStmt.finalize();
-
-    db.run(`DELETE FROM reservations`);
-    const resStmt = db.prepare(`INSERT INTO reservations (id, roomId, primaryName, adultCount, childCount, allGuestsNames, tc, phone, checkIn, checkOut, totalPrice, advancePayment, remainingBalance, status, minibarTotal, collectedTotal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
-    (payload.reservations || []).forEach(r => { resStmt.run(r.id, r.roomId, r.primaryName, r.adultCount, r.childCount, r.allGuestsNames, r.tc, r.phone, r.checkIn, r.checkOut, r.totalPrice, r.advancePayment, r.remainingBalance, r.status, r.minibarTotal, r.collectedTotal); });
-    resStmt.finalize();
-
-    db.run(`INSERT OR REPLACE INTO settings (key, value) VALUES ('config', ?)`, [JSON.stringify(payload.settings || {})]);
-    db.run(`COMMIT`, (err) => {
-      if (err) { db.run(`ROLLBACK`); callback(false, err); } else { callback(true, null); }
-    });
-  });
-}
-
-function killPort8080() {
-  if (os.platform() === 'win32') {
-    try {
-      const stdout = execSync('netstat -ano | findstr :8080').toString();
-      const lines = stdout.split('\n');
-      for (let line of lines) {
-        const parts = line.trim().split(/\s+/);
-        const pid = parts[parts.length - 1];
-        if (pid && !isNaN(pid) && pid !== String(process.pid)) {
-          try { execSync(`taskkill /F /PID ${pid}`); } catch(e) {}
-        }
-      }
-    } catch(e) {}
-  }
-}
-
-function startHttpApiServer() {
-  killPort8080();
-
-  httpServer = http.createServer((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }
-
-    const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
-    const pathname = parsedUrl.pathname;
-
-    if (pathname === '/api/load' && req.method === 'GET') {
-      fetchDatabaseData((data) => { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(data)); });
-      return;
-    }
-
-    if (pathname === '/api/save' && req.method === 'POST') {
-      let body = '';
-      req.on('data', chunk => { body += chunk; });
-      req.on('end', () => {
-        try {
-          const payload = JSON.parse(body);
-          saveDatabaseData(payload, (success, err) => {
-            if (success) { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ success: true })); } 
-            else { res.writeHead(500, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ success: false, error: err ? err.message : 'Unknown error' })); }
-          });
-        } catch(e) { res.writeHead(400, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ error: 'Invalid JSON' })); }
-      });
-      return;
-    }
-
-    let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
-    fs.readFile(filePath, (err, content) => {
-      if (err) { res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }); res.end('Sayfa Bulunamadı'); } 
-      else { res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' }); res.end(content); }
-    });
-  });
-
-  httpServer.listen(8080, '0.0.0.0', () => { console.log('Merkezi SQLite & Web Sunucusu 8080 portunda aktif.'); });
-}
-
-function shutdownApp() {
-  if (backupInterval) clearInterval(backupInterval);
-  if (httpServer) {
-    try { httpServer.close(); } catch(e) {}
-  }
-  killPort8080();
-
-  const finalizeExit = () => {
-    if (os.platform() === 'win32') {
+    const day = now.toDateString();
+    if (now.getHours() === 3 && lastBackupDay !== day && server) {
+      lastBackupDay = day;
       try {
-        execSync('taskkill /F /IM "Mesoft Bilisim Otel.exe" /T');
-      } catch (e) {
-        process.exit(0);
-      }
-    } else {
-      process.exit(0);
+        const s = await server.db.getSettings();
+        const file = await server.db.backup(backupsDir(), parseInt(s.backup_keep_days, 10) || 30);
+        if (s.backup_extra_dir) { try { fs.mkdirSync(s.backup_extra_dir, { recursive: true }); fs.copyFileSync(file, path.join(s.backup_extra_dir, path.basename(file))); } catch (e) { log('Ek yedek klasörü hatası:', e.message); } }
+        log('Otomatik yedek alındı:', file);
+      } catch (e) { log('Yedek hatası:', e); }
     }
-  };
-
-  if (db) {
-    try {
-      db.close(() => {
-        finalizeExit();
-      });
-    } catch(e) {
-      finalizeExit();
-    }
-  } else {
-    finalizeExit();
-  }
+  }, 60 * 1000);
 }
-function createTray() {
+
+// ---- güncelleme ----
+function setupUpdater() {
+  if (!app.isPackaged) return;
   try {
-    const iconPath = path.join(__dirname, 'build', 'icon.ico');
-    // Eğer özel ikon dosyası yoksa, uygulama içerisindeki ana HTML'i veya boş bir buffer/nativeImage kullanmak yerine
-    // Tray nesnesinin hatasız üretilmesi için dosya kontrolü yapıyoruz.
-    let trayIcon = fs.existsSync(iconPath) ? iconPath : undefined;
-    
-    // Eğer trayIcon tanımsızsa Tray hata verebilir, bu yüzden güvenli bir fallback ekliyoruz
-    tray = new Tray(trayIcon || process.execPath);
-    tray.setToolTip('Mesoft Bilişim - Otel Yönetim Sistemi (Sunucu Aktif)');
-
-    const contextMenu = Menu.buildFromTemplate([
-      { label: 'Paneli Aç / Göster', click: () => { if (mainWindow) { mainWindow.show(); mainWindow.focus(); } } },
-      { type: 'separator' },
-      { label: 'Tamamen Çıkış Yap (Sunucuyu Kapat)', click: () => { isQuitting = true; shutdownApp(); } }
-    ]);
-
-    tray.setContextMenu(contextMenu);
-
-    tray.on('double-click', () => {
-      if (mainWindow) {
-        mainWindow.show();
-        mainWindow.focus();
-      }
-    });
-  } catch(e) {
-    console.error('Tray oluşturulamadı:', e);
-  }
+    ({ autoUpdater } = require('electron-updater'));
+    autoUpdater.autoDownload = true;
+    autoUpdater.autoInstallOnAppQuit = true;
+    const send = (ch, payload) => { if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send(ch, payload); };
+    autoUpdater.on('update-available', (info) => send('update:available', { version: info.version }));
+    autoUpdater.on('update-not-available', () => send('update:not-available'));
+    autoUpdater.on('download-progress', (p) => send('update:progress', { percent: p.percent }));
+    autoUpdater.on('update-downloaded', (info) => send('update:downloaded', { version: info.version }));
+    autoUpdater.on('error', (e) => { log('Updater:', e.message); send('update:error', e.message); });
+    setTimeout(() => autoUpdater.checkForUpdates().catch(() => {}), 15000);
+    setInterval(() => autoUpdater.checkForUpdates().catch(() => {}), 6 * 3600 * 1000);
+  } catch (e) { log('electron-updater yüklenemedi:', e.message); }
 }
+
+// ---- pencere & tepsi ----
+function iconImage() {
+  const p = path.join(__dirname, 'build', process.platform === 'win32' ? 'icon.ico' : 'icon.png');
+  if (fs.existsSync(p)) return nativeImage.createFromPath(p);
+  // 16x16 basit fallback ikon (amber kare) — build/icon.* eklenince kullanılmaz
+  return nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAJklEQVR42mP8z8DwnwEJMDEwMDBQIj7KwCgqPsrAKCo+ysAoKj4KAAB0iAn/hJ2C6QAAAABJRU5ErkJggg==');
+}
+
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1360, height: 880, minWidth: 980, minHeight: 650, title: "Mesoft Bilişim - Otel Yönetim Sistemi", backgroundColor: '#020617',
-    webPreferences: { nodeIntegration: true, contextIsolation: false }
+    width: 1360, height: 880, minWidth: 980, minHeight: 650,
+    title: 'Mesoft Bilişim - Otel Yönetim Sistemi', backgroundColor: '#020617', icon: iconImage(),
+    webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false, sandbox: true, spellcheck: false }
   });
   mainWindow.setMenuBarVisibility(false);
-  mainWindow.loadFile('index.html');
+  mainWindow.loadURL(`http://127.0.0.1:${PORT}/`);
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => { if (/^https?:/.test(url)) shell.openExternal(url); return { action: 'deny' }; });
 
-  // Çarpı (X) tuşuna basıldığında sor: Çalışmaya devam etsin mi?
   mainWindow.on('close', (event) => {
     if (isQuitting) return;
     event.preventDefault();
-
     dialog.showMessageBox(mainWindow, {
-      type: 'question',
-      buttons: ['Evet, Arka Planda Çalışmaya Devam Etsin', 'Hayır, Tamamen Kapat'],
-      defaultId: 0,
-      title: 'Otel Yönetim Sistemi',
-      message: 'Uygulama penceresini kapatmak istiyorsunuz. Diğer cihazların (telefon/tablet) bağlanabilmesi için sunucunun arka planda çalışmaya devam etmesini ister misiniz?',
-      detail: 'Evet derseniz uygulama sistem tepsisine (tray) küçülecektir. Hayır derseniz sunucu tamamen kapatılacaktır.'
-    }).then((result) => {
-      if (result.response === 0) {
-        // Evet -> Arka plana atıp Tray'e küçült
-        mainWindow.hide();
-        if (tray) {
-          tray.displayBalloon({
-            title: 'Mesoft Otel Sunucusu',
-            content: 'Uygulama arka planda çalışmaya devam ediyor.'
-          });
-        }
-      } else {
-        // Hayır -> Tamamen kill et
-        isQuitting = true;
-        shutdownApp();
-      }
+      type: 'question', defaultId: 0, title: 'Otel Yönetim Sistemi',
+      buttons: ['Arka Planda Çalışmaya Devam Et', 'Tamamen Kapat'],
+      message: 'Sunucu arka planda çalışmaya devam etsin mi?',
+      detail: 'Devam ederse diğer cihazlar (telefon/tablet) bağlanabilir ve uygulama sistem tepsisine küçülür.'
+    }).then(({ response }) => {
+      if (response === 0) { mainWindow.hide(); if (tray && process.platform === 'win32') tray.displayBalloon({ title: 'Mesoft Otel', content: 'Sunucu arka planda çalışıyor.' }); }
+      else shutdown();
     });
   });
 }
 
-app.whenReady().then(() => {
-  initDatabase();
-  startHttpApiServer();
-  startDailyBackup();
+function createTray() {
+  try {
+    tray = new Tray(iconImage());
+    tray.setToolTip('Mesoft Otel — Sunucu Aktif');
+    tray.setContextMenu(Menu.buildFromTemplate([
+      { label: 'Paneli Göster', click: () => { if (mainWindow) { mainWindow.show(); mainWindow.focus(); } } },
+      { label: 'Tarayıcıda Aç', click: () => shell.openExternal(`http://127.0.0.1:${PORT}/`) },
+      { type: 'separator' },
+      { label: 'Yedek Klasörünü Aç', click: () => shell.openPath(backupsDir()) },
+      { type: 'separator' },
+      { label: 'Tamamen Çıkış (Sunucuyu Kapat)', click: shutdown }
+    ]));
+    tray.on('double-click', () => { if (mainWindow) { mainWindow.show(); mainWindow.focus(); } });
+  } catch (e) { log('Tray oluşturulamadı:', e.message); }
+}
+
+async function shutdown() {
+  if (isQuitting) return;
+  isQuitting = true;
+  if (backupTimer) clearInterval(backupTimer);
+  try { if (server) await server.stop(); } catch (e) { log('Kapanış hatası:', e); }
+  app.quit();
+}
+
+// ---- IPC (preload üzerinden) ----
+ipcMain.handle('app:info', () => ({ version: app.getVersion(), port: PORT, dbPath: dbPath(), backupsDir: backupsDir(), ips: localIps(), platform: process.platform, isPackaged: app.isPackaged }));
+ipcMain.handle('app:openBackups', () => shell.openPath(backupsDir()));
+ipcMain.handle('app:openExternal', (_e, url) => { if (/^https?:/.test(String(url))) shell.openExternal(url); });
+ipcMain.handle('app:pickFolder', async () => { const r = await dialog.showOpenDialog(mainWindow, { properties: ['openDirectory', 'createDirectory'] }); return r.canceled ? null : r.filePaths[0]; });
+ipcMain.handle('update:check', () => { if (!autoUpdater) return { available: false, reason: 'Geliştirme modunda güncelleme devre dışı' }; return autoUpdater.checkForUpdates().then(() => ({ ok: true })).catch(e => ({ ok: false, error: e.message })); });
+ipcMain.handle('update:install', () => { if (autoUpdater) { isQuitting = true; autoUpdater.quitAndInstall(); } });
+
+// ---- başlat ----
+app.whenReady().then(async () => {
+  try {
+    server = new Server({ dbPath: dbPath(), staticDir: __dirname, port: PORT, host: '0.0.0.0', backupsDir: backupsDir(), log });
+    await server.start();
+  } catch (e) {
+    log('Sunucu başlatılamadı:', e);
+    dialog.showErrorBox('Sunucu Başlatılamadı', e.code === 'EADDRINUSE'
+      ? `${PORT} portu başka bir uygulama tarafından kullanılıyor. Diğer uygulamayı kapatın veya MESOFT_PORT ortam değişkeni ile farklı port belirleyin.`
+      : e.message);
+    app.quit(); return;
+  }
   createWindow();
   createTray();
-
-  app.on('activate', () => { 
-    if (BrowserWindow.getAllWindows().length === 0) createWindow(); 
-    else if (mainWindow) mainWindow.show();
-  });
+  scheduleBackups();
+  setupUpdater();
+  app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); else if (mainWindow) mainWindow.show(); });
 });
 
-app.on('window-all-closed', (e) => {
-  e.preventDefault();
-});
-
-ipcMain.handle('db-load', async () => { return new Promise((resolve) => { fetchDatabaseData((data) => resolve(data)); }); });
-ipcMain.handle('db-save', async (event, payload) => { return new Promise((resolve, reject) => { saveDatabaseData(payload, (success, err) => { if (success) resolve(true); else reject(err); }); }); });
-
-ipcMain.on('gs-get-paths', (event) => { 
-  event.returnValue = { 
-    userDataPath: getUserDataDir(), 
-    dbFilePath: getDbFilePath(), 
-    backupsDirPath: getBackupsDir(), 
-    appVersion: app.getVersion(),
-    localIp: getLocalIpAddress()
-  }; 
-});
-
-ipcMain.on('gs-open-backups-folder', () => { const backupDir = 'C:\\OTEL\\YEDEK'; if (!fs.existsSync(backupDir)) { try { fs.mkdirSync(backupDir, { recursive: true }); } catch(e) {} } shell.openPath(backupDir); });
+app.on('window-all-closed', (e) => e.preventDefault());
+app.on('before-quit', () => { isQuitting = true; });
+process.on('uncaughtException', (e) => log('uncaughtException:', e));
+process.on('unhandledRejection', (e) => log('unhandledRejection:', e));
