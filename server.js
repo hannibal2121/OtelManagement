@@ -160,7 +160,7 @@ class Server {
 
     switch (route) {
       // ---- genel ----
-      case 'GET /health': return this.sendJson(res, 200, { ok: true, revision: db.revision, time: now() });
+      case 'GET /health': return this.sendJson(res, 200, { ok: true, revision: db.revision, time: now(), version: require('./package.json').version });
       case 'GET /revision': return this.sendJson(res, 200, { revision: db.revision });
 
       // ---- kimlik ----

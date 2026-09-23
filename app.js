@@ -119,7 +119,7 @@ function renderAll() {
 function loadHotelUI() {
   const n = S.settings.hotel_name || 'MESOFT BİLİŞİM';
   $('displayHotelName').innerText = n; $('loginHotelName').innerText = n; $('displayHotelSubtitle').innerText = S.settings.hotel_subtitle || '';
-  $('headerHotelTitle').innerHTML = `<i class="fa-solid fa-building text-amber-500 me-1.5"></i>${esc(n)} Resepsiyon ${desktopInfo ? `<span class="text-slate-600">v${esc(desktopInfo.version)}</span>` : ''}`;
+  $('headerHotelTitle').innerHTML = `<i class="fa-solid fa-building text-amber-500 me-1.5"></i>${esc(n)} Resepsiyon ${desktopInfo ? `<span class="ml-2 text-[10px] font-mono bg-slate-950 border border-slate-800 text-amber-400 px-1.5 py-0.5 rounded">v${esc(desktopInfo.version)}</span>` : ''}`;
   document.title = `${n} - Otel Yönetim`;
 }
 function renderRoomsGrid() {
@@ -514,12 +514,13 @@ function resetDatabase() { confirmAsk('Fabrika Ayarları', 'Tüm odalar, misafir
 
 // ============ GÜNCELLEME (masaüstü) ============
 async function checkUpdates() { if (!isDesktop) return; $('updateStatusText').innerText = 'Kontrol ediliyor…'; const r = await window.mesoft.checkUpdates(); if (r && r.reason) $('updateStatusText').innerText = r.reason; else if (r && r.error) $('updateStatusText').innerText = `Hata: ${r.error}`; }
-
 function setupDesktop() {
   if (!isDesktop) return;
   window.mesoft.info().then(info => {
     desktopInfo = info; loadHotelUI();
     $('dbStoragePathText').innerText = info.dbPath; $('dbStorageInfoBox').classList.remove('hidden'); $('autoBackupsRow').classList.remove('hidden');
+    $('loginVersion').innerText = `Sürüm ${info.version}`;
+    $('updateRow').querySelector('h4').innerText = `Yazılım Güncellemesi — v${info.version}`;
     $('updateRow').classList.toggle('hidden', !info.isPackaged);
     $('networkUrlList').innerHTML = info.ips.map(ip => `<div class="bg-slate-950 border border-emerald-500/40 p-3 rounded-xl flex items-center justify-between"><div><span class="font-mono text-emerald-400 font-bold text-sm select-all">http://${esc(ip.address)}:${info.port}</span><div class="text-[10px] text-slate-500">${esc(ip.name)}</div></div><button onclick="navigator.clipboard.writeText('http://${esc(ip.address)}:${info.port}').then(()=>toast('Kopyalandı'))" class="btn btn-emerald !py-1"><i class="fa-solid fa-copy"></i></button></div>`).join('');
   });
@@ -542,5 +543,5 @@ window.addEventListener('DOMContentLoaded', async () => {
   const t = todayStr(); $('reportStartDate').value = localDate(new Date(new Date().getFullYear(), new Date().getMonth(), 1)); $('reportEndDate').value = t; $('cashDate').value = t;
   switchTab('rooms');
   if (token) { try { await api('/me'); $('loginOverlay').classList.add('hidden'); await refresh(true); startPolling(); } catch (_) { logoutLocal(); } }
-  else { try { const s = await fetch(`${API}/health`); if (s.ok) setOffline(false); } catch (_) { setOffline(true); } }
+  else { try { const s = await fetch(`${API}/health`); if (s.ok) { setOffline(false); const h = await s.json(); if (h.version && !isDesktop) $('loginVersion').innerText = `Sürüm ${h.version} (tarayıcı)`; } } catch (_) { setOffline(true); } }
 });
