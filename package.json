@@ -29,17 +29,22 @@
   },
   "build": {
     "appId": "com.mesoft.otelyonetim",
+    "npmRebuild": false,
     "productName": "Mesoft Bilisim Otel",
     "artifactName": "MesoftOtel-Setup-${version}.${ext}",
     "directories": { "output": "release" },
     "files": [
       "main.js", "server.js", "db.js", "preload.js", "app.js",
-      "index.html", "assets/**/*", "build/icon.*", "package.json"
+      "index.html", "assets/**/*", "build/icon.*", "package.json",
+      "node_modules/**/*"
     ],
     "asarUnpack": ["node_modules/sqlite3/**"],
     "win": {
       "icon": "build/icon.ico",
       "target": ["nsis", "portable"]
+    },
+    "portable": {
+      "artifactName": "MesoftOtel-Portable-${version}.${ext}"
     },
     "nsis": {
       "oneClick": false,
@@ -49,7 +54,7 @@
       "shortcutName": "Mesoft Otel"
     },
     "publish": [
-      { "provider": "generic", "url": "https://UPDATE-SUNUCUNUZ.example.com/mesoft-otel/" }
+      { "provider": "generic", "url": "https://www.mesoftbilisim.net/guncelleme/otel/" }
     ]
   }
 }
